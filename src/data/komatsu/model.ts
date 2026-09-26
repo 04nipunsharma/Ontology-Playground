@@ -53,13 +53,19 @@ const SEGMENTS = ['Construction', 'Utilities', 'Mining', 'Quarry', 'Forestry', '
 type Kind = StandardAlignment['kind'];
 const schema = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'schema.org', term, iri: `https://schema.org/${term}`, kind });
 const gs1 = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'GS1 Web Vocabulary', term, iri: `https://gs1.org/voc/${term}`, kind });
+const cbv = (term: string, kind: Kind = 'related'): StandardAlignment => ({ standard: 'GS1 CBV 2.0', term, iri: `https://ref.gs1.org/cbv/${term}`, kind });
+const unece = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'UN/CEFACT Vocabulary', term, iri: `https://vocabulary.uncefact.org/${term}`, kind });
+const sosa = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'W3C SOSA', term, iri: `http://www.w3.org/ns/sosa/${term}`, kind });
 const org = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'W3C ORG', term, iri: `http://www.w3.org/ns/org#${term}`, kind });
-const iof = (term: string, kind: Kind = 'broadMatch'): StandardAlignment => ({ standard: 'IOF Core', term, iri: `https://spec.industrialontologies.org/ontology/core/Core/${term}`, kind });
-const iofSc = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'IOF Supply Chain', term, iri: `https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/${term}`, kind });
+/** IOF (Industrial Ontologies Foundry, BFO-based). Since 2025 all IOF classes share the flat `construct/` namespace. */
+const IOF_NS = 'https://spec.industrialontologies.org/ontology/construct/';
+const iof = (term: string, kind: Kind = 'broadMatch'): StandardAlignment => ({ standard: 'IOF', term, iri: `${IOF_NS}${term}`, kind });
+const iofSc = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'IOF Supply Chain', term, iri: `${IOF_NS}${term}`, kind });
 const fiboContract: StandardAlignment = { standard: 'FIBO', term: 'Contract', iri: 'https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract', kind: 'broadMatch' };
 const std = (standard: string, term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard, term, kind });
 const cdm = (term: string, kind: Kind = 'closeMatch'): StandardAlignment => ({ standard: 'Microsoft CDM', term, kind });
 const scor = (term: string): StandardAlignment => ({ standard: 'ASCM SCOR DS', term, kind: 'related' });
+const apqc = (term: string): StandardAlignment => ({ standard: 'APQC PCF 8.0', term, kind: 'related' });
 
 // ─── Binding helpers ────────────────────────────────────────────────────────
 
@@ -112,7 +118,7 @@ const customer: KomatsuEntityType = {
   properties: [
     key('customerAccount', 'D365 customer account number (dual-written CE ↔ F&O)'),
     str('name', 'Registered or trading name'),
-    str('abn', 'Australian Business Number'),
+    str('abn', 'Australian Business Number (11 digits; schema:taxID)'),
     oneOf('segment', SEGMENTS, 'Primary market segment served'),
     oneOf('customerTier', ['Strategic', 'Key Account', 'Fleet', 'Commercial', 'Owner-Operator', 'Cash'], 'Commercial tier driving coverage model and pricing'),
     oneOf('state', AU_STATES, 'Head-office state'),
@@ -120,7 +126,7 @@ const customer: KomatsuEntityType = {
     str('paymentTerms', 'Payment terms code, e.g. 30 days EOM'),
     bool('isOnCreditHold', 'True when the account is blocked for new transactions'),
   ],
-  alignments: [schema('Organization'), org('Organization'), iofSc('Customer'), cdm('Account')],
+  alignments: [schema('Organization'), org('Organization'), iofSc('Customer'), std('OAGIS', 'CustomerPartyMaster', 'related'), cdm('Account')],
   binding: fo('custtable', {
     customerAccount: 'accountnum', name: 'dirpartytable.name', abn: 'vatnum', segment: 'segmentid',
     customerTier: 'custgroup', creditLimit: 'creditmax', paymentTerms: 'paymtermid', isOnCreditHold: 'blocked',
@@ -141,7 +147,7 @@ const customerSite: KomatsuEntityType = {
     bool('requiresSiteInduction', 'True when technicians must hold a site induction before attending'),
     bool('isRemote', 'True for fly-in/fly-out or remote-area sites affecting travel and parts logistics'),
   ],
-  alignments: [schema('Place'), org('Site'), std('ISO 14224', 'Installation / Plant (taxonomy levels 3–4)', 'related'), cdm('FunctionalLocation')],
+  alignments: [schema('Place'), org('Site'), iof('GeospatialSite', 'related'), std('MIMOSA CCOM', 'Segment (functional location)', 'related'), std('ISO 14224', 'Installation / Plant (taxonomy levels 3–4)', 'related'), cdm('FunctionalLocation')],
   binding: ce('msdyn_functionallocation', {
     siteId: 'msdyn_functionallocationid', name: 'msdyn_name', latitude: 'msdyn_latitude', longitude: 'msdyn_longitude',
   }, { toConfirm: true }),
@@ -232,7 +238,7 @@ const supplier: KomatsuEntityType = {
     bool('isPreferred', 'Preferred supplier flag'),
     dec('onTimeInFullPct', 'Rolling on-time-in-full delivery performance', '%'),
   ],
-  alignments: [schema('Organization'), iofSc('Supplier'), org('Organization'), cdm('Vendor')],
+  alignments: [schema('Organization'), iofSc('Supplier'), org('Organization'), std('OAGIS', 'SupplierPartyMaster', 'related'), cdm('Vendor')],
   binding: fo('vendtable', {
     vendorAccount: 'accountnum', name: 'dirpartytable.name', supplierType: 'vendgroup', abn: 'vatnum', countryCode: 'countryregionid',
   }, { alternate: 'msdyn_vendor (Dataverse, dual-write)' }),
@@ -270,7 +276,7 @@ const machineModel: KomatsuEntityType = {
     bool('isCurrentModel', 'True while the model is available to order'),
     dec('listPrice', 'Current recommended retail price (base spec)', AUD),
   ],
-  alignments: [schema('ProductModel', 'exactMatch'), std('MIMOSA CCOM', 'Model'), iof('ProductSpecification')],
+  alignments: [schema('ProductModel', 'exactMatch'), std('MIMOSA CCOM', 'Model / ModelVariant'), { standard: 'GoodRelations', term: 'ProductOrServiceModel', iri: 'http://purl.org/goodrelations/v1#ProductOrServiceModel', kind: 'closeMatch' }],
   binding: annata('amdevicemodel', { modelCode: 'modelid', series: 'modelcode', operatingWeightKg: 'operatingweight', enginePowerKw: 'enginepower' }, { alternate: 'msauto_devicemodel / msauto_devicemodelcode (Dataverse)' }),
 };
 
@@ -299,7 +305,7 @@ const equipmentUnit: KomatsuEntityType = {
   synonyms: ['Device (Annata)', 'Unit', 'Machine', 'Customer asset (Field Service)', 'Stock unit'],
   properties: [
     key('serialNumber', 'Komatsu machine serial number'),
-    str('pin', 'ISO 10261 17-character product identification number'),
+    str('pin', 'ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)'),
     str('stockNumber', 'Internal stock / unit number while in Komatsu inventory'),
     oneOf('unitStatus', ['On Order', 'In Production', 'In Transit', 'In Stock', 'In PDI', 'Ready for Delivery', 'Delivered', 'In Service', 'Rental Fleet', 'Used Stock', 'Sold', 'Scrapped'], 'Lifecycle status of the unit'),
     oneOf('ownershipType', ['Komatsu Stock', 'Customer Owned', 'Rental Fleet', 'Demonstrator', 'Consignment', 'Leased'], 'Who owns the unit'),
@@ -309,7 +315,7 @@ const equipmentUnit: KomatsuEntityType = {
     date('warrantyStartDate', 'Start of the factory warranty period'),
     bool('komtraxEnabled', 'True when KOMTRAX / KOMTRAX Plus telematics is active'),
   ],
-  alignments: [schema('IndividualProduct', 'exactMatch'), std('ISO 10261', 'Product identification number (PIN)'), std('MIMOSA CCOM', 'Asset'), std('ISO 14224', 'Equipment unit (taxonomy level 6)'), gs1('IndividualAsset', 'related'), cdm('CustomerAsset')],
+  alignments: [schema('IndividualProduct', 'exactMatch'), iof('PieceOfEquipment', 'closeMatch'), std('ISO 10261', 'Product identification number (PIN)'), std('MIMOSA CCOM', 'Asset'), std('ISO 14224', 'Equipment unit (taxonomy level 6)'), std('GS1', 'GIAI (AI 8004) individual asset identifier', 'related'), cdm('CustomerAsset')],
   binding: annata('amdevicetable', {
     serialNumber: 'serialnumber', pin: 'vin', stockNumber: 'deviceid', unitStatus: 'devicestatus', ownershipType: 'ownership',
     smrHours: 'lastcountervalue', yearOfManufacture: 'modelyear', deliveryDate: 'deliverydate', warrantyStartDate: 'warrantystartdate',
@@ -331,7 +337,7 @@ const component: KomatsuEntityType = {
     dec('lifeTargetHours', 'Planned component replacement (PCR) life target', 'hours'),
     int('rebuildCount', 'Number of times this component has been remanufactured'),
   ],
-  alignments: [std('ISO 14224', 'Subunit / maintainable item (levels 7–8)'), std('MIMOSA CCOM', 'Asset (installed on Segment)'), iof('MaintainableMaterialItem'), gs1('IndividualAsset', 'related')],
+  alignments: [iof('MaintainableMaterialItem', 'closeMatch'), iof('MaterialComponent', 'broadMatch'), std('ISO 14224', 'Subunit / maintainable item (levels 7–8)'), std('MIMOSA CCOM', 'Asset + AssetSegmentEvent (install / remove)'), std('GS1', 'SGTIN / GIAI serialised identifier', 'related')],
   binding: annata('amdevicetable', { componentSerial: 'serialnumber', componentType: 'deviceclass', installedDate: 'installeddate' }, { filter: 'device class = major component (child of a machine device)', alternate: 'msauto_devicecomponent (Dataverse)' }),
 };
 
@@ -354,7 +360,7 @@ const part: KomatsuEntityType = {
     bool('isSerialised', 'True when each unit is serial-tracked (reman components, attachments)'),
     bool('isDangerousGoods', 'True for batteries, pressurised or flammable items'),
   ],
-  alignments: [schema('Product', 'exactMatch'), gs1('Product'), std('UNSPSC', '22101700 Heavy equipment components', 'broadMatch'), iof('MaterialProduct'), cdm('ReleasedProduct')],
+  alignments: [schema('Product', 'exactMatch'), gs1('Product'), iof('MaterialProduct', 'closeMatch'), std('UNSPSC', '22101700 Heavy equipment components', 'broadMatch'), std('OAGIS', 'ItemMaster', 'related'), cdm('ReleasedProduct')],
   binding: fo('inventtable', {
     partNumber: 'itemid', description: 'namealias', abcClass: 'abcrevenue', unitOfMeasure: 'unitid', weightKg: 'netweight', hsCode: 'intracode',
   }),
@@ -372,7 +378,7 @@ const partInterchange: KomatsuEntityType = {
     dec('quantityRatio', 'New-part quantity per old-part quantity'),
     bool('useUpOldStock', 'True when existing stock of the old part should be consumed first'),
   ],
-  alignments: [std('OAGIS', 'ItemMaster / Supersession', 'related'), std('ECLASS', 'successor product', 'related')],
+  alignments: [gs1('replacedByProduct', 'closeMatch'), schema('successorOf', 'related'), std('OAGIS', 'ItemMaster (supersession)', 'related')],
   binding: annata('amitemsupersession', { interchangeId: 'recid', interchangeType: 'supersessiontype', effectiveDate: 'fromdate' }),
 };
 
@@ -389,7 +395,7 @@ const factory: KomatsuEntityType = {
     str('legalEntity', 'Komatsu group entity that invoices from this plant'),
     int('standardLeadTimeDays', 'Typical order-to-ship lead time', 'days'),
   ],
-  alignments: [org('Site'), schema('Organization', 'related'), iofSc('Manufacturer', 'related')],
+  alignments: [iof('Factory', 'closeMatch'), org('Site'), iof('Manufacturer', 'related')],
   binding: reference('factory', { factoryCode: 'factory_code', name: 'name', countryCode: 'country_code', legalEntity: 'legal_entity' }, 'Komatsu factory systems'),
 };
 
@@ -405,7 +411,7 @@ const machineDemandForecast: KomatsuEntityType = {
     oneOf('forecastType', ['Statistical', 'Sales Input', 'Consensus', 'Committed Backlog'], 'Forecast layer in the S&OP process'),
     str('forecastVersion', 'S&OP cycle / version label'),
   ],
-  alignments: [scor('Plan: Plan Supply Chain (demand plan)'), std('APQC PCF', '4.1 Plan for and align supply chain resources', 'related')],
+  alignments: [iof('SupplyChainPlanSpecification', 'related'), scor('Plan: Plan supply chain (demand plan)'), apqc('4.0 Manage Supply Chain for Physical Products')],
   binding: fo('forecastsales', { machineForecastId: 'recid', forecastMonth: 'startdate', forecastUnits: 'salesqty', forecastVersion: 'modelid' }, { toConfirm: true }),
 };
 
@@ -421,7 +427,7 @@ const henseiCycle: KomatsuEntityType = {
     date('submissionDeadline', 'Cut-off for submitting requests to the factory'),
     oneOf('status', ['Open', 'Submitted', 'Allocated', 'Confirmed', 'Closed'], 'Cycle status'),
   ],
-  alignments: [scor('Source: Schedule product deliveries'), std('APQC PCF', '4.2.2 Plan procurement / order management', 'related')],
+  alignments: [scor('Plan / Order (O3 intra-company): Sales & operations planning'), apqc('4.0 Manage Supply Chain for Physical Products')],
   binding: reference('hensei_cycle', { henseiCycleId: 'hensei_cycle_id', cycleMonth: 'cycle_month', productionMonth: 'production_month', submissionDeadline: 'submission_deadline', status: 'status' }, 'Komatsu factory systems'),
 };
 
@@ -454,7 +460,7 @@ const factoryOrder: KomatsuEntityType = {
     oneOf('status', ['Placed', 'Scheduled', 'In Production', 'Built', 'Shipped', 'Received', 'Cancelled'], 'Factory order status'),
     dec('fobCost', 'Free-on-board cost from the factory', AUD),
   ],
-  alignments: [schema('Order'), std('OAGIS', 'PurchaseOrder (intercompany)', 'related'), scor('Source: Schedule product deliveries')],
+  alignments: [iofSc('PurchaseOrder', 'closeMatch'), schema('Order'), std('OAGIS', 'PurchaseOrder (intercompany)', 'related'), scor('Order (O3 intra-company) / Source')],
   binding: fo('purchtable', { factoryOrderNumber: 'purchid', orderDate: 'accountingdate', plannedShipDate: 'deliverydate', status: 'purchstatus' }, { filter: 'purchpoolid = \'MACHINE\'', toConfirm: true }),
 };
 
@@ -573,7 +579,7 @@ const financeAgreement: KomatsuEntityType = {
     date('startDate', 'Commencement date'),
     oneOf('status', ['Application', 'Approved', 'Settled', 'Active', 'Paid Out', 'Declined'], 'Agreement status'),
   ],
-  alignments: [fiboContract, { standard: 'FIBO', term: 'LoanContract', iri: 'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan', kind: 'closeMatch' }],
+  alignments: [fiboContract, { standard: 'FIBO', term: 'Loan', iri: 'https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan', kind: 'closeMatch' }],
   binding: reference('finance_agreement', { financeAgreementId: 'contract_number', financeType: 'finance_type', financier: 'financier', amountFinanced: 'amount_financed', termMonths: 'term_months', status: 'status' }, 'KACF finance system'),
 };
 
@@ -625,7 +631,7 @@ const machineHandover: KomatsuEntityType = {
     bool('komtraxActivated', 'KOMTRAX subscription activated for the customer'),
     str('deliveryDocketNumber', 'Signed delivery docket reference'),
   ],
-  alignments: [schema('ParcelDelivery', 'broadMatch'), gs1('CBV bizStep: commissioning / accepting', 'related'), scor('Fulfill: Install product')],
+  alignments: [cbv('BizStep-accepting', 'closeMatch'), std('MIMOSA CCOM', 'AssetOwnerEvent', 'related'), schema('OwnershipInfo', 'related'), scor('Fulfill: Install product')],
   binding: annata('amdevicedelivery', { handoverId: 'deliveryid', scheduledDate: 'planneddeliverydate', handoverDate: 'deliverydate' }),
 };
 
@@ -647,7 +653,7 @@ const shipment: KomatsuEntityType = {
     oneOf('status', ['Booked', 'In Transit', 'At Port', 'Held', 'Cleared', 'Delivered', 'Exception'], 'Shipment status'),
     bool('requiresOversizePermit', 'True when the road leg needs an oversize/overmass (OSOM) permit under HVNL'),
   ],
-  alignments: [schema('ParcelDelivery', 'broadMatch'), gs1('SSCC (logistic unit)', 'related'), std('UN/CEFACT', 'Consignment', 'closeMatch'), std('OAGIS', 'Shipment'), scor('Fulfill: Transport product')],
+  alignments: [iofSc('Shipment', 'closeMatch'), unece('Consignment'), std('GS1', 'SSCC logistic unit', 'related'), std('OAGIS', 'Shipment'), scor('Fulfill: Transport product')],
   binding: fo('whsshipmenttable', { shipmentId: 'shipmentid', transportMode: 'modecode', billOfLading: 'billofladingid', status: 'shipmentstatus' }, { toConfirm: true }),
 };
 
@@ -665,7 +671,7 @@ const vesselVoyage: KomatsuEntityType = {
     date('etaDate', 'Estimated arrival'),
     date('arrivalDate', 'Actual arrival'),
   ],
-  alignments: [std('UN/CEFACT', 'Transport Movement', 'closeMatch'), schema('Trip', 'broadMatch')],
+  alignments: [unece('TransportMovement'), schema('Trip', 'broadMatch')],
   binding: fo('itmtable', { voyageId: 'shipid', vesselName: 'vesselname', etdDate: 'shipdate', etaDate: 'shipconfirmdate' }, { toConfirm: true }),
 };
 
@@ -676,13 +682,13 @@ const customsEntry: KomatsuEntityType = {
   properties: [
     key('entryNumber', 'Import declaration number'),
     date('lodgementDate', 'Date lodged in the Integrated Cargo System'),
-    str('tariffCode', 'Principal tariff classification, e.g. 8429.52 (excavators)'),
+    str('tariffCode', 'Principal tariff classification, e.g. 8429.52 excavators, 8431.49 parts, 8704.10 dumpers'),
     dec('customsValue', 'Customs value', AUD),
     dec('dutyAmount', 'Customs duty payable', AUD),
     dec('gstAmount', 'Import GST payable', AUD),
     oneOf('status', ['Lodged', 'Held', 'Cleared', 'Amended'], 'Clearance status'),
   ],
-  alignments: [std('WCO Data Model', 'Goods Declaration', 'closeMatch'), std('Harmonized System', '8429 / 8431', 'related')],
+  alignments: [unece('ExchangedDeclaration'), std('WCO Data Model', 'Goods Declaration', 'closeMatch'), std('Harmonized System', '8429 / 8431 / 8704.10', 'related')],
   binding: reference('customs_entry', { entryNumber: 'entry_number', lodgementDate: 'lodgement_date', tariffCode: 'tariff_code', dutyAmount: 'duty_amount', gstAmount: 'gst_amount', status: 'status' }, 'Customs broker (ICS)'),
 };
 
@@ -698,7 +704,7 @@ const biosecurityInspection: KomatsuEntityType = {
     oneOf('result', ['Released', 'Directed to Re-clean', 'Directed to Treat', 'Export or Destroy'], 'Inspection outcome'),
     dec('cleaningCost', 'Cost of cleaning / treatment', AUD),
   ],
-  alignments: [std('DAFF BICON', 'Machinery and equipment import conditions', 'related'), gs1('CBV bizStep: inspecting', 'related')],
+  alignments: [unece('InspectionEvent'), cbv('BizStep-inspecting'), std('DAFF BICON', 'Machinery and equipment import conditions', 'related')],
   binding: reference('biosecurity_inspection', { inspectionId: 'inspection_id', inspectionDate: 'inspection_date', isBmsbSeason: 'is_bmsb_season', treatment: 'treatment', result: 'result' }),
 };
 
@@ -720,7 +726,7 @@ const pdiJob: KomatsuEntityType = {
     dec('actualHours', 'Actual labour hours booked', 'hours'),
     date('customerRequiredDate', 'Date the customer needs the machine delivered'),
   ],
-  alignments: [iof('MaintenanceProcess', 'related'), std('ISO 14224', 'Maintenance activity: inspection / modification', 'related'), scor('Fulfill: Prepare product for delivery')],
+  alignments: [iof('PlannedProcess', 'broadMatch'), cbv('BizStep-inspecting'), std('ISO 14224', 'Maintenance activity: inspection / modification', 'related'), scor('Fulfill: Prepare product for delivery')],
   binding: annata('amworkordertable', { pdiJobNumber: 'workorderid', status: 'workorderstatus', plannedStart: 'plannedstartdatetime', plannedFinish: 'plannedenddatetime' }, { filter: 'work order type = PDI', alternate: 'msdyn_workorder / msauto_deviceinspection (Dataverse)' }),
 };
 
@@ -736,7 +742,7 @@ const inspectionResult: KomatsuEntityType = {
     str('comment', 'Technician comment / measurement'),
     dt('recordedOn', 'When the result was recorded'),
   ],
-  alignments: [iof('Measurement', 'related'), std('MIMOSA CCOM', 'Measurement / Event', 'related')],
+  alignments: [iof('MeasurementProcess', 'related'), cbv('Disp-conformant'), std('MIMOSA CCOM', 'Measurement', 'related')],
   binding: annata('aminspectionline', { inspectionResultId: 'recid', checkItem: 'description', outcome: 'result' }, { alternate: 'msdyn_inspectioninstance (Field Service)' }),
 };
 
@@ -753,7 +759,7 @@ const warehouse: KomatsuEntityType = {
     bool('isWmsEnabled', 'True when advanced warehouse management is enabled'),
     oneOf('state', AU_STATES, 'State'),
   ],
-  alignments: [schema('Place', 'broadMatch'), gs1('GLN (location)', 'related'), iofSc('StorageFacility', 'related'), cdm('Warehouse')],
+  alignments: [iof('DistributionCenter', 'related'), iof('StorageFacility', 'broadMatch'), std('GS1', 'GLN (Global Location Number)', 'related'), cdm('Warehouse')],
   binding: fo('inventlocation', { warehouseId: 'inventlocationid', name: 'name', warehouseType: 'inventlocationtype', isWmsEnabled: 'whsenabled' }),
 };
 
@@ -771,7 +777,7 @@ const inventoryPosition: KomatsuEntityType = {
     dec('stockValue', 'Inventory value at cost', AUD),
     date('snapshotDate', 'Date of the position snapshot'),
   ],
-  alignments: [std('IOF Supply Chain', 'Inventory', 'related'), scor('Plan: Inventory position'), cdm('InventoryOnHand')],
+  alignments: [iof('IndustrialInventory', 'closeMatch'), std('OAGIS', 'InventoryBalance', 'closeMatch'), scor('Plan: Inventory position'), cdm('InventoryOnHand')],
   binding: fo('inventsum', { inventoryPositionId: 'inventdimid', onHandQty: 'physicalinvent', reservedQty: 'reservphysical', availableQty: 'availphysical', onOrderQty: 'ordered', backorderQty: 'onorder' }),
 };
 
@@ -844,7 +850,7 @@ const goodsReceipt: KomatsuEntityType = {
     dec('quantity', 'Quantity received'),
     oneOf('discrepancy', ['None', 'Short', 'Over', 'Damaged', 'Wrong Part'], 'Receipt discrepancy'),
   ],
-  alignments: [std('OAGIS', 'ReceiveDelivery', 'closeMatch'), gs1('CBV bizStep: receiving', 'closeMatch'), scor('Source: Receive product')],
+  alignments: [iof('ReceivingProcess', 'closeMatch'), cbv('BizStep-receiving', 'closeMatch'), std('OAGIS', 'ReceiveDelivery', 'closeMatch'), scor('Source: Receive product')],
   binding: fo('vendpackingslipjour', { productReceiptId: 'packingslipid', receiptDate: 'deliverydate', quantity: 'qty' }),
 };
 
@@ -859,7 +865,7 @@ const transferOrder: KomatsuEntityType = {
     date('receiptDate', 'Planned receipt date'),
     oneOf('status', ['Created', 'Shipped', 'Received'], 'Transfer status'),
   ],
-  alignments: [std('OAGIS', 'InventoryMovement', 'related'), gs1('CBV bizStep: shipping / receiving', 'related'), scor('Fulfill: Transfer product')],
+  alignments: [cbv('BizStep-shipping'), std('OAGIS', 'InventoryMovement', 'related'), scor('Fulfill: Transfer product')],
   binding: fo('inventtransfertable', { transferOrderNumber: 'transferid', shipDate: 'shipdate', receiptDate: 'receivedate', status: 'transferstatus' }),
 };
 
@@ -874,7 +880,7 @@ const partsRequirement: KomatsuEntityType = {
     oneOf('supplyStatus', ['Required', 'Reserved', 'Ordered', 'Backordered', 'In Transit', 'Issued', 'Returned'], 'Supply status'),
     bool('isCritical', 'True when the job cannot start without the part'),
   ],
-  alignments: [iof('MaterialRequirement', 'related'), scor('Plan: Demand requirement')],
+  alignments: [std('ISA-95', 'Material requirement', 'related'), scor('Plan: Demand requirement'), cdm('WorkOrderProduct')],
   binding: annata('amworkorderitem', { requirementId: 'inventtransid', quantity: 'qty', requiredDate: 'requireddate', supplyStatus: 'status' }, { alternate: 'msdyn_workorderproduct (Field Service)' }),
 };
 
@@ -891,7 +897,7 @@ const partsDemandForecast: KomatsuEntityType = {
     oneOf('forecastMethod', ['Statistical', 'Collaborative (Customer)', 'Fleet Hours (KOMTRAX)', 'Component Replacement Plan', 'Manual Override'], 'How the forecast was produced'),
     dec('forecastAccuracyPct', 'Forecast accuracy (1 - MAPE) for the prior period', '%'),
   ],
-  alignments: [scor('Plan: Demand plan'), std('APQC PCF', '4.1.1 Develop demand forecast', 'related')],
+  alignments: [iof('SupplyChainPlanSpecification', 'related'), scor('Plan: Demand plan'), apqc('4.0 Manage Supply Chain for Physical Products')],
   binding: fo('forecastsales', { partsForecastId: 'recid', forecastMonth: 'startdate', forecastQty: 'salesqty' }, { toConfirm: true }),
 };
 
@@ -909,7 +915,7 @@ const stockingPolicy: KomatsuEntityType = {
     int('leadTimeDays', 'Planning lead time', 'days'),
     dec('serviceLevelTargetPct', 'Target line-fill service level', '%'),
   ],
-  alignments: [scor('Plan: Inventory policy'), std('APQC PCF', '4.5.2 Manage inventory', 'related')],
+  alignments: [scor('Plan: Inventory policy'), apqc('4.0 Manage Supply Chain for Physical Products')],
   binding: fo('reqitemtable', { stockingPolicyId: 'recid', coverageMethod: 'reqgroupid', minQty: 'mininventonhand', maxQty: 'maxinventonhand', leadTimeDays: 'leadtimepurchase' }),
 };
 
@@ -924,7 +930,7 @@ const planningRun: KomatsuEntityType = {
     int('horizonDays', 'Coverage horizon', 'days'),
     int('plannedOrderCount', 'Planned orders generated'),
   ],
-  alignments: [scor('Plan: Balance supply and demand')],
+  alignments: [iof('SupplyChainPlanSpecification', 'related'), scor('Plan: Balance supply and demand')],
   binding: fo('reqplanversion', { planRunId: 'recid', masterPlan: 'reqplanid' }, { toConfirm: true }),
 };
 
@@ -958,7 +964,7 @@ const workshopBay: KomatsuEntityType = {
     dec('capacityHoursPerDay', 'Available hours per day', 'hours'),
     dec('maxOperatingWeightKg', 'Largest machine the bay can take', 'kg'),
   ],
-  alignments: [iof('Facility', 'related'), std('ISA-95', 'Equipment (work unit)', 'related'), cdm('BookableResource (facility)')],
+  alignments: [iof('Facility', 'related'), cdm('BookableResource (facility)')],
   binding: ce('bookableresource', { bayId: 'bookableresourceid', name: 'name' }, { filter: 'resourcetype = Facility', toConfirm: true }),
 };
 
@@ -979,7 +985,7 @@ const workOrder: KomatsuEntityType = {
     dec('smrAtService', 'Service meter reading at the job', 'hours'),
     dec('estimatedAmount', 'Estimated / quoted value', AUD),
   ],
-  alignments: [iof('MaintenanceProcess'), std('MIMOSA CCOM', 'WorkOrder', 'closeMatch'), std('ISO 14224', 'Maintenance record', 'closeMatch'), cdm('WorkOrder')],
+  alignments: [iof('MaintenanceWorkOrderRecord', 'closeMatch'), iof('MaintenanceProcess'), std('MIMOSA CCOM', 'WorkOrder', 'closeMatch'), std('OAGIS', 'MaintenanceOrder', 'closeMatch'), std('ISO 14224', 'Maintenance record', 'closeMatch'), apqc('5.0 Deliver Services'), cdm('WorkOrder')],
   binding: annata('amworkordertable', {
     workOrderNumber: 'workorderid', serviceType: 'workordertype', status: 'workorderstatus',
     openedOn: 'createddatetime', smrAtService: 'countervalue',
@@ -1001,7 +1007,7 @@ const workOrderJob: KomatsuEntityType = {
     dec('actualHours', 'Actual hours booked', 'hours'),
     oneOf('jobStatus', ['Open', 'In Progress', 'On Hold', 'Completed', 'Cancelled'], 'Job status'),
   ],
-  alignments: [iof('MaintenanceProcess'), std('ISO 14224', 'Maintenance activity', 'closeMatch'), cdm('WorkOrderIncident')],
+  alignments: [iof('MaintenanceActivity', 'closeMatch'), std('MIMOSA CCOM', 'WorkStep', 'closeMatch'), std('ISO 14224', 'Maintenance activity', 'closeMatch'), cdm('WorkOrderIncident')],
   binding: annata('amworkorderjob', { workOrderJobId: 'jobid', operationCode: 'operationcode', complaint: 'complaint', cause: 'cause', correction: 'correction', jobStatus: 'jobstatus' }, { alternate: 'msdyn_workorderincident / msauto_serviceorderjob (Dataverse)' }),
 };
 
@@ -1018,7 +1024,7 @@ const standardJob: KomatsuEntityType = {
     dec('fixedPrice', 'Fixed / menu price where offered', AUD),
     int('intervalHours', 'Service interval', 'hours'),
   ],
-  alignments: [iof('MaintenancePlanSpecification', 'related'), std('ISO 14224', 'Maintenance activity type', 'related'), cdm('IncidentType')],
+  alignments: [std('MIMOSA CCOM', 'SolutionPackage', 'closeMatch'), iof('MaintenanceStrategy', 'related'), std('ISO 14224', 'Maintenance activity type', 'related'), cdm('IncidentType')],
   binding: annata('amjoblist', { standardJobCode: 'joblistid', name: 'description', standardHours: 'estimatedhours' }, { alternate: 'msdyn_incidenttype (Field Service) / msauto_serviceorderjobtype' }),
 };
 
@@ -1034,7 +1040,7 @@ const maintenancePlan: KomatsuEntityType = {
     date('nextDueDate', 'Forecast date the next service is due'),
     oneOf('status', ['Active', 'Suspended', 'Completed'], 'Plan status'),
   ],
-  alignments: [iof('MaintenancePlan', 'related'), std('ISO 55000', 'Asset management plan', 'related'), cdm('AgreementBookingSetup')],
+  alignments: [iof('MaintenanceStrategy', 'related'), std('ISO 55000:2024', 'Asset management plan', 'related'), cdm('AgreementBookingSetup')],
   binding: annata('ammaintenanceplan', { maintenancePlanId: 'maintenanceplanid', nextDueSmr: 'nextcountervalue', nextDueDate: 'nextdate' }, { alternate: 'msdyn_agreementbookingsetup (Field Service)' }),
 };
 
@@ -1051,7 +1057,7 @@ const technician: KomatsuEntityType = {
     dec('chargeOutRate', 'Standard labour charge-out rate', `${AUD}/hour`),
     bool('isActive', 'True while the technician can be scheduled'),
   ],
-  alignments: [schema('Person'), iof('MaintenanceTechnicianRole', 'related'), cdm('BookableResource')],
+  alignments: [iof('QualifiedMaintenancePerson', 'closeMatch'), schema('Person', 'broadMatch'), cdm('BookableResource')],
   binding: ce('bookableresource', { resourceId: 'bookableresourceid', fullName: 'name', technicianType: 'resourcetype' }, { filter: 'resourcetype = User or Contact', alternate: 'hcmworker (F&O)' }),
 };
 
@@ -1065,7 +1071,7 @@ const skill: KomatsuEntityType = {
     oneOf('skillType', ['Model Certification', 'Trade Licence', 'High Risk Work Licence', 'Site Induction', 'Electrical Licence', 'Confined Space', 'Working at Heights', 'Komatsu Training Level'], 'Kind of qualification'),
     bool('expires', 'True when the qualification must be renewed'),
   ],
-  alignments: [schema('DefinedTerm', 'broadMatch'), std('ESCO', 'Skill / competence', 'related'), cdm('Characteristic')],
+  alignments: [iof('QualificationSpecification', 'related'), schema('EducationalOccupationalCredential', 'related'), std('ESCO', 'Skill / competence', 'related'), cdm('Characteristic')],
   binding: ce('characteristic', { skillId: 'characteristicid', name: 'name', skillType: 'characteristictype' }),
 };
 
@@ -1111,7 +1117,7 @@ const failureMode: KomatsuEntityType = {
     str('failureMechanism', 'Failure mechanism, e.g. wear, fatigue, contamination'),
     oneOf('failureCause', ['Design', 'Manufacturing', 'Operation / Misuse', 'Maintenance', 'Wear and Tear', 'Contamination', 'Unknown'], 'Root-cause category'),
   ],
-  alignments: [std('ISO 14224', 'Failure mode / failure mechanism / failure cause', 'exactMatch'), std('MIMOSA CCOM', 'FailureMode')],
+  alignments: [std('ISO 14224', 'Failure mode / failure mechanism / failure cause (Annex B)', 'exactMatch'), iof('FailureModeCode', 'closeMatch'), std('MIMOSA CCOM', 'HypotheticalEvent (FMECA)', 'related')],
   binding: annata('amwarrantyclaimcode', { failureCode: 'claimcode', failureModeName: 'description' }),
 };
 
@@ -1134,7 +1140,7 @@ const serviceContract: KomatsuEntityType = {
     dec('availabilityTargetPct', 'Contracted mechanical availability target', '%'),
     oneOf('status', ['Draft', 'Active', 'Suspended', 'Expired', 'Terminated', 'Renewed'], 'Contract status'),
   ],
-  alignments: [fiboContract, schema('Service', 'related'), std('ISO 55000', 'Service level agreement', 'related'), cdm('Agreement')],
+  alignments: [iof('CommercialServiceAgreement', 'closeMatch'), fiboContract, schema('Service', 'related'), cdm('Agreement')],
   binding: annata('amcontracttable', {
     contractNumber: 'contractid', contractType: 'contracttype', startDate: 'startdate', endDate: 'enddate', status: 'contractstatus',
   }, { alternate: 'msdyn_agreement (Field Service) / msauto_servicecontract' }),
@@ -1167,7 +1173,7 @@ const warrantyCoverage: KomatsuEntityType = {
     dec('hoursLimit', 'Meter limit of coverage', 'hours'),
     oneOf('status', ['Registered', 'Active', 'Expired', 'Void'], 'Coverage status'),
   ],
-  alignments: [schema('WarrantyPromise', 'exactMatch')],
+  alignments: [schema('WarrantyPromise', 'exactMatch'), gs1('WarrantyPromise', 'closeMatch'), std('Australian Consumer Law', 'Consumer guarantees / warranty against defects (reg 90)', 'related')],
   binding: annata('amdevicewarranty', { warrantyId: 'warrantyid', warrantyType: 'warrantytype', startDate: 'startdate', endDate: 'enddate' }, { alternate: 'msauto_devicewarranty (Dataverse) / msdyn_warranty' }),
 };
 
@@ -1186,7 +1192,7 @@ const warrantyClaim: KomatsuEntityType = {
     oneOf('status', ['Draft', 'Submitted', 'Returned for Info', 'Approved', 'Partially Approved', 'Rejected', 'Paid', 'Appealed'], 'Claim status'),
     date('submittedDate', 'Date submitted'),
   ],
-  alignments: [std('ISO 14224', 'Failure event record', 'related'), schema('WarrantyPromise', 'related')],
+  alignments: [std('OAGIS', 'WarrantyClaim', 'closeMatch'), iof('FailureEvent', 'related'), std('ISO 14224', 'Failure event record', 'related')],
   binding: annata('amwarrantyclaimtable', { claimNumber: 'claimid', claimType: 'claimtype', failureDate: 'failuredate', claimedAmount: 'claimamount', approvedAmount: 'approvedamount', status: 'claimstatus' }),
 };
 
@@ -1242,7 +1248,7 @@ const coreReturn: KomatsuEntityType = {
     dec('coreCredit', 'Credit issued after inspection', AUD),
     oneOf('status', ['Awaiting Return', 'Received', 'Inspected', 'Credited', 'Rejected', 'Overdue'], 'Return status'),
   ],
-  alignments: [gs1('GRAI (returnable asset)', 'related'), std('OAGIS', 'ReturnMaterialAuthorization', 'closeMatch'), scor('Return: Return product')],
+  alignments: [cbv('Disp-returned', 'closeMatch'), cbv('BTT-rma'), schema('ReturnAction', 'related'), scor('Return: Return product')],
   binding: fo('salestable', { coreReturnId: 'returnitemnum', returnDueDate: 'returndeadline' }, { filter: 'salestype = ReturnItem (RMA) with core disposition code', toConfirm: true }),
 };
 
@@ -1261,7 +1267,7 @@ const remanJob: KomatsuEntityType = {
     dec('rebuildCost', 'Total rebuild cost (labour + parts + machining)', AUD),
     oneOf('testResult', ['Pass', 'Fail - Rework', 'Not Tested'], 'Final test outcome'),
   ],
-  alignments: [iof('MaintenanceProcess', 'related'), std('ISO 14224', 'Maintenance activity: overhaul', 'closeMatch'), scor('Transform: Remanufacture'), gs1('CBV bizStep: repairing', 'related')],
+  alignments: [iof('MaintenanceProcess', 'related'), cbv('BizStep-repairing'), std('ISO 14224', 'Maintenance activity: overhaul', 'closeMatch'), scor('Transform: Remanufacture')],
   binding: annata('amworkordertable', { remanJobNumber: 'workorderid', stage: 'workorderstage', plannedCompletion: 'plannedenddatetime' }, { filter: 'work order type = REMAN', alternate: 'prodtable (F&O production order) if rebuilds run as production' }),
 };
 
@@ -1283,7 +1289,7 @@ const supportCase: KomatsuEntityType = {
     dt('resolvedOn', 'When the case was resolved'),
     bool('slaBreached', 'True when the response or resolution SLA was missed'),
   ],
-  alignments: [cdm('Case (incident)', 'exactMatch'), schema('Action', 'broadMatch')],
+  alignments: [cdm('Case (incident)', 'exactMatch'), std('MIMOSA CCOM', 'WorkRequest', 'related'), apqc('6.0 Manage Customer Service')],
   binding: ce('incident', {
     caseNumber: 'ticketnumber', title: 'title', caseType: 'casetypecode', caseOrigin: 'caseorigincode', priority: 'prioritycode',
     status: 'statuscode', createdOn: 'createdon',
@@ -1303,7 +1309,7 @@ const portalUser: KomatsuEntityType = {
     dt('lastLoginOn', 'Last sign-in'),
     bool('mfaEnabled', 'True when multi-factor authentication is enabled'),
   ],
-  alignments: [schema('Person', 'related'), std('W3C VCard / FOAF', 'OnlineAccount', 'closeMatch')],
+  alignments: [{ standard: 'FOAF', term: 'OnlineAccount', iri: 'http://xmlns.com/foaf/0.1/OnlineAccount', kind: 'closeMatch' }, { standard: 'W3C PROV-O', term: 'Agent', iri: 'http://www.w3.org/ns/prov#Agent', kind: 'broadMatch' }],
   binding: ce('contact', { portalUserId: 'contactid', email: 'emailaddress1', webRole: 'mspp_webrole' }, { system: 'Power Pages portal', filter: 'contact with a portal identity', alternate: 'Annata dealer portal user (if the Annata portal is used)', toConfirm: true }),
 };
 
@@ -1320,10 +1326,13 @@ const telematicsReading: KomatsuEntityType = {
     dec('idleHours', 'Cumulative idle hours', 'hours'),
     dec('fuelUsedLitres', 'Cumulative fuel used', 'L'),
     dec('fuelLevelPct', 'Fuel remaining', '%'),
+    dec('defRemainingPct', 'Diesel exhaust fluid remaining', '%'),
+    int('cumulativeLoadCount', 'Cumulative load (pass / cycle) count'),
+    dec('cumulativePayloadTonnes', 'Cumulative payload hauled (trucks)', 't'),
     dbl('latitude', 'WGS84 latitude', 'deg'),
     dbl('longitude', 'WGS84 longitude', 'deg'),
   ],
-  alignments: [std('ISO 15143-3', 'Fleet snapshot (CumulativeOperatingHours, FuelUsed, Location)', 'exactMatch'), std('MIMOSA CCOM', 'Measurement'), schema('Observation', 'closeMatch')],
+  alignments: [std('ISO 15143-3 (AEMP 2.0)', 'Equipment snapshot (CumulativeOperatingHours, CumulativeIdleHours, FuelUsed, FuelRemaining, DEFRemaining, Location)', 'exactMatch'), sosa('Observation'), std('MIMOSA CCOM', 'Measurement')],
   binding: komtrax('machine_snapshots', { readingId: 'snapshot_id', readingTime: 'snapshot_time', smrHours: 'cumulative_operating_hours', idleHours: 'cumulative_idle_hours', fuelUsedLitres: 'fuel_used_l', latitude: 'latitude', longitude: 'longitude' }),
 };
 
@@ -1340,7 +1349,7 @@ const meterReading: KomatsuEntityType = {
     oneOf('readingSource', ['KOMTRAX', 'Technician', 'Customer Portal', 'Delivery', 'Estimated'], 'Where the reading came from'),
     bool('isValidated', 'True when the reading passed plausibility checks'),
   ],
-  alignments: [std('MIMOSA CCOM', 'Measurement', 'closeMatch'), schema('QuantitativeValue', 'related')],
+  alignments: [sosa('Observation'), std('ISO 15143-3 (AEMP 2.0)', 'CumulativeOperatingHours', 'related'), std('MIMOSA CCOM', 'Measurement', 'closeMatch')],
   binding: annata('amdevicemeterreading', { meterReadingId: 'recid', readingTime: 'readingdatetime', meterType: 'metertype', meterValue: 'metervalue', readingSource: 'source' }, { alternate: 'msauto_devicemeasurement (Dataverse) / msdyn_propertylog (Field Service)' }),
 };
 
@@ -1354,9 +1363,10 @@ const machineAlert: KomatsuEntityType = {
     dt('alertTime', 'When the alert was raised'),
     oneOf('alertType', ['Fault Code', 'Caution', 'Maintenance Due', 'Geofence', 'Curfew', 'Abnormal Operation', 'Low Fuel'], 'Alert category'),
     oneOf('severity', ['Info', 'Warning', 'Critical'], 'Severity'),
+    int('occurrenceCount', 'J1939 occurrence count reported with the fault'),
     oneOf('status', ['New', 'Acknowledged', 'Case Created', 'Service Ordered', 'Closed'], 'Handling status'),
   ],
-  alignments: [std('ISO 15143-3', 'Fault codes / caution messages', 'closeMatch'), std('MIMOSA CCOM', 'Event'), cdm('IoTAlert')],
+  alignments: [sosa('Observation', 'broadMatch'), std('ISO 15143-3 (AEMP 2.0)', 'Fault code time series', 'closeMatch'), std('SAE J1939-73', 'DM1 active / DM2 previously active DTC', 'related'), std('MIMOSA CCOM', 'ActualEvent'), cdm('IoTAlert')],
   binding: ce('msdyn_iotalert', { alertId: 'msdyn_iotalertid', alertTime: 'msdyn_alerttime', alertType: 'msdyn_alerttype', status: 'statuscode' }, { toConfirm: true }),
 };
 
@@ -1372,7 +1382,7 @@ const faultCode: KomatsuEntityType = {
     oneOf('system', ['Engine', 'Hydraulic', 'Electrical', 'Powertrain', 'Brakes', 'Aftertreatment', 'Controller'], 'Machine system'),
     oneOf('severity', ['Info', 'Warning', 'Critical'], 'Default severity'),
   ],
-  alignments: [std('SAE J1939-73', 'Diagnostic Trouble Code (SPN + FMI)', 'exactMatch'), std('ISO 15143-3', 'FaultCode', 'closeMatch')],
+  alignments: [std('SAE J1939-73', 'Diagnostic Trouble Code (SPN 19 bits + FMI 5 bits)', 'closeMatch'), std('ISO 15143-3 (AEMP 2.0)', 'FaultCode', 'closeMatch'), { standard: 'W3C SKOS', term: 'Concept (Komatsu error-code scheme)', iri: 'http://www.w3.org/2004/02/skos/core#Concept', kind: 'broadMatch' }],
   binding: reference('fault_code', { faultCodeId: 'fault_code', faultDescription: 'description', spn: 'spn', fmi: 'fmi', system: 'system' }, 'KOMTRAX'),
 };
 
@@ -1389,7 +1399,7 @@ const oilSample: KomatsuEntityType = {
     oneOf('conditionRating', ['Normal', 'Monitor', 'Action', 'Urgent'], 'Laboratory rating'),
     str('recommendation', 'Laboratory recommendation'),
   ],
-  alignments: [std('ISO 14224', 'Condition monitoring', 'related'), std('MIMOSA CCOM', 'Measurement'), schema('MedicalTest', 'related')],
+  alignments: [sosa('Observation'), std('ISO 14224', 'Detection method: condition monitoring', 'related'), std('MIMOSA CCOM', 'Measurement')],
   binding: reference('kowa_oil_sample', { sampleNumber: 'sample_number', sampleDate: 'sample_date', compartment: 'compartment', oilHours: 'oil_hours', conditionRating: 'rating' }, 'LIMC (oil analysis lab)'),
 };
 

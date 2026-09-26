@@ -54,7 +54,8 @@
         <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
         <kau:alignsTo>IOF Supply Chain: Customer (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Customer"/>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Customer"/>
+        <kau:alignsTo>OAGIS: CustomerPartyMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Account (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -70,6 +71,9 @@
         <skos:closeMatch rdf:resource="https://schema.org/Place"/>
         <kau:alignsTo>W3C ORG: Site (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Site"/>
+        <kau:alignsTo>IOF: GeospatialSite (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/GeospatialSite"/>
+        <kau:alignsTo>MIMOSA CCOM: Segment (functional location) (related)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Installation / Plant (taxonomy levels 3–4) (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: FunctionalLocation (closeMatch)</kau:alignsTo>
     </owl:Class>
@@ -148,9 +152,9 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
-        <kau:alignsTo>MIMOSA CCOM: Model (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: ProductSpecification (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification"/>
+        <kau:alignsTo>MIMOSA CCOM: Model / ModelVariant (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GoodRelations: ProductOrServiceModel (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://purl.org/goodrelations/v1#ProductOrServiceModel"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-01-customer-sales/EquipmentUnit">
@@ -168,11 +172,12 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>IOF: PieceOfEquipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment"/>
         <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>GS1: GIAI (AI 8004) individual asset identifier (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -192,9 +197,10 @@
         <skos:exactMatch rdf:resource="https://schema.org/Product"/>
         <kau:alignsTo>GS1 Web Vocabulary: Product (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://gs1.org/voc/Product"/>
+        <kau:alignsTo>IOF: MaterialProduct (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialProduct"/>
         <kau:alignsTo>UNSPSC: 22101700 Heavy equipment components (broadMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaterialProduct (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        <kau:alignsTo>OAGIS: ItemMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: ReleasedProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -278,7 +284,7 @@
         <kau:systemOfRecord>KACF finance system</kau:systemOfRecord>
         <kau:alignsTo>FIBO: Contract (broadMatch)</kau:alignsTo>
         <skos:broadMatch rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract"/>
-        <kau:alignsTo>FIBO: LoanContract (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>FIBO: Loan (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan"/>
     </owl:Class>
 
@@ -320,10 +326,11 @@
         <kau:processDomain>Sales to Cash</kau:processDomain>
         <kau:dataOwner>Customer Project Coordinator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: ParcelDelivery (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/ParcelDelivery"/>
-        <kau:alignsTo>GS1 Web Vocabulary: CBV bizStep: commissioning / accepting (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/CBV bizStep: commissioning / accepting"/>
+        <kau:alignsTo>GS1 CBV 2.0: BizStep-accepting (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://ref.gs1.org/cbv/BizStep-accepting"/>
+        <kau:alignsTo>MIMOSA CCOM: AssetOwnerEvent (related)</kau:alignsTo>
+        <kau:alignsTo>schema.org: OwnershipInfo (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/OwnershipInfo"/>
         <kau:alignsTo>ASCM SCOR DS: Fulfill: Install product (related)</kau:alignsTo>
     </owl:Class>
 
@@ -335,12 +342,11 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Parts Operations Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: Place (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/Place"/>
-        <kau:alignsTo>GS1 Web Vocabulary: GLN (location) (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/GLN (location)"/>
-        <kau:alignsTo>IOF Supply Chain: StorageFacility (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/StorageFacility"/>
+        <kau:alignsTo>IOF: DistributionCenter (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/DistributionCenter"/>
+        <kau:alignsTo>IOF: StorageFacility (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/StorageFacility"/>
+        <kau:alignsTo>GS1: GLN (Global Location Number) (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Warehouse (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -369,7 +375,7 @@
         <rdfs:label>abn</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-01-customer-sales/Customer"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>Australian Business Number</rdfs:comment>
+        <rdfs:comment>Australian Business Number (11 digits; schema:taxID)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 
@@ -772,7 +778,7 @@
         <rdfs:label>pin</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-01-customer-sales/EquipmentUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>ISO 10261 17-character product identification number</rdfs:comment>
+        <rdfs:comment>ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 

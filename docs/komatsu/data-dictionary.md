@@ -28,77 +28,77 @@ D365 / Annata 365 environment (see [open questions](open-questions.md)).
 
 | Entity | Domain | Data owner | System of record | Fabric table | Standard alignment |
 |---|---|---|---|---|---|
-| 🏢 **Customer** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 F&O | `lh_d365.dbo.custtable` | [schema.org: Organization](https://schema.org/Organization)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>[IOF Supply Chain: Customer](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Customer)<br>Microsoft CDM: Account |
-| 📍 **CustomerSite** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 CE | `lh_d365.dbo.msdyn_functionallocation` ⚠️ | [schema.org: Place](https://schema.org/Place)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>ISO 14224: Installation / Plant (taxonomy levels 3–4)<br>Microsoft CDM: FunctionalLocation |
+| 🏢 **Customer** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 F&O | `lh_d365.dbo.custtable` | [schema.org: Organization](https://schema.org/Organization)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>[IOF Supply Chain: Customer](https://spec.industrialontologies.org/ontology/construct/Customer)<br>OAGIS: CustomerPartyMaster<br>Microsoft CDM: Account |
+| 📍 **CustomerSite** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 CE | `lh_d365.dbo.msdyn_functionallocation` ⚠️ | [schema.org: Place](https://schema.org/Place)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[IOF: GeospatialSite](https://spec.industrialontologies.org/ontology/construct/GeospatialSite)<br>MIMOSA CCOM: Segment (functional location)<br>ISO 14224: Installation / Plant (taxonomy levels 3–4)<br>Microsoft CDM: FunctionalLocation |
 | 👤 **Contact** | Customers, People & Organisation | Sales Operations | D365 CE | `lh_d365.dbo.contact` | [schema.org: Person](https://schema.org/Person)<br>[schema.org: ContactPoint](https://schema.org/ContactPoint)<br>Microsoft CDM: Contact |
 | 🏭 **Branch** | Customers, People & Organisation | Operations Finance (organisation structure) | D365 F&O | `lh_d365.dbo.inventsite` ⚠️ | [W3C ORG: OrganizationalUnit](http://www.w3.org/ns/org#OrganizationalUnit)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[schema.org: LocalBusiness](https://schema.org/LocalBusiness) |
 | 🗺️ **SalesTerritory** | Customers, People & Organisation | Sales Operations | D365 CE | `lh_d365.dbo.territory` | [schema.org: AdministrativeArea](https://schema.org/AdministrativeArea)<br>Microsoft CDM: Territory |
 | 🧑‍💼 **Employee** | Customers, People & Organisation | People & Culture (HR master data) | D365 F&O | `lh_d365.dbo.hcmworker` ⚠️ | [schema.org: Person](https://schema.org/Person)<br>[W3C ORG: Membership](http://www.w3.org/ns/org#Membership)<br>[W3C ORG: Role](http://www.w3.org/ns/org#Role)<br>Microsoft CDM: Worker |
-| 🏗️ **Supplier** | Customers, People & Organisation | Procurement | D365 F&O | `lh_d365.dbo.vendtable` | [schema.org: Organization](https://schema.org/Organization)<br>[IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Supplier)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>Microsoft CDM: Vendor |
+| 🏗️ **Supplier** | Customers, People & Organisation | Procurement | D365 F&O | `lh_d365.dbo.vendtable` | [schema.org: Organization](https://schema.org/Organization)<br>[IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/construct/Supplier)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>OAGIS: SupplierPartyMaster<br>Microsoft CDM: Vendor |
 | 🧭 **MachineType** | Product & Equipment Master | Product Marketing | Reference data | `lh_reference.dbo.machine_type` ⚠️ | ISO 6165: Earth-moving machinery — basic types<br>UNSPSC: 2210 Heavy construction machinery and equipment<br>[schema.org: ProductGroup](https://schema.org/ProductGroup) |
-| 🚜 **MachineModel** | Product & Equipment Master | Product Marketing | Annata 365 (F&O) | `lh_d365.dbo.amdevicemodel` ⚠️ | [schema.org: ProductModel](https://schema.org/ProductModel)<br>MIMOSA CCOM: Model<br>[IOF Core: ProductSpecification](https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification) |
+| 🚜 **MachineModel** | Product & Equipment Master | Product Marketing | Annata 365 (F&O) | `lh_d365.dbo.amdevicemodel` ⚠️ | [schema.org: ProductModel](https://schema.org/ProductModel)<br>MIMOSA CCOM: Model / ModelVariant<br>[GoodRelations: ProductOrServiceModel](http://purl.org/goodrelations/v1#ProductOrServiceModel) |
 | 🧩 **MachineOption** | Product & Equipment Master | Product Marketing | Annata 365 (F&O) | `lh_d365.dbo.amdeviceconfigoption` ⚠️ | [schema.org: Product](https://schema.org/Product)<br>[schema.org: isAccessoryOrSparePartFor](https://schema.org/isAccessoryOrSparePartFor) |
-| 🏗️ **EquipmentUnit** | Product & Equipment Master | Equipment Administration (Annata device master) | Annata 365 (F&O) | `lh_d365.dbo.amdevicetable` ⚠️ | [schema.org: IndividualProduct](https://schema.org/IndividualProduct)<br>ISO 10261: Product identification number (PIN)<br>MIMOSA CCOM: Asset<br>ISO 14224: Equipment unit (taxonomy level 6)<br>[GS1 Web Vocabulary: IndividualAsset](https://gs1.org/voc/IndividualAsset)<br>Microsoft CDM: CustomerAsset |
-| ⚙️ **Component** | Product & Equipment Master | Product Support / Component Management | Annata 365 (F&O) | `lh_d365.dbo.amdevicetable` ⚠️ | ISO 14224: Subunit / maintainable item (levels 7–8)<br>MIMOSA CCOM: Asset (installed on Segment)<br>[IOF Core: MaintainableMaterialItem](https://spec.industrialontologies.org/ontology/core/Core/MaintainableMaterialItem)<br>[GS1 Web Vocabulary: IndividualAsset](https://gs1.org/voc/IndividualAsset) |
-| 🔩 **Part** | Product & Equipment Master | Parts Product Management | D365 F&O | `lh_d365.dbo.inventtable` | [schema.org: Product](https://schema.org/Product)<br>[GS1 Web Vocabulary: Product](https://gs1.org/voc/Product)<br>UNSPSC: 22101700 Heavy equipment components<br>[IOF Core: MaterialProduct](https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct)<br>Microsoft CDM: ReleasedProduct |
-| 🔁 **PartInterchange** | Product & Equipment Master | Parts Product Management | Annata 365 (F&O) | `lh_d365.dbo.amitemsupersession` ⚠️ | OAGIS: ItemMaster / Supersession<br>ECLASS: successor product |
-| 🏭 **Factory** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | Komatsu factory systems | `lh_reference.dbo.factory` ⚠️ | [W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[schema.org: Organization](https://schema.org/Organization)<br>[IOF Supply Chain: Manufacturer](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Manufacturer) |
-| 📈 **MachineDemandForecast** | Hensei & Factory Ordering | Machine Supply Planning / S&OP | D365 F&O | `lh_d365.dbo.forecastsales` ⚠️ | ASCM SCOR DS: Plan: Plan Supply Chain (demand plan)<br>APQC PCF: 4.1 Plan for and align supply chain resources |
-| 🗓️ **HenseiCycle** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | Komatsu factory systems | `lh_reference.dbo.hensei_cycle` ⚠️ | ASCM SCOR DS: Source: Schedule product deliveries<br>APQC PCF: 4.2.2 Plan procurement / order management |
+| 🏗️ **EquipmentUnit** | Product & Equipment Master | Equipment Administration (Annata device master) | Annata 365 (F&O) | `lh_d365.dbo.amdevicetable` ⚠️ | [schema.org: IndividualProduct](https://schema.org/IndividualProduct)<br>[IOF: PieceOfEquipment](https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment)<br>ISO 10261: Product identification number (PIN)<br>MIMOSA CCOM: Asset<br>ISO 14224: Equipment unit (taxonomy level 6)<br>GS1: GIAI (AI 8004) individual asset identifier<br>Microsoft CDM: CustomerAsset |
+| ⚙️ **Component** | Product & Equipment Master | Product Support / Component Management | Annata 365 (F&O) | `lh_d365.dbo.amdevicetable` ⚠️ | [IOF: MaintainableMaterialItem](https://spec.industrialontologies.org/ontology/construct/MaintainableMaterialItem)<br>[IOF: MaterialComponent](https://spec.industrialontologies.org/ontology/construct/MaterialComponent)<br>ISO 14224: Subunit / maintainable item (levels 7–8)<br>MIMOSA CCOM: Asset + AssetSegmentEvent (install / remove)<br>GS1: SGTIN / GIAI serialised identifier |
+| 🔩 **Part** | Product & Equipment Master | Parts Product Management | D365 F&O | `lh_d365.dbo.inventtable` | [schema.org: Product](https://schema.org/Product)<br>[GS1 Web Vocabulary: Product](https://gs1.org/voc/Product)<br>[IOF: MaterialProduct](https://spec.industrialontologies.org/ontology/construct/MaterialProduct)<br>UNSPSC: 22101700 Heavy equipment components<br>OAGIS: ItemMaster<br>Microsoft CDM: ReleasedProduct |
+| 🔁 **PartInterchange** | Product & Equipment Master | Parts Product Management | Annata 365 (F&O) | `lh_d365.dbo.amitemsupersession` ⚠️ | [GS1 Web Vocabulary: replacedByProduct](https://gs1.org/voc/replacedByProduct)<br>[schema.org: successorOf](https://schema.org/successorOf)<br>OAGIS: ItemMaster (supersession) |
+| 🏭 **Factory** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | Komatsu factory systems | `lh_reference.dbo.factory` ⚠️ | [IOF: Factory](https://spec.industrialontologies.org/ontology/construct/Factory)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[IOF: Manufacturer](https://spec.industrialontologies.org/ontology/construct/Manufacturer) |
+| 📈 **MachineDemandForecast** | Hensei & Factory Ordering | Machine Supply Planning / S&OP | D365 F&O | `lh_d365.dbo.forecastsales` ⚠️ | [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification)<br>ASCM SCOR DS: Plan: Plan supply chain (demand plan)<br>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products |
+| 🗓️ **HenseiCycle** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | Komatsu factory systems | `lh_reference.dbo.hensei_cycle` ⚠️ | ASCM SCOR DS: Plan / Order (O3 intra-company): Sales & operations planning<br>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products |
 | 📝 **HenseiRequest** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | Komatsu factory systems | `lh_reference.dbo.hensei_request` ⚠️ | [schema.org: Order](https://schema.org/Order)<br>ASCM SCOR DS: Source: Schedule product deliveries |
-| 🧾 **FactoryOrder** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | D365 F&O | `lh_d365.dbo.purchtable` ⚠️ | [schema.org: Order](https://schema.org/Order)<br>OAGIS: PurchaseOrder (intercompany)<br>ASCM SCOR DS: Source: Schedule product deliveries |
+| 🧾 **FactoryOrder** | Hensei & Factory Ordering | Hensei Planner (Machine Supply) | D365 F&O | `lh_d365.dbo.purchtable` ⚠️ | [IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/construct/PurchaseOrder)<br>[schema.org: Order](https://schema.org/Order)<br>OAGIS: PurchaseOrder (intercompany)<br>ASCM SCOR DS: Order (O3 intra-company) / Source |
 | 🎯 **Opportunity** | Sales to Cash | Sales Operations | D365 CE | `lh_d365.dbo.opportunity` | Microsoft CDM: Opportunity<br>[schema.org: Demand](https://schema.org/Demand) |
 | 💬 **SalesQuote** | Sales to Cash | Sales Operations | D365 CE | `lh_d365.dbo.quote` | [schema.org: Offer](https://schema.org/Offer)<br>Microsoft CDM: Quote |
 | 🛒 **SalesOrder** | Sales to Cash | Sales Administration / Parts Operations | D365 F&O | `lh_d365.dbo.salestable` | [schema.org: Order](https://schema.org/Order)<br>OAGIS: SalesOrder<br>Microsoft CDM: SalesOrder<br>ASCM SCOR DS: Order: Receive and validate order |
 | 📄 **SalesOrderLine** | Sales to Cash | Sales Administration / Parts Operations | D365 F&O | `lh_d365.dbo.salesline` | [schema.org: OrderItem](https://schema.org/OrderItem)<br>Microsoft CDM: SalesOrderLine |
 | ♻️ **TradeIn** | Sales to Cash | Used Equipment Manager | Annata 365 (F&O) | `lh_d365.dbo.amtradein` ⚠️ | [schema.org: Offer](https://schema.org/Offer)<br>[schema.org: OwnershipInfo](https://schema.org/OwnershipInfo) |
-| 🏦 **FinanceAgreement** | Sales to Cash | Komatsu Finance | KACF finance system | `lh_reference.dbo.finance_agreement` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[FIBO: LoanContract](https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan) |
+| 🏦 **FinanceAgreement** | Sales to Cash | Komatsu Finance | KACF finance system | `lh_reference.dbo.finance_agreement` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[FIBO: Loan](https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan) |
 | 🏷️ **PriceList** | Sales to Cash | Pricing Manager | D365 F&O | `lh_d365.dbo.pricediscgroup` | [schema.org: PriceSpecification](https://schema.org/PriceSpecification)<br>Microsoft CDM: PriceList |
 | 💵 **CustomerInvoice** | Sales to Cash | Accounts Receivable | D365 F&O | `lh_d365.dbo.custinvoicejour` | [schema.org: Invoice](https://schema.org/Invoice)<br>UN/CEFACT: Cross Industry Invoice<br>Microsoft CDM: Invoice |
-| 🤝 **MachineHandover** | Sales to Cash | Customer Project Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amdevicedelivery` ⚠️ | [schema.org: ParcelDelivery](https://schema.org/ParcelDelivery)<br>[GS1 Web Vocabulary: CBV bizStep: commissioning / accepting](https://gs1.org/voc/CBV bizStep: commissioning / accepting)<br>ASCM SCOR DS: Fulfill: Install product |
-| 🚢 **Shipment** | Import & Logistics | Logistics Coordinator | D365 F&O | `lh_d365.dbo.whsshipmenttable` ⚠️ | [schema.org: ParcelDelivery](https://schema.org/ParcelDelivery)<br>[GS1 Web Vocabulary: SSCC (logistic unit)](https://gs1.org/voc/SSCC (logistic unit))<br>UN/CEFACT: Consignment<br>OAGIS: Shipment<br>ASCM SCOR DS: Fulfill: Transport product |
-| ⚓ **VesselVoyage** | Import & Logistics | Logistics Coordinator | D365 F&O | `lh_d365.dbo.itmtable` ⚠️ | UN/CEFACT: Transport Movement<br>[schema.org: Trip](https://schema.org/Trip) |
-| 🛃 **CustomsEntry** | Import & Logistics | Logistics Coordinator | Customs broker (ICS) | `lh_reference.dbo.customs_entry` ⚠️ | WCO Data Model: Goods Declaration<br>Harmonized System: 8429 / 8431 |
-| 🐞 **BiosecurityInspection** | Import & Logistics | Logistics Coordinator | Reference data | `lh_reference.dbo.biosecurity_inspection` ⚠️ | DAFF BICON: Machinery and equipment import conditions<br>[GS1 Web Vocabulary: CBV bizStep: inspecting](https://gs1.org/voc/CBV bizStep: inspecting) |
-| 🔧 **PDIJob** | Pre-Delivery Inspection | PDI Planner | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess)<br>ISO 14224: Maintenance activity: inspection / modification<br>ASCM SCOR DS: Fulfill: Prepare product for delivery |
-| ✅ **InspectionResult** | Pre-Delivery Inspection | Workshop Supervisor | Annata 365 (F&O) | `lh_d365.dbo.aminspectionline` ⚠️ | [IOF Core: Measurement](https://spec.industrialontologies.org/ontology/core/Core/Measurement)<br>MIMOSA CCOM: Measurement / Event |
-| 🏬 **Warehouse** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.inventlocation` | [schema.org: Place](https://schema.org/Place)<br>[GS1 Web Vocabulary: GLN (location)](https://gs1.org/voc/GLN (location))<br>[IOF Supply Chain: StorageFacility](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/StorageFacility)<br>Microsoft CDM: Warehouse |
-| 📦 **InventoryPosition** | Parts Supply Chain & Procurement | Parts Planner | D365 F&O | `lh_d365.dbo.inventsum` | IOF Supply Chain: Inventory<br>ASCM SCOR DS: Plan: Inventory position<br>Microsoft CDM: InventoryOnHand |
-| 📑 **PurchaseOrder** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchtable` | [schema.org: Order](https://schema.org/Order)<br>OAGIS: PurchaseOrder<br>[IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/PurchaseOrder)<br>Microsoft CDM: PurchaseOrder<br>ASCM SCOR DS: Source: Issue purchase order |
+| 🤝 **MachineHandover** | Sales to Cash | Customer Project Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amdevicedelivery` ⚠️ | [GS1 CBV 2.0: BizStep-accepting](https://ref.gs1.org/cbv/BizStep-accepting)<br>MIMOSA CCOM: AssetOwnerEvent<br>[schema.org: OwnershipInfo](https://schema.org/OwnershipInfo)<br>ASCM SCOR DS: Fulfill: Install product |
+| 🚢 **Shipment** | Import & Logistics | Logistics Coordinator | D365 F&O | `lh_d365.dbo.whsshipmenttable` ⚠️ | [IOF Supply Chain: Shipment](https://spec.industrialontologies.org/ontology/construct/Shipment)<br>[UN/CEFACT Vocabulary: Consignment](https://vocabulary.uncefact.org/Consignment)<br>GS1: SSCC logistic unit<br>OAGIS: Shipment<br>ASCM SCOR DS: Fulfill: Transport product |
+| ⚓ **VesselVoyage** | Import & Logistics | Logistics Coordinator | D365 F&O | `lh_d365.dbo.itmtable` ⚠️ | [UN/CEFACT Vocabulary: TransportMovement](https://vocabulary.uncefact.org/TransportMovement)<br>[schema.org: Trip](https://schema.org/Trip) |
+| 🛃 **CustomsEntry** | Import & Logistics | Logistics Coordinator | Customs broker (ICS) | `lh_reference.dbo.customs_entry` ⚠️ | [UN/CEFACT Vocabulary: ExchangedDeclaration](https://vocabulary.uncefact.org/ExchangedDeclaration)<br>WCO Data Model: Goods Declaration<br>Harmonized System: 8429 / 8431 / 8704.10 |
+| 🐞 **BiosecurityInspection** | Import & Logistics | Logistics Coordinator | Reference data | `lh_reference.dbo.biosecurity_inspection` ⚠️ | [UN/CEFACT Vocabulary: InspectionEvent](https://vocabulary.uncefact.org/InspectionEvent)<br>[GS1 CBV 2.0: BizStep-inspecting](https://ref.gs1.org/cbv/BizStep-inspecting)<br>DAFF BICON: Machinery and equipment import conditions |
+| 🔧 **PDIJob** | Pre-Delivery Inspection | PDI Planner | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF: PlannedProcess](https://spec.industrialontologies.org/ontology/construct/PlannedProcess)<br>[GS1 CBV 2.0: BizStep-inspecting](https://ref.gs1.org/cbv/BizStep-inspecting)<br>ISO 14224: Maintenance activity: inspection / modification<br>ASCM SCOR DS: Fulfill: Prepare product for delivery |
+| ✅ **InspectionResult** | Pre-Delivery Inspection | Workshop Supervisor | Annata 365 (F&O) | `lh_d365.dbo.aminspectionline` ⚠️ | [IOF: MeasurementProcess](https://spec.industrialontologies.org/ontology/construct/MeasurementProcess)<br>[GS1 CBV 2.0: Disp-conformant](https://ref.gs1.org/cbv/Disp-conformant)<br>MIMOSA CCOM: Measurement |
+| 🏬 **Warehouse** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.inventlocation` | [IOF: DistributionCenter](https://spec.industrialontologies.org/ontology/construct/DistributionCenter)<br>[IOF: StorageFacility](https://spec.industrialontologies.org/ontology/construct/StorageFacility)<br>GS1: GLN (Global Location Number)<br>Microsoft CDM: Warehouse |
+| 📦 **InventoryPosition** | Parts Supply Chain & Procurement | Parts Planner | D365 F&O | `lh_d365.dbo.inventsum` | [IOF: IndustrialInventory](https://spec.industrialontologies.org/ontology/construct/IndustrialInventory)<br>OAGIS: InventoryBalance<br>ASCM SCOR DS: Plan: Inventory position<br>Microsoft CDM: InventoryOnHand |
+| 📑 **PurchaseOrder** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchtable` | [schema.org: Order](https://schema.org/Order)<br>OAGIS: PurchaseOrder<br>[IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/construct/PurchaseOrder)<br>Microsoft CDM: PurchaseOrder<br>ASCM SCOR DS: Source: Issue purchase order |
 | 🧾 **PurchaseOrderLine** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchline` | [schema.org: OrderItem](https://schema.org/OrderItem)<br>OAGIS: PurchaseOrderLine<br>Microsoft CDM: PurchaseOrderLine |
 | 📜 **PurchaseAgreement** | Parts Supply Chain & Procurement | Procurement | D365 F&O | `lh_d365.dbo.agreementheader` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>OAGIS: PurchaseAgreement<br>Microsoft CDM: PurchaseAgreement |
-| 📥 **GoodsReceipt** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.vendpackingslipjour` | OAGIS: ReceiveDelivery<br>[GS1 Web Vocabulary: CBV bizStep: receiving](https://gs1.org/voc/CBV bizStep: receiving)<br>ASCM SCOR DS: Source: Receive product |
-| 🔀 **TransferOrder** | Parts Supply Chain & Procurement | Supply Planner | D365 F&O | `lh_d365.dbo.inventtransfertable` | OAGIS: InventoryMovement<br>[GS1 Web Vocabulary: CBV bizStep: shipping / receiving](https://gs1.org/voc/CBV bizStep: shipping / receiving)<br>ASCM SCOR DS: Fulfill: Transfer product |
-| 🧰 **PartsRequirement** | Parts Supply Chain & Procurement | Service Coordinator / Parts Interpreter | Annata 365 (F&O) | `lh_d365.dbo.amworkorderitem` ⚠️ | [IOF Core: MaterialRequirement](https://spec.industrialontologies.org/ontology/core/Core/MaterialRequirement)<br>ASCM SCOR DS: Plan: Demand requirement |
-| 📊 **PartsDemandForecast** | Demand & Supply Planning | Parts Planner | D365 F&O | `lh_d365.dbo.forecastsales` ⚠️ | ASCM SCOR DS: Plan: Demand plan<br>APQC PCF: 4.1.1 Develop demand forecast |
-| 📐 **StockingPolicy** | Demand & Supply Planning | Parts Planner | D365 F&O | `lh_d365.dbo.reqitemtable` | ASCM SCOR DS: Plan: Inventory policy<br>APQC PCF: 4.5.2 Manage inventory |
-| 🧮 **PlanningRun** | Demand & Supply Planning | Supply Planning Manager | D365 F&O | `lh_d365.dbo.reqplanversion` ⚠️ | ASCM SCOR DS: Plan: Balance supply and demand |
+| 📥 **GoodsReceipt** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.vendpackingslipjour` | [IOF: ReceivingProcess](https://spec.industrialontologies.org/ontology/construct/ReceivingProcess)<br>[GS1 CBV 2.0: BizStep-receiving](https://ref.gs1.org/cbv/BizStep-receiving)<br>OAGIS: ReceiveDelivery<br>ASCM SCOR DS: Source: Receive product |
+| 🔀 **TransferOrder** | Parts Supply Chain & Procurement | Supply Planner | D365 F&O | `lh_d365.dbo.inventtransfertable` | [GS1 CBV 2.0: BizStep-shipping](https://ref.gs1.org/cbv/BizStep-shipping)<br>OAGIS: InventoryMovement<br>ASCM SCOR DS: Fulfill: Transfer product |
+| 🧰 **PartsRequirement** | Parts Supply Chain & Procurement | Service Coordinator / Parts Interpreter | Annata 365 (F&O) | `lh_d365.dbo.amworkorderitem` ⚠️ | ISA-95: Material requirement<br>ASCM SCOR DS: Plan: Demand requirement<br>Microsoft CDM: WorkOrderProduct |
+| 📊 **PartsDemandForecast** | Demand & Supply Planning | Parts Planner | D365 F&O | `lh_d365.dbo.forecastsales` ⚠️ | [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification)<br>ASCM SCOR DS: Plan: Demand plan<br>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products |
+| 📐 **StockingPolicy** | Demand & Supply Planning | Parts Planner | D365 F&O | `lh_d365.dbo.reqitemtable` | ASCM SCOR DS: Plan: Inventory policy<br>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products |
+| 🧮 **PlanningRun** | Demand & Supply Planning | Supply Planning Manager | D365 F&O | `lh_d365.dbo.reqplanversion` ⚠️ | [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification)<br>ASCM SCOR DS: Plan: Balance supply and demand |
 | 🗒️ **PlannedOrder** | Demand & Supply Planning | Supply Planner | D365 F&O | `lh_d365.dbo.reqpo` | ASCM SCOR DS: Plan: Planned order<br>ISA-95: Material requirement |
-| 🏚️ **WorkshopBay** | Service & Technicians | Workshop Manager | D365 CE | `lh_d365.dbo.bookableresource` ⚠️ | [IOF Core: Facility](https://spec.industrialontologies.org/ontology/core/Core/Facility)<br>ISA-95: Equipment (work unit)<br>Microsoft CDM: BookableResource (facility) |
-| 🛠️ **WorkOrder** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess)<br>MIMOSA CCOM: WorkOrder<br>ISO 14224: Maintenance record<br>Microsoft CDM: WorkOrder |
-| 🔨 **WorkOrderJob** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkorderjob` ⚠️ | [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess)<br>ISO 14224: Maintenance activity<br>Microsoft CDM: WorkOrderIncident |
-| 📘 **StandardJob** | Service & Technicians | Service Engineering | Annata 365 (F&O) | `lh_d365.dbo.amjoblist` ⚠️ | [IOF Core: MaintenancePlanSpecification](https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlanSpecification)<br>ISO 14224: Maintenance activity type<br>Microsoft CDM: IncidentType |
-| 🗓️ **MaintenancePlan** | Service & Technicians | Service Planner | Annata 365 (F&O) | `lh_d365.dbo.ammaintenanceplan` ⚠️ | [IOF Core: MaintenancePlan](https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlan)<br>ISO 55000: Asset management plan<br>Microsoft CDM: AgreementBookingSetup |
-| 👷 **Technician** | Service & Technicians | Service Manager | D365 CE | `lh_d365.dbo.bookableresource` | [schema.org: Person](https://schema.org/Person)<br>[IOF Core: MaintenanceTechnicianRole](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceTechnicianRole)<br>Microsoft CDM: BookableResource |
-| 🎓 **Skill** | Service & Technicians | Technical Training | D365 CE | `lh_d365.dbo.characteristic` | [schema.org: DefinedTerm](https://schema.org/DefinedTerm)<br>ESCO: Skill / competence<br>Microsoft CDM: Characteristic |
+| 🏚️ **WorkshopBay** | Service & Technicians | Workshop Manager | D365 CE | `lh_d365.dbo.bookableresource` ⚠️ | [IOF: Facility](https://spec.industrialontologies.org/ontology/construct/Facility)<br>Microsoft CDM: BookableResource (facility) |
+| 🛠️ **WorkOrder** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF: MaintenanceWorkOrderRecord](https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord)<br>[IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess)<br>MIMOSA CCOM: WorkOrder<br>OAGIS: MaintenanceOrder<br>ISO 14224: Maintenance record<br>APQC PCF 8.0: 5.0 Deliver Services<br>Microsoft CDM: WorkOrder |
+| 🔨 **WorkOrderJob** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkorderjob` ⚠️ | [IOF: MaintenanceActivity](https://spec.industrialontologies.org/ontology/construct/MaintenanceActivity)<br>MIMOSA CCOM: WorkStep<br>ISO 14224: Maintenance activity<br>Microsoft CDM: WorkOrderIncident |
+| 📘 **StandardJob** | Service & Technicians | Service Engineering | Annata 365 (F&O) | `lh_d365.dbo.amjoblist` ⚠️ | MIMOSA CCOM: SolutionPackage<br>[IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy)<br>ISO 14224: Maintenance activity type<br>Microsoft CDM: IncidentType |
+| 🗓️ **MaintenancePlan** | Service & Technicians | Service Planner | Annata 365 (F&O) | `lh_d365.dbo.ammaintenanceplan` ⚠️ | [IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy)<br>ISO 55000:2024: Asset management plan<br>Microsoft CDM: AgreementBookingSetup |
+| 👷 **Technician** | Service & Technicians | Service Manager | D365 CE | `lh_d365.dbo.bookableresource` | [IOF: QualifiedMaintenancePerson](https://spec.industrialontologies.org/ontology/construct/QualifiedMaintenancePerson)<br>[schema.org: Person](https://schema.org/Person)<br>Microsoft CDM: BookableResource |
+| 🎓 **Skill** | Service & Technicians | Technical Training | D365 CE | `lh_d365.dbo.characteristic` | [IOF: QualificationSpecification](https://spec.industrialontologies.org/ontology/construct/QualificationSpecification)<br>[schema.org: EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential)<br>ESCO: Skill / competence<br>Microsoft CDM: Characteristic |
 | 📅 **ResourceBooking** | Service & Technicians | Service Planner / PDI Planner | D365 CE | `lh_d365.dbo.bookableresourcebooking` | [schema.org: Reservation](https://schema.org/Reservation)<br>Microsoft CDM: BookableResourceBooking |
 | ⏱️ **TimeEntry** | Service & Technicians | Service Coordinator | D365 F&O | `lh_d365.dbo.projempltrans` ⚠️ | [schema.org: Action](https://schema.org/Action)<br>Microsoft CDM: TimeEntry |
-| 💥 **FailureMode** | Service & Technicians | Reliability Engineering | Annata 365 (F&O) | `lh_d365.dbo.amwarrantyclaimcode` ⚠️ | ISO 14224: Failure mode / failure mechanism / failure cause<br>MIMOSA CCOM: FailureMode |
-| 📃 **ServiceContract** | Contracts & Warranty | Contracts Administrator | Annata 365 (F&O) | `lh_d365.dbo.amcontracttable` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[schema.org: Service](https://schema.org/Service)<br>ISO 55000: Service level agreement<br>Microsoft CDM: Agreement |
+| 💥 **FailureMode** | Service & Technicians | Reliability Engineering | Annata 365 (F&O) | `lh_d365.dbo.amwarrantyclaimcode` ⚠️ | ISO 14224: Failure mode / failure mechanism / failure cause (Annex B)<br>[IOF: FailureModeCode](https://spec.industrialontologies.org/ontology/construct/FailureModeCode)<br>MIMOSA CCOM: HypotheticalEvent (FMECA) |
+| 📃 **ServiceContract** | Contracts & Warranty | Contracts Administrator | Annata 365 (F&O) | `lh_d365.dbo.amcontracttable` ⚠️ | [IOF: CommercialServiceAgreement](https://spec.industrialontologies.org/ontology/construct/CommercialServiceAgreement)<br>[FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[schema.org: Service](https://schema.org/Service)<br>Microsoft CDM: Agreement |
 | 🎟️ **ContractEntitlement** | Contracts & Warranty | Contracts Administrator | D365 CE | `lh_d365.dbo.entitlement` | [schema.org: Offer](https://schema.org/Offer)<br>Microsoft CDM: Entitlement |
-| 🛡️ **WarrantyCoverage** | Contracts & Warranty | Warranty Administrator | Annata 365 (F&O) | `lh_d365.dbo.amdevicewarranty` ⚠️ | [schema.org: WarrantyPromise](https://schema.org/WarrantyPromise) |
-| 📨 **WarrantyClaim** | Contracts & Warranty | Warranty Administrator | Annata 365 (F&O) | `lh_d365.dbo.amwarrantyclaimtable` ⚠️ | ISO 14224: Failure event record<br>[schema.org: WarrantyPromise](https://schema.org/WarrantyPromise) |
+| 🛡️ **WarrantyCoverage** | Contracts & Warranty | Warranty Administrator | Annata 365 (F&O) | `lh_d365.dbo.amdevicewarranty` ⚠️ | [schema.org: WarrantyPromise](https://schema.org/WarrantyPromise)<br>[GS1 Web Vocabulary: WarrantyPromise](https://gs1.org/voc/WarrantyPromise)<br>Australian Consumer Law: Consumer guarantees / warranty against defects (reg 90) |
+| 📨 **WarrantyClaim** | Contracts & Warranty | Warranty Administrator | Annata 365 (F&O) | `lh_d365.dbo.amwarrantyclaimtable` ⚠️ | OAGIS: WarrantyClaim<br>[IOF: FailureEvent](https://spec.industrialontologies.org/ontology/construct/FailureEvent)<br>ISO 14224: Failure event record |
 | 📢 **ServiceCampaign** | Contracts & Warranty | Warranty Administrator / Product Support | Annata 365 (F&O) | `lh_d365.dbo.amcampaigntable` ⚠️ | ACCC Product Safety: Recall<br>[schema.org: Action](https://schema.org/Action) |
 | 🔑 **RentalAgreement** | Contracts & Warranty | Rental Manager | Annata 365 (F&O) | `lh_d365.dbo.amrentalordertable` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[schema.org: RentAction](https://schema.org/RentAction) |
-| 📦 **CoreReturn** | Remanufacturing (REMAN) | Reman Coordinator | D365 F&O | `lh_d365.dbo.salestable` ⚠️ | [GS1 Web Vocabulary: GRAI (returnable asset)](https://gs1.org/voc/GRAI (returnable asset))<br>OAGIS: ReturnMaterialAuthorization<br>ASCM SCOR DS: Return: Return product |
-| 🔄 **RemanJob** | Remanufacturing (REMAN) | Reman Centre Manager | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess)<br>ISO 14224: Maintenance activity: overhaul<br>ASCM SCOR DS: Transform: Remanufacture<br>[GS1 Web Vocabulary: CBV bizStep: repairing](https://gs1.org/voc/CBV bizStep: repairing) |
-| 🎧 **SupportCase** | Customer Support & Portal | Customer Support Manager | D365 CE | `lh_d365.dbo.incident` | Microsoft CDM: Case (incident)<br>[schema.org: Action](https://schema.org/Action) |
-| 🌐 **PortalUser** | Customer Support & Portal | Digital Channels Manager | Power Pages portal | `lh_d365.dbo.contact` ⚠️ | [schema.org: Person](https://schema.org/Person)<br>W3C VCard / FOAF: OnlineAccount |
-| 📡 **TelematicsReading** | Telematics & Condition Monitoring | Digital Solutions (KOMTRAX) | KOMTRAX | `eh_komtrax.machine_snapshots` ⚠️ | ISO 15143-3: Fleet snapshot (CumulativeOperatingHours, FuelUsed, Location)<br>MIMOSA CCOM: Measurement<br>[schema.org: Observation](https://schema.org/Observation) |
-| 🔢 **MeterReading** | Telematics & Condition Monitoring | Equipment Administration | Annata 365 (F&O) | `lh_d365.dbo.amdevicemeterreading` ⚠️ | MIMOSA CCOM: Measurement<br>[schema.org: QuantitativeValue](https://schema.org/QuantitativeValue) |
-| 🚨 **MachineAlert** | Telematics & Condition Monitoring | Digital Solutions (KOMTRAX) | D365 CE | `lh_d365.dbo.msdyn_iotalert` ⚠️ | ISO 15143-3: Fault codes / caution messages<br>MIMOSA CCOM: Event<br>Microsoft CDM: IoTAlert |
-| ⚠️ **FaultCode** | Telematics & Condition Monitoring | Product Support Engineering | KOMTRAX | `lh_reference.dbo.fault_code` ⚠️ | SAE J1939-73: Diagnostic Trouble Code (SPN + FMI)<br>ISO 15143-3: FaultCode |
-| 🧪 **OilSample** | Telematics & Condition Monitoring | Condition Monitoring | LIMC (oil analysis lab) | `lh_reference.dbo.kowa_oil_sample` ⚠️ | ISO 14224: Condition monitoring<br>MIMOSA CCOM: Measurement<br>[schema.org: MedicalTest](https://schema.org/MedicalTest) |
+| 📦 **CoreReturn** | Remanufacturing (REMAN) | Reman Coordinator | D365 F&O | `lh_d365.dbo.salestable` ⚠️ | [GS1 CBV 2.0: Disp-returned](https://ref.gs1.org/cbv/Disp-returned)<br>[GS1 CBV 2.0: BTT-rma](https://ref.gs1.org/cbv/BTT-rma)<br>[schema.org: ReturnAction](https://schema.org/ReturnAction)<br>ASCM SCOR DS: Return: Return product |
+| 🔄 **RemanJob** | Remanufacturing (REMAN) | Reman Centre Manager | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess)<br>[GS1 CBV 2.0: BizStep-repairing](https://ref.gs1.org/cbv/BizStep-repairing)<br>ISO 14224: Maintenance activity: overhaul<br>ASCM SCOR DS: Transform: Remanufacture |
+| 🎧 **SupportCase** | Customer Support & Portal | Customer Support Manager | D365 CE | `lh_d365.dbo.incident` | Microsoft CDM: Case (incident)<br>MIMOSA CCOM: WorkRequest<br>APQC PCF 8.0: 6.0 Manage Customer Service |
+| 🌐 **PortalUser** | Customer Support & Portal | Digital Channels Manager | Power Pages portal | `lh_d365.dbo.contact` ⚠️ | [FOAF: OnlineAccount](http://xmlns.com/foaf/0.1/OnlineAccount)<br>[W3C PROV-O: Agent](http://www.w3.org/ns/prov#Agent) |
+| 📡 **TelematicsReading** | Telematics & Condition Monitoring | Digital Solutions (KOMTRAX) | KOMTRAX | `eh_komtrax.machine_snapshots` ⚠️ | ISO 15143-3 (AEMP 2.0): Equipment snapshot (CumulativeOperatingHours, CumulativeIdleHours, FuelUsed, FuelRemaining, DEFRemaining, Location)<br>[W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation)<br>MIMOSA CCOM: Measurement |
+| 🔢 **MeterReading** | Telematics & Condition Monitoring | Equipment Administration | Annata 365 (F&O) | `lh_d365.dbo.amdevicemeterreading` ⚠️ | [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation)<br>ISO 15143-3 (AEMP 2.0): CumulativeOperatingHours<br>MIMOSA CCOM: Measurement |
+| 🚨 **MachineAlert** | Telematics & Condition Monitoring | Digital Solutions (KOMTRAX) | D365 CE | `lh_d365.dbo.msdyn_iotalert` ⚠️ | [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation)<br>ISO 15143-3 (AEMP 2.0): Fault code time series<br>SAE J1939-73: DM1 active / DM2 previously active DTC<br>MIMOSA CCOM: ActualEvent<br>Microsoft CDM: IoTAlert |
+| ⚠️ **FaultCode** | Telematics & Condition Monitoring | Product Support Engineering | KOMTRAX | `lh_reference.dbo.fault_code` ⚠️ | SAE J1939-73: Diagnostic Trouble Code (SPN 19 bits + FMI 5 bits)<br>ISO 15143-3 (AEMP 2.0): FaultCode<br>[W3C SKOS: Concept (Komatsu error-code scheme)](http://www.w3.org/2004/02/skos/core#Concept) |
+| 🧪 **OilSample** | Telematics & Condition Monitoring | Condition Monitoring | LIMC (oil analysis lab) | `lh_reference.dbo.kowa_oil_sample` ⚠️ | [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation)<br>ISO 14224: Detection method: condition monitoring<br>MIMOSA CCOM: Measurement |
 
 ## Customers, People & Organisation
 
@@ -114,13 +114,13 @@ An organisation that buys, rents or has Komatsu equipment serviced — from owne
 
 **Alternate table:** account (Dataverse, dual-write: accountnumber = accountnum)
 
-**Standards:** [schema.org: Organization](https://schema.org/Organization) (closeMatch) · [W3C ORG: Organization](http://www.w3.org/ns/org#Organization) (closeMatch) · [IOF Supply Chain: Customer](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Customer) (closeMatch) · Microsoft CDM: Account (closeMatch)
+**Standards:** [schema.org: Organization](https://schema.org/Organization) (closeMatch) · [W3C ORG: Organization](http://www.w3.org/ns/org#Organization) (closeMatch) · [IOF Supply Chain: Customer](https://spec.industrialontologies.org/ontology/construct/Customer) (closeMatch) · OAGIS: CustomerPartyMaster (related) · Microsoft CDM: Account (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
 | `customerAccount` | string | 🔑 |  | `accountnum` | D365 customer account number (dual-written CE ↔ F&O) |
 | `name` | string |  |  | `dirpartytable.name` | Registered or trading name |
-| `abn` | string |  |  | `vatnum` | Australian Business Number |
+| `abn` | string |  |  | `vatnum` | Australian Business Number (11 digits; schema:taxID) |
 | `segment` | enum |  | Construction, Utilities, Mining, Quarry, Forestry, Industrial, Government, Rental, Waste | `segmentid` | Primary market segment served |
 | `customerTier` | enum |  | Strategic, Key Account, Fleet, Commercial, Owner-Operator, Cash | `custgroup` | Commercial tier driving coverage model and pricing |
 | `state` | enum |  | NSW, VIC, QLD, WA, SA, TAS, NT, ACT |  | Head-office state |
@@ -143,7 +143,7 @@ A physical location where a customer operates equipment — a mine, quarry, cons
 
 **System of record:** D365 CE · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.msdyn_functionallocation` · ⚠️ to confirm
 
-**Standards:** [schema.org: Place](https://schema.org/Place) (closeMatch) · [W3C ORG: Site](http://www.w3.org/ns/org#Site) (closeMatch) · ISO 14224: Installation / Plant (taxonomy levels 3–4) (related) · Microsoft CDM: FunctionalLocation (closeMatch)
+**Standards:** [schema.org: Place](https://schema.org/Place) (closeMatch) · [W3C ORG: Site](http://www.w3.org/ns/org#Site) (closeMatch) · [IOF: GeospatialSite](https://spec.industrialontologies.org/ontology/construct/GeospatialSite) (related) · MIMOSA CCOM: Segment (functional location) (related) · ISO 14224: Installation / Plant (taxonomy levels 3–4) (related) · Microsoft CDM: FunctionalLocation (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -254,7 +254,7 @@ An organisation Komatsu Australia buys from — Komatsu factories and parts depo
 
 **Alternate table:** msdyn_vendor (Dataverse, dual-write)
 
-**Standards:** [schema.org: Organization](https://schema.org/Organization) (closeMatch) · [IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Supplier) (closeMatch) · [W3C ORG: Organization](http://www.w3.org/ns/org#Organization) (closeMatch) · Microsoft CDM: Vendor (closeMatch)
+**Standards:** [schema.org: Organization](https://schema.org/Organization) (closeMatch) · [IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/construct/Supplier) (closeMatch) · [W3C ORG: Organization](http://www.w3.org/ns/org#Organization) (closeMatch) · OAGIS: SupplierPartyMaster (related) · Microsoft CDM: Vendor (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -299,7 +299,7 @@ A Komatsu machine model and series, e.g. PC210LC-11, D375A-8, WA500-8 or 930E-5,
 
 **Alternate table:** msauto_devicemodel / msauto_devicemodelcode (Dataverse)
 
-**Standards:** [schema.org: ProductModel](https://schema.org/ProductModel) (exactMatch) · MIMOSA CCOM: Model (closeMatch) · [IOF Core: ProductSpecification](https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification) (broadMatch)
+**Standards:** [schema.org: ProductModel](https://schema.org/ProductModel) (exactMatch) · MIMOSA CCOM: Model / ModelVariant (closeMatch) · [GoodRelations: ProductOrServiceModel](http://purl.org/goodrelations/v1#ProductOrServiceModel) (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -357,12 +357,12 @@ An individual serialised machine (Annata "device") tracked from factory order th
 
 **Alternate table:** msauto_device (Dataverse) / msdyn_customerasset (Field Service)
 
-**Standards:** [schema.org: IndividualProduct](https://schema.org/IndividualProduct) (exactMatch) · ISO 10261: Product identification number (PIN) (closeMatch) · MIMOSA CCOM: Asset (closeMatch) · ISO 14224: Equipment unit (taxonomy level 6) (closeMatch) · [GS1 Web Vocabulary: IndividualAsset](https://gs1.org/voc/IndividualAsset) (related) · Microsoft CDM: CustomerAsset (closeMatch)
+**Standards:** [schema.org: IndividualProduct](https://schema.org/IndividualProduct) (exactMatch) · [IOF: PieceOfEquipment](https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment) (closeMatch) · ISO 10261: Product identification number (PIN) (closeMatch) · MIMOSA CCOM: Asset (closeMatch) · ISO 14224: Equipment unit (taxonomy level 6) (closeMatch) · GS1: GIAI (AI 8004) individual asset identifier (related) · Microsoft CDM: CustomerAsset (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
 | `serialNumber` | string | 🔑 |  | `serialnumber` | Komatsu machine serial number |
-| `pin` | string |  |  | `vin` | ISO 10261 17-character product identification number |
+| `pin` | string |  |  | `vin` | ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial) |
 | `stockNumber` | string |  |  | `deviceid` | Internal stock / unit number while in Komatsu inventory |
 | `unitStatus` | enum |  | On Order, In Production, In Transit, In Stock, In PDI, Ready for Delivery, Delivered, In Service, Rental Fleet, Used Stock, Sold, Scrapped | `devicestatus` | Lifecycle status of the unit |
 | `ownershipType` | enum |  | Komatsu Stock, Customer Owned, Rental Fleet, Demonstrator, Consignment, Leased | `ownership` | Who owns the unit |
@@ -392,7 +392,7 @@ A serialised major component (engine, transmission, final drive, pump, wheel mot
 
 **Alternate table:** msauto_devicecomponent (Dataverse)
 
-**Standards:** ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch) · MIMOSA CCOM: Asset (installed on Segment) (closeMatch) · [IOF Core: MaintainableMaterialItem](https://spec.industrialontologies.org/ontology/core/Core/MaintainableMaterialItem) (broadMatch) · [GS1 Web Vocabulary: IndividualAsset](https://gs1.org/voc/IndividualAsset) (related)
+**Standards:** [IOF: MaintainableMaterialItem](https://spec.industrialontologies.org/ontology/construct/MaintainableMaterialItem) (closeMatch) · [IOF: MaterialComponent](https://spec.industrialontologies.org/ontology/construct/MaterialComponent) (broadMatch) · ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch) · MIMOSA CCOM: Asset + AssetSegmentEvent (install / remove) (closeMatch) · GS1: SGTIN / GIAI serialised identifier (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -420,7 +420,7 @@ A stocked or orderable part number — Komatsu Genuine, reman exchange, filters,
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.inventtable`
 
-**Standards:** [schema.org: Product](https://schema.org/Product) (exactMatch) · [GS1 Web Vocabulary: Product](https://gs1.org/voc/Product) (closeMatch) · UNSPSC: 22101700 Heavy equipment components (broadMatch) · [IOF Core: MaterialProduct](https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct) (broadMatch) · Microsoft CDM: ReleasedProduct (closeMatch)
+**Standards:** [schema.org: Product](https://schema.org/Product) (exactMatch) · [GS1 Web Vocabulary: Product](https://gs1.org/voc/Product) (closeMatch) · [IOF: MaterialProduct](https://spec.industrialontologies.org/ontology/construct/MaterialProduct) (closeMatch) · UNSPSC: 22101700 Heavy equipment components (broadMatch) · OAGIS: ItemMaster (related) · Microsoft CDM: ReleasedProduct (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -452,7 +452,7 @@ A supersession, interchangeability or reman-alternate link from one part number 
 
 **System of record:** Annata 365 (F&O) · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.amitemsupersession` · ⚠️ to confirm
 
-**Standards:** OAGIS: ItemMaster / Supersession (related) · ECLASS: successor product (related)
+**Standards:** [GS1 Web Vocabulary: replacedByProduct](https://gs1.org/voc/replacedByProduct) (closeMatch) · [schema.org: successorOf](https://schema.org/successorOf) (related) · OAGIS: ItemMaster (supersession) (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -477,7 +477,7 @@ A Komatsu group manufacturing plant that builds machines or components for Austr
 
 **System of record:** Komatsu factory systems · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.factory` · ⚠️ to confirm
 
-**Standards:** [W3C ORG: Site](http://www.w3.org/ns/org#Site) (closeMatch) · [schema.org: Organization](https://schema.org/Organization) (related) · [IOF Supply Chain: Manufacturer](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Manufacturer) (related)
+**Standards:** [IOF: Factory](https://spec.industrialontologies.org/ontology/construct/Factory) (closeMatch) · [W3C ORG: Site](http://www.w3.org/ns/org#Site) (closeMatch) · [IOF: Manufacturer](https://spec.industrialontologies.org/ontology/construct/Manufacturer) (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -499,7 +499,7 @@ A monthly machine demand forecast by model and segment (S&OP) that feeds the Hen
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.forecastsales` · ⚠️ to confirm
 
-**Standards:** ASCM SCOR DS: Plan: Plan Supply Chain (demand plan) (related) · APQC PCF: 4.1 Plan for and align supply chain resources (related)
+**Standards:** [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification) (related) · ASCM SCOR DS: Plan: Plan supply chain (demand plan) (related) · APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -525,7 +525,7 @@ A monthly Hensei cycle — Komatsu's HANSEI (販生, "sales + production") SIOP 
 
 **System of record:** Komatsu factory systems · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.hensei_cycle` · ⚠️ to confirm
 
-**Standards:** ASCM SCOR DS: Source: Schedule product deliveries (related) · APQC PCF: 4.2.2 Plan procurement / order management (related)
+**Standards:** ASCM SCOR DS: Plan / Order (O3 intra-company): Sales & operations planning (related) · APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -574,7 +574,7 @@ A confirmed machine order placed on a Komatsu factory for one unit, carrying the
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.purchtable` · **Filter:** purchpoolid = 'MACHINE' · ⚠️ to confirm
 
-**Standards:** [schema.org: Order](https://schema.org/Order) (closeMatch) · OAGIS: PurchaseOrder (intercompany) (related) · ASCM SCOR DS: Source: Schedule product deliveries (related)
+**Standards:** [IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/construct/PurchaseOrder) (closeMatch) · [schema.org: Order](https://schema.org/Order) (closeMatch) · OAGIS: PurchaseOrder (intercompany) (related) · ASCM SCOR DS: Order (O3 intra-company) / Source (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -745,7 +745,7 @@ An equipment finance arrangement (e.g. through Komatsu Australia Corporate Finan
 
 **System of record:** KACF finance system · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.finance_agreement` · ⚠️ to confirm
 
-**Standards:** [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract) (broadMatch) · [FIBO: LoanContract](https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan) (closeMatch)
+**Standards:** [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract) (broadMatch) · [FIBO: Loan](https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan) (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -820,7 +820,7 @@ The delivery and handover of a unit to the customer — operator familiarisation
 
 **System of record:** Annata 365 (F&O) · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.amdevicedelivery` · ⚠️ to confirm
 
-**Standards:** [schema.org: ParcelDelivery](https://schema.org/ParcelDelivery) (broadMatch) · [GS1 Web Vocabulary: CBV bizStep: commissioning / accepting](https://gs1.org/voc/CBV bizStep: commissioning / accepting) (related) · ASCM SCOR DS: Fulfill: Install product (related)
+**Standards:** [GS1 CBV 2.0: BizStep-accepting](https://ref.gs1.org/cbv/BizStep-accepting) (closeMatch) · MIMOSA CCOM: AssetOwnerEvent (related) · [schema.org: OwnershipInfo](https://schema.org/OwnershipInfo) (related) · ASCM SCOR DS: Fulfill: Install product (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -849,7 +849,7 @@ A physical movement of machines or parts — inbound from a factory or depot, be
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.whsshipmenttable` · ⚠️ to confirm
 
-**Standards:** [schema.org: ParcelDelivery](https://schema.org/ParcelDelivery) (broadMatch) · [GS1 Web Vocabulary: SSCC (logistic unit)](https://gs1.org/voc/SSCC (logistic unit)) (related) · UN/CEFACT: Consignment (closeMatch) · OAGIS: Shipment (closeMatch) · ASCM SCOR DS: Fulfill: Transport product (related)
+**Standards:** [IOF Supply Chain: Shipment](https://spec.industrialontologies.org/ontology/construct/Shipment) (closeMatch) · [UN/CEFACT Vocabulary: Consignment](https://vocabulary.uncefact.org/Consignment) (closeMatch) · GS1: SSCC logistic unit (related) · OAGIS: Shipment (closeMatch) · ASCM SCOR DS: Fulfill: Transport product (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -881,7 +881,7 @@ A ship voyage carrying imported machines or containers from an origin port to an
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.itmtable` · ⚠️ to confirm
 
-**Standards:** UN/CEFACT: Transport Movement (closeMatch) · [schema.org: Trip](https://schema.org/Trip) (broadMatch)
+**Standards:** [UN/CEFACT Vocabulary: TransportMovement](https://vocabulary.uncefact.org/TransportMovement) (closeMatch) · [schema.org: Trip](https://schema.org/Trip) (broadMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -902,13 +902,13 @@ An Australian Border Force import declaration (full import declaration) lodged b
 
 **System of record:** Customs broker (ICS) · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.customs_entry` · ⚠️ to confirm
 
-**Standards:** WCO Data Model: Goods Declaration (closeMatch) · Harmonized System: 8429 / 8431 (related)
+**Standards:** [UN/CEFACT Vocabulary: ExchangedDeclaration](https://vocabulary.uncefact.org/ExchangedDeclaration) (closeMatch) · WCO Data Model: Goods Declaration (closeMatch) · Harmonized System: 8429 / 8431 / 8704.10 (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
 | `entryNumber` | string | 🔑 |  | `entry_number` | Import declaration number |
 | `lodgementDate` | date |  |  | `lodgement_date` | Date lodged in the Integrated Cargo System |
-| `tariffCode` | string |  |  | `tariff_code` | Principal tariff classification, e.g. 8429.52 (excavators) |
+| `tariffCode` | string |  |  | `tariff_code` | Principal tariff classification, e.g. 8429.52 excavators, 8431.49 parts, 8704.10 dumpers |
 | `customsValue` | decimal |  | AUD |  | Customs value |
 | `dutyAmount` | decimal |  | AUD | `duty_amount` | Customs duty payable |
 | `gstAmount` | decimal |  | AUD | `gst_amount` | Import GST payable |
@@ -927,7 +927,7 @@ A Department of Agriculture biosecurity inspection or treatment of imported mach
 
 **System of record:** Reference data · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.biosecurity_inspection` · ⚠️ to confirm
 
-**Standards:** DAFF BICON: Machinery and equipment import conditions (related) · [GS1 Web Vocabulary: CBV bizStep: inspecting](https://gs1.org/voc/CBV bizStep: inspecting) (related)
+**Standards:** [UN/CEFACT Vocabulary: InspectionEvent](https://vocabulary.uncefact.org/InspectionEvent) (closeMatch) · [GS1 CBV 2.0: BizStep-inspecting](https://ref.gs1.org/cbv/BizStep-inspecting) (related) · DAFF BICON: Machinery and equipment import conditions (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -957,7 +957,7 @@ A pre-delivery inspection and fitment job that prepares a unit for the customer 
 
 **Alternate table:** msdyn_workorder / msauto_deviceinspection (Dataverse)
 
-**Standards:** [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess) (related) · ISO 14224: Maintenance activity: inspection / modification (related) · ASCM SCOR DS: Fulfill: Prepare product for delivery (related)
+**Standards:** [IOF: PlannedProcess](https://spec.industrialontologies.org/ontology/construct/PlannedProcess) (broadMatch) · [GS1 CBV 2.0: BizStep-inspecting](https://ref.gs1.org/cbv/BizStep-inspecting) (related) · ISO 14224: Maintenance activity: inspection / modification (related) · ASCM SCOR DS: Fulfill: Prepare product for delivery (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -991,7 +991,7 @@ The recorded outcome of one checklist item during a PDI or service inspection.
 
 **Alternate table:** msdyn_inspectioninstance (Field Service)
 
-**Standards:** [IOF Core: Measurement](https://spec.industrialontologies.org/ontology/core/Core/Measurement) (related) · MIMOSA CCOM: Measurement / Event (related)
+**Standards:** [IOF: MeasurementProcess](https://spec.industrialontologies.org/ontology/construct/MeasurementProcess) (related) · [GS1 CBV 2.0: Disp-conformant](https://ref.gs1.org/cbv/Disp-conformant) (related) · MIMOSA CCOM: Measurement (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1012,7 +1012,7 @@ A stock-holding location — distribution centre (e.g. Wacol), branch store, min
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.inventlocation`
 
-**Standards:** [schema.org: Place](https://schema.org/Place) (broadMatch) · [GS1 Web Vocabulary: GLN (location)](https://gs1.org/voc/GLN (location)) (related) · [IOF Supply Chain: StorageFacility](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/StorageFacility) (related) · Microsoft CDM: Warehouse (closeMatch)
+**Standards:** [IOF: DistributionCenter](https://spec.industrialontologies.org/ontology/construct/DistributionCenter) (related) · [IOF: StorageFacility](https://spec.industrialontologies.org/ontology/construct/StorageFacility) (broadMatch) · GS1: GLN (Global Location Number) (related) · Microsoft CDM: Warehouse (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1034,7 +1034,7 @@ The stock position of a part at a warehouse — on hand, reserved, available, on
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.inventsum`
 
-**Standards:** IOF Supply Chain: Inventory (related) · ASCM SCOR DS: Plan: Inventory position (related) · Microsoft CDM: InventoryOnHand (closeMatch)
+**Standards:** [IOF: IndustrialInventory](https://spec.industrialontologies.org/ontology/construct/IndustrialInventory) (closeMatch) · OAGIS: InventoryBalance (closeMatch) · ASCM SCOR DS: Plan: Inventory position (related) · Microsoft CDM: InventoryOnHand (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1060,7 +1060,7 @@ An order placed on a supplier for parts, services or subcontract work — stock 
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.purchtable`
 
-**Standards:** [schema.org: Order](https://schema.org/Order) (closeMatch) · OAGIS: PurchaseOrder (exactMatch) · [IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/PurchaseOrder) (closeMatch) · Microsoft CDM: PurchaseOrder (closeMatch) · ASCM SCOR DS: Source: Issue purchase order (related)
+**Standards:** [schema.org: Order](https://schema.org/Order) (closeMatch) · OAGIS: PurchaseOrder (exactMatch) · [IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/construct/PurchaseOrder) (closeMatch) · Microsoft CDM: PurchaseOrder (closeMatch) · ASCM SCOR DS: Source: Issue purchase order (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1137,7 +1137,7 @@ The receipt of goods against a purchase or factory order at a warehouse, includi
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.vendpackingslipjour`
 
-**Standards:** OAGIS: ReceiveDelivery (closeMatch) · [GS1 Web Vocabulary: CBV bizStep: receiving](https://gs1.org/voc/CBV bizStep: receiving) (closeMatch) · ASCM SCOR DS: Source: Receive product (related)
+**Standards:** [IOF: ReceivingProcess](https://spec.industrialontologies.org/ontology/construct/ReceivingProcess) (closeMatch) · [GS1 CBV 2.0: BizStep-receiving](https://ref.gs1.org/cbv/BizStep-receiving) (closeMatch) · OAGIS: ReceiveDelivery (closeMatch) · ASCM SCOR DS: Source: Receive product (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1159,7 +1159,7 @@ A movement of stock between Komatsu warehouses — DC-to-branch replenishment, e
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.inventtransfertable`
 
-**Standards:** OAGIS: InventoryMovement (related) · [GS1 Web Vocabulary: CBV bizStep: shipping / receiving](https://gs1.org/voc/CBV bizStep: shipping / receiving) (related) · ASCM SCOR DS: Fulfill: Transfer product (related)
+**Standards:** [GS1 CBV 2.0: BizStep-shipping](https://ref.gs1.org/cbv/BizStep-shipping) (related) · OAGIS: InventoryMovement (related) · ASCM SCOR DS: Fulfill: Transfer product (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1185,7 +1185,7 @@ A demand for a part from a work order, PDI job or reman job — reserved from st
 
 **Alternate table:** msdyn_workorderproduct (Field Service)
 
-**Standards:** [IOF Core: MaterialRequirement](https://spec.industrialontologies.org/ontology/core/Core/MaterialRequirement) (related) · ASCM SCOR DS: Plan: Demand requirement (related)
+**Standards:** ISA-95: Material requirement (related) · ASCM SCOR DS: Plan: Demand requirement (related) · Microsoft CDM: WorkOrderProduct (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1214,7 +1214,7 @@ A time-phased demand forecast for a part at a warehouse — statistical, collabo
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.forecastsales` · ⚠️ to confirm
 
-**Standards:** ASCM SCOR DS: Plan: Demand plan (related) · APQC PCF: 4.1.1 Develop demand forecast (related)
+**Standards:** [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification) (related) · ASCM SCOR DS: Plan: Demand plan (related) · APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1238,7 +1238,7 @@ The planning parameters for a part at a warehouse — coverage method, min/max, 
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.reqitemtable`
 
-**Standards:** ASCM SCOR DS: Plan: Inventory policy (related) · APQC PCF: 4.5.2 Manage inventory (related)
+**Standards:** ASCM SCOR DS: Plan: Inventory policy (related) · APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1265,7 +1265,7 @@ An execution of master planning (MRP) that nets demand against supply and genera
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.reqplanversion` · ⚠️ to confirm
 
-**Standards:** ASCM SCOR DS: Plan: Balance supply and demand (related)
+**Standards:** [IOF: SupplyChainPlanSpecification](https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification) (related) · ASCM SCOR DS: Plan: Balance supply and demand (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1318,7 +1318,7 @@ A schedulable workshop capacity resource — PDI bay, repair bay, wash bay, dyno
 
 **System of record:** D365 CE · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.bookableresource` · **Filter:** resourcetype = Facility · ⚠️ to confirm
 
-**Standards:** [IOF Core: Facility](https://spec.industrialontologies.org/ontology/core/Core/Facility) (related) · ISA-95: Equipment (work unit) (related) · Microsoft CDM: BookableResource (facility) (closeMatch)
+**Standards:** [IOF: Facility](https://spec.industrialontologies.org/ontology/construct/Facility) (related) · Microsoft CDM: BookableResource (facility) (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1344,7 +1344,7 @@ A workshop or field work order on a unit — scheduled maintenance, breakdown, w
 
 **Alternate table:** msdyn_workorder (Field Service) / msauto_serviceorder (CDM Automotive)
 
-**Standards:** [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess) (broadMatch) · MIMOSA CCOM: WorkOrder (closeMatch) · ISO 14224: Maintenance record (closeMatch) · Microsoft CDM: WorkOrder (closeMatch)
+**Standards:** [IOF: MaintenanceWorkOrderRecord](https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord) (closeMatch) · [IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess) (broadMatch) · MIMOSA CCOM: WorkOrder (closeMatch) · OAGIS: MaintenanceOrder (closeMatch) · ISO 14224: Maintenance record (closeMatch) · APQC PCF 8.0: 5.0 Deliver Services (related) · Microsoft CDM: WorkOrder (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1387,7 +1387,7 @@ A job (operation) within a work order recording the complaint, cause and correct
 
 **Alternate table:** msdyn_workorderincident / msauto_serviceorderjob (Dataverse)
 
-**Standards:** [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess) (broadMatch) · ISO 14224: Maintenance activity (closeMatch) · Microsoft CDM: WorkOrderIncident (closeMatch)
+**Standards:** [IOF: MaintenanceActivity](https://spec.industrialontologies.org/ontology/construct/MaintenanceActivity) (closeMatch) · MIMOSA CCOM: WorkStep (closeMatch) · ISO 14224: Maintenance activity (closeMatch) · Microsoft CDM: WorkOrderIncident (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1418,7 +1418,7 @@ A reusable service template (Annata job list) — e.g. PC210-11 500-hour service
 
 **Alternate table:** msdyn_incidenttype (Field Service) / msauto_serviceorderjobtype
 
-**Standards:** [IOF Core: MaintenancePlanSpecification](https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlanSpecification) (related) · ISO 14224: Maintenance activity type (related) · Microsoft CDM: IncidentType (closeMatch)
+**Standards:** MIMOSA CCOM: SolutionPackage (closeMatch) · [IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy) (related) · ISO 14224: Maintenance activity type (related) · Microsoft CDM: IncidentType (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1445,7 +1445,7 @@ A preventive maintenance schedule for a unit or contract that generates work ord
 
 **Alternate table:** msdyn_agreementbookingsetup (Field Service)
 
-**Standards:** [IOF Core: MaintenancePlan](https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlan) (related) · ISO 55000: Asset management plan (related) · Microsoft CDM: AgreementBookingSetup (closeMatch)
+**Standards:** [IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy) (related) · ISO 55000:2024: Asset management plan (related) · Microsoft CDM: AgreementBookingSetup (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1474,7 +1474,7 @@ A bookable field, workshop, resident mine-site or reman technician with skills, 
 
 **Alternate table:** hcmworker (F&O)
 
-**Standards:** [schema.org: Person](https://schema.org/Person) (closeMatch) · [IOF Core: MaintenanceTechnicianRole](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceTechnicianRole) (related) · Microsoft CDM: BookableResource (closeMatch)
+**Standards:** [IOF: QualifiedMaintenancePerson](https://spec.industrialontologies.org/ontology/construct/QualifiedMaintenancePerson) (closeMatch) · [schema.org: Person](https://schema.org/Person) (broadMatch) · Microsoft CDM: BookableResource (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1499,7 +1499,7 @@ A skill, model certification, licence or site induction that qualifies a technic
 
 **System of record:** D365 CE · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.characteristic`
 
-**Standards:** [schema.org: DefinedTerm](https://schema.org/DefinedTerm) (broadMatch) · ESCO: Skill / competence (related) · Microsoft CDM: Characteristic (closeMatch)
+**Standards:** [IOF: QualificationSpecification](https://spec.industrialontologies.org/ontology/construct/QualificationSpecification) (related) · [schema.org: EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential) (related) · ESCO: Skill / competence (related) · Microsoft CDM: Characteristic (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1573,7 +1573,7 @@ A coded failure mode, mechanism and cause used on repairs, warranty claims and r
 
 **System of record:** Annata 365 (F&O) · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.amwarrantyclaimcode` · ⚠️ to confirm
 
-**Standards:** ISO 14224: Failure mode / failure mechanism / failure cause (exactMatch) · MIMOSA CCOM: FailureMode (closeMatch)
+**Standards:** ISO 14224: Failure mode / failure mechanism / failure cause (Annex B) (exactMatch) · [IOF: FailureModeCode](https://spec.industrialontologies.org/ontology/construct/FailureModeCode) (closeMatch) · MIMOSA CCOM: HypotheticalEvent (FMECA) (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1596,7 +1596,7 @@ A customer support agreement — Komplimentary Maintenance, Maintenance Contract
 
 **Alternate table:** msdyn_agreement (Field Service) / msauto_servicecontract
 
-**Standards:** [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract) (broadMatch) · [schema.org: Service](https://schema.org/Service) (related) · ISO 55000: Service level agreement (related) · Microsoft CDM: Agreement (closeMatch)
+**Standards:** [IOF: CommercialServiceAgreement](https://spec.industrialontologies.org/ontology/construct/CommercialServiceAgreement) (closeMatch) · [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract) (broadMatch) · [schema.org: Service](https://schema.org/Service) (related) · Microsoft CDM: Agreement (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1648,7 +1648,7 @@ A warranty entitlement on a unit or component — standard machine, Premium Warr
 
 **Alternate table:** msauto_devicewarranty (Dataverse) / msdyn_warranty
 
-**Standards:** [schema.org: WarrantyPromise](https://schema.org/WarrantyPromise) (exactMatch)
+**Standards:** [schema.org: WarrantyPromise](https://schema.org/WarrantyPromise) (exactMatch) · [GS1 Web Vocabulary: WarrantyPromise](https://gs1.org/voc/WarrantyPromise) (closeMatch) · Australian Consumer Law: Consumer guarantees / warranty against defects (reg 90) (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1674,7 +1674,7 @@ A claim to the factory or a supplier to recover the cost of a warranty repair, c
 
 **System of record:** Annata 365 (F&O) · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.amwarrantyclaimtable` · ⚠️ to confirm
 
-**Standards:** ISO 14224: Failure event record (related) · [schema.org: WarrantyPromise](https://schema.org/WarrantyPromise) (related)
+**Standards:** OAGIS: WarrantyClaim (closeMatch) · [IOF: FailureEvent](https://spec.industrialontologies.org/ontology/construct/FailureEvent) (related) · ISO 14224: Failure event record (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1766,7 +1766,7 @@ The return of a failed component (core) after a Component Exchange Program sale,
 
 **System of record:** D365 F&O · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.salestable` · **Filter:** salestype = ReturnItem (RMA) with core disposition code · ⚠️ to confirm
 
-**Standards:** [GS1 Web Vocabulary: GRAI (returnable asset)](https://gs1.org/voc/GRAI (returnable asset)) (related) · OAGIS: ReturnMaterialAuthorization (closeMatch) · ASCM SCOR DS: Return: Return product (related)
+**Standards:** [GS1 CBV 2.0: Disp-returned](https://ref.gs1.org/cbv/Disp-returned) (closeMatch) · [GS1 CBV 2.0: BTT-rma](https://ref.gs1.org/cbv/BTT-rma) (related) · [schema.org: ReturnAction](https://schema.org/ReturnAction) (related) · ASCM SCOR DS: Return: Return product (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1797,7 +1797,7 @@ A remanufacture (rebuild) job on a component at a reman centre (e.g. Wacol, Wels
 
 **Alternate table:** prodtable (F&O production order) if rebuilds run as production
 
-**Standards:** [IOF Core: MaintenanceProcess](https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess) (related) · ISO 14224: Maintenance activity: overhaul (closeMatch) · ASCM SCOR DS: Transform: Remanufacture (related) · [GS1 Web Vocabulary: CBV bizStep: repairing](https://gs1.org/voc/CBV bizStep: repairing) (related)
+**Standards:** [IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess) (related) · [GS1 CBV 2.0: BizStep-repairing](https://ref.gs1.org/cbv/BizStep-repairing) (related) · ISO 14224: Maintenance activity: overhaul (closeMatch) · ASCM SCOR DS: Transform: Remanufacture (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1832,7 +1832,7 @@ A customer support case — technical support, parts or invoice enquiry, complai
 
 **System of record:** D365 CE · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.incident`
 
-**Standards:** Microsoft CDM: Case (incident) (exactMatch) · [schema.org: Action](https://schema.org/Action) (broadMatch)
+**Standards:** Microsoft CDM: Case (incident) (exactMatch) · MIMOSA CCOM: WorkRequest (related) · APQC PCF 8.0: 6.0 Manage Customer Service (related)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1867,7 +1867,7 @@ A customer contact registered on the D365 (Power Pages) customer portal — myKo
 
 **Alternate table:** Annata dealer portal user (if the Annata portal is used)
 
-**Standards:** [schema.org: Person](https://schema.org/Person) (related) · W3C VCard / FOAF: OnlineAccount (closeMatch)
+**Standards:** [FOAF: OnlineAccount](http://xmlns.com/foaf/0.1/OnlineAccount) (closeMatch) · [W3C PROV-O: Agent](http://www.w3.org/ns/prov#Agent) (broadMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1895,7 +1895,7 @@ A KOMTRAX snapshot of a unit — hours, fuel, idle, location and utilisation —
 
 **System of record:** KOMTRAX · **Fabric source:** Eventhouse · eh_komtrax (ISO 15143-3 / KOMTRAX API feed) · **Table:** `eh_komtrax.machine_snapshots` · ⚠️ to confirm
 
-**Standards:** ISO 15143-3: Fleet snapshot (CumulativeOperatingHours, FuelUsed, Location) (exactMatch) · MIMOSA CCOM: Measurement (closeMatch) · [schema.org: Observation](https://schema.org/Observation) (closeMatch)
+**Standards:** ISO 15143-3 (AEMP 2.0): Equipment snapshot (CumulativeOperatingHours, CumulativeIdleHours, FuelUsed, FuelRemaining, DEFRemaining, Location) (exactMatch) · [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation) (closeMatch) · MIMOSA CCOM: Measurement (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1905,6 +1905,9 @@ A KOMTRAX snapshot of a unit — hours, fuel, idle, location and utilisation —
 | `idleHours` | decimal |  | hours | `cumulative_idle_hours` | Cumulative idle hours |
 | `fuelUsedLitres` | decimal |  | L | `fuel_used_l` | Cumulative fuel used |
 | `fuelLevelPct` | decimal |  | % |  | Fuel remaining |
+| `defRemainingPct` | decimal |  | % |  | Diesel exhaust fluid remaining |
+| `cumulativeLoadCount` | integer |  |  |  | Cumulative load (pass / cycle) count |
+| `cumulativePayloadTonnes` | decimal |  | t |  | Cumulative payload hauled (trucks) |
 | `latitude` | double |  | deg | `latitude` | WGS84 latitude |
 | `longitude` | double |  | deg | `longitude` | WGS84 longitude |
 
@@ -1924,7 +1927,7 @@ A service-meter (SMR) or odometer reading recorded against a unit in Annata — 
 
 **Alternate table:** msauto_devicemeasurement (Dataverse) / msdyn_propertylog (Field Service)
 
-**Standards:** MIMOSA CCOM: Measurement (closeMatch) · [schema.org: QuantitativeValue](https://schema.org/QuantitativeValue) (related)
+**Standards:** [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation) (closeMatch) · ISO 15143-3 (AEMP 2.0): CumulativeOperatingHours (related) · MIMOSA CCOM: Measurement (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1949,7 +1952,7 @@ A KOMTRAX caution or fault event, maintenance-due notice, geofence or curfew bre
 
 **System of record:** D365 CE · **Fabric source:** Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&O) · **Table:** `lh_d365.dbo.msdyn_iotalert` · ⚠️ to confirm
 
-**Standards:** ISO 15143-3: Fault codes / caution messages (closeMatch) · MIMOSA CCOM: Event (closeMatch) · Microsoft CDM: IoTAlert (closeMatch)
+**Standards:** [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation) (broadMatch) · ISO 15143-3 (AEMP 2.0): Fault code time series (closeMatch) · SAE J1939-73: DM1 active / DM2 previously active DTC (related) · MIMOSA CCOM: ActualEvent (closeMatch) · Microsoft CDM: IoTAlert (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -1957,6 +1960,7 @@ A KOMTRAX caution or fault event, maintenance-due notice, geofence or curfew bre
 | `alertTime` | datetime |  |  | `msdyn_alerttime` | When the alert was raised |
 | `alertType` | enum |  | Fault Code, Caution, Maintenance Due, Geofence, Curfew, Abnormal Operation, Low Fuel | `msdyn_alerttype` | Alert category |
 | `severity` | enum |  | Info, Warning, Critical |  | Severity |
+| `occurrenceCount` | integer |  |  |  | J1939 occurrence count reported with the fault |
 | `status` | enum |  | New, Acknowledged, Case Created, Service Ordered, Closed | `statuscode` | Handling status |
 
 | Relationship | Target | Cardinality | Description |
@@ -1974,7 +1978,7 @@ A machine-generated diagnostic trouble code (Komatsu error code, mapped to SAE J
 
 **System of record:** KOMTRAX · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.fault_code` · ⚠️ to confirm
 
-**Standards:** SAE J1939-73: Diagnostic Trouble Code (SPN + FMI) (exactMatch) · ISO 15143-3: FaultCode (closeMatch)
+**Standards:** SAE J1939-73: Diagnostic Trouble Code (SPN 19 bits + FMI 5 bits) (closeMatch) · ISO 15143-3 (AEMP 2.0): FaultCode (closeMatch) · [W3C SKOS: Concept (Komatsu error-code scheme)](http://www.w3.org/2004/02/skos/core#Concept) (broadMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|
@@ -2000,7 +2004,7 @@ An oil analysis sample (KOWA, Condition Monitoring Services) taken from a unit c
 
 **System of record:** LIMC (oil analysis lab) · **Fabric source:** Lakehouse · lh_reference (curated reference & external feeds) · **Table:** `lh_reference.dbo.kowa_oil_sample` · ⚠️ to confirm
 
-**Standards:** ISO 14224: Condition monitoring (related) · MIMOSA CCOM: Measurement (closeMatch) · [schema.org: MedicalTest](https://schema.org/MedicalTest) (related)
+**Standards:** [W3C SOSA: Observation](http://www.w3.org/ns/sosa/Observation) (closeMatch) · ISO 14224: Detection method: condition monitoring (related) · MIMOSA CCOM: Measurement (closeMatch)
 
 | Property | Type | Key | Unit / values | Source column | Description |
 |---|---|---|---|---|---|

@@ -66,9 +66,10 @@
         <kau:alignsTo>schema.org: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://schema.org/Organization"/>
         <kau:alignsTo>IOF Supply Chain: Supplier (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Supplier"/>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Supplier"/>
         <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <kau:alignsTo>OAGIS: SupplierPartyMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Vendor (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -85,9 +86,9 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
-        <kau:alignsTo>MIMOSA CCOM: Model (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: ProductSpecification (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification"/>
+        <kau:alignsTo>MIMOSA CCOM: Model / ModelVariant (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GoodRelations: ProductOrServiceModel (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://purl.org/goodrelations/v1#ProductOrServiceModel"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/Part">
@@ -106,9 +107,10 @@
         <skos:exactMatch rdf:resource="https://schema.org/Product"/>
         <kau:alignsTo>GS1 Web Vocabulary: Product (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://gs1.org/voc/Product"/>
+        <kau:alignsTo>IOF: MaterialProduct (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialProduct"/>
         <kau:alignsTo>UNSPSC: 22101700 Heavy equipment components (broadMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaterialProduct (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        <kau:alignsTo>OAGIS: ItemMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: ReleasedProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -120,8 +122,10 @@
         <kau:processDomain>Hensei &amp; Factory Ordering</kau:processDomain>
         <kau:dataOwner>Machine Supply Planning / S&amp;OP</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
-        <kau:alignsTo>ASCM SCOR DS: Plan: Plan Supply Chain (demand plan) (related)</kau:alignsTo>
-        <kau:alignsTo>APQC PCF: 4.1 Plan for and align supply chain resources (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: SupplyChainPlanSpecification (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification"/>
+        <kau:alignsTo>ASCM SCOR DS: Plan: Plan supply chain (demand plan) (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/HenseiCycle">
@@ -136,8 +140,8 @@
         <kau:processDomain>Hensei &amp; Factory Ordering</kau:processDomain>
         <kau:dataOwner>Hensei Planner (Machine Supply)</kau:dataOwner>
         <kau:systemOfRecord>Komatsu factory systems</kau:systemOfRecord>
-        <kau:alignsTo>ASCM SCOR DS: Source: Schedule product deliveries (related)</kau:alignsTo>
-        <kau:alignsTo>APQC PCF: 4.2.2 Plan procurement / order management (related)</kau:alignsTo>
+        <kau:alignsTo>ASCM SCOR DS: Plan / Order (O3 intra-company): Sales &amp; operations planning (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/Warehouse">
@@ -148,12 +152,11 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Parts Operations Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: Place (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/Place"/>
-        <kau:alignsTo>GS1 Web Vocabulary: GLN (location) (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/GLN (location)"/>
-        <kau:alignsTo>IOF Supply Chain: StorageFacility (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/StorageFacility"/>
+        <kau:alignsTo>IOF: DistributionCenter (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/DistributionCenter"/>
+        <kau:alignsTo>IOF: StorageFacility (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/StorageFacility"/>
+        <kau:alignsTo>GS1: GLN (Global Location Number) (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Warehouse (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -165,7 +168,9 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Parts Planner</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
-        <kau:alignsTo>IOF Supply Chain: Inventory (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: IndustrialInventory (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/IndustrialInventory"/>
+        <kau:alignsTo>OAGIS: InventoryBalance (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Plan: Inventory position (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: InventoryOnHand (closeMatch)</kau:alignsTo>
     </owl:Class>
@@ -182,7 +187,7 @@
         <skos:closeMatch rdf:resource="https://schema.org/Order"/>
         <kau:alignsTo>OAGIS: PurchaseOrder (exactMatch)</kau:alignsTo>
         <kau:alignsTo>IOF Supply Chain: PurchaseOrder (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/PurchaseOrder"/>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PurchaseOrder"/>
         <kau:alignsTo>Microsoft CDM: PurchaseOrder (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Source: Issue purchase order (related)</kau:alignsTo>
     </owl:Class>
@@ -195,9 +200,9 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Supply Planner</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>GS1 CBV 2.0: BizStep-shipping (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://ref.gs1.org/cbv/BizStep-shipping"/>
         <kau:alignsTo>OAGIS: InventoryMovement (related)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: CBV bizStep: shipping / receiving (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/CBV bizStep: shipping / receiving"/>
         <kau:alignsTo>ASCM SCOR DS: Fulfill: Transfer product (related)</kau:alignsTo>
     </owl:Class>
 
@@ -209,9 +214,9 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Service Coordinator / Parts Interpreter</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaterialRequirement (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialRequirement"/>
+        <kau:alignsTo>ISA-95: Material requirement (related)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Plan: Demand requirement (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: WorkOrderProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/PartsDemandForecast">
@@ -222,8 +227,10 @@
         <kau:processDomain>Demand &amp; Supply Planning</kau:processDomain>
         <kau:dataOwner>Parts Planner</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>IOF: SupplyChainPlanSpecification (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification"/>
         <kau:alignsTo>ASCM SCOR DS: Plan: Demand plan (related)</kau:alignsTo>
-        <kau:alignsTo>APQC PCF: 4.1.1 Develop demand forecast (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/StockingPolicy">
@@ -235,7 +242,7 @@
         <kau:dataOwner>Parts Planner</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
         <kau:alignsTo>ASCM SCOR DS: Plan: Inventory policy (related)</kau:alignsTo>
-        <kau:alignsTo>APQC PCF: 4.5.2 Manage inventory (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 4.0 Manage Supply Chain for Physical Products (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/PlanningRun">
@@ -246,6 +253,8 @@
         <kau:processDomain>Demand &amp; Supply Planning</kau:processDomain>
         <kau:dataOwner>Supply Planning Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>IOF: SupplyChainPlanSpecification (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/SupplyChainPlanSpecification"/>
         <kau:alignsTo>ASCM SCOR DS: Plan: Balance supply and demand (related)</kau:alignsTo>
     </owl:Class>
 

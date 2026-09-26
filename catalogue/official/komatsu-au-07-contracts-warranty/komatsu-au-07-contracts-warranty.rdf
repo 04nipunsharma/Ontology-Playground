@@ -54,7 +54,8 @@
         <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
         <kau:alignsTo>IOF Supply Chain: Customer (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Customer"/>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Customer"/>
+        <kau:alignsTo>OAGIS: CustomerPartyMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Account (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -70,6 +71,9 @@
         <skos:closeMatch rdf:resource="https://schema.org/Place"/>
         <kau:alignsTo>W3C ORG: Site (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Site"/>
+        <kau:alignsTo>IOF: GeospatialSite (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/GeospatialSite"/>
+        <kau:alignsTo>MIMOSA CCOM: Segment (functional location) (related)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Installation / Plant (taxonomy levels 3–4) (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: FunctionalLocation (closeMatch)</kau:alignsTo>
     </owl:Class>
@@ -102,9 +106,10 @@
         <kau:alignsTo>schema.org: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://schema.org/Organization"/>
         <kau:alignsTo>IOF Supply Chain: Supplier (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Supplier"/>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Supplier"/>
         <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <kau:alignsTo>OAGIS: SupplierPartyMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Vendor (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -121,9 +126,9 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
-        <kau:alignsTo>MIMOSA CCOM: Model (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: ProductSpecification (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification"/>
+        <kau:alignsTo>MIMOSA CCOM: Model / ModelVariant (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GoodRelations: ProductOrServiceModel (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://purl.org/goodrelations/v1#ProductOrServiceModel"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/EquipmentUnit">
@@ -141,11 +146,12 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>IOF: PieceOfEquipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment"/>
         <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>GS1: GIAI (AI 8004) individual asset identifier (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -160,12 +166,13 @@
         <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
         <kau:dataOwner>Product Support / Component Management</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: MaintainableMaterialItem (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintainableMaterialItem"/>
+        <kau:alignsTo>IOF: MaterialComponent (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialComponent"/>
         <kau:alignsTo>ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>MIMOSA CCOM: Asset (installed on Segment) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaintainableMaterialItem (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintainableMaterialItem"/>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>MIMOSA CCOM: Asset + AssetSegmentEvent (install / remove) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GS1: SGTIN / GIAI serialised identifier (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/Part">
@@ -184,9 +191,10 @@
         <skos:exactMatch rdf:resource="https://schema.org/Product"/>
         <kau:alignsTo>GS1 Web Vocabulary: Product (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://gs1.org/voc/Product"/>
+        <kau:alignsTo>IOF: MaterialProduct (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialProduct"/>
         <kau:alignsTo>UNSPSC: 22101700 Heavy equipment components (broadMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaterialProduct (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        <kau:alignsTo>OAGIS: ItemMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: ReleasedProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -198,12 +206,12 @@
         <kau:processDomain>Hensei &amp; Factory Ordering</kau:processDomain>
         <kau:dataOwner>Hensei Planner (Machine Supply)</kau:dataOwner>
         <kau:systemOfRecord>Komatsu factory systems</kau:systemOfRecord>
+        <kau:alignsTo>IOF: Factory (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Factory"/>
         <kau:alignsTo>W3C ORG: Site (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Site"/>
-        <kau:alignsTo>schema.org: Organization (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://schema.org/Organization"/>
-        <kau:alignsTo>IOF Supply Chain: Manufacturer (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Manufacturer"/>
+        <kau:alignsTo>IOF: Manufacturer (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Manufacturer"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/PriceList">
@@ -245,10 +253,14 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Coordinator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaintenanceProcess (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess"/>
+        <kau:alignsTo>IOF: MaintenanceWorkOrderRecord (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord"/>
+        <kau:alignsTo>IOF: MaintenanceProcess (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess"/>
         <kau:alignsTo>MIMOSA CCOM: WorkOrder (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>OAGIS: MaintenanceOrder (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Maintenance record (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 5.0 Deliver Services (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: WorkOrder (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -260,9 +272,9 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Planner</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaintenancePlan (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlan"/>
-        <kau:alignsTo>ISO 55000: Asset management plan (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: MaintenanceStrategy (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy"/>
+        <kau:alignsTo>ISO 55000:2024: Asset management plan (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: AgreementBookingSetup (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -276,8 +288,10 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Reliability Engineering</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>ISO 14224: Failure mode / failure mechanism / failure cause (exactMatch)</kau:alignsTo>
-        <kau:alignsTo>MIMOSA CCOM: FailureMode (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 14224: Failure mode / failure mechanism / failure cause (Annex B) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF: FailureModeCode (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/FailureModeCode"/>
+        <kau:alignsTo>MIMOSA CCOM: HypotheticalEvent (FMECA) (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/ServiceContract">
@@ -292,11 +306,12 @@
         <kau:processDomain>Contracts &amp; Warranty</kau:processDomain>
         <kau:dataOwner>Contracts Administrator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: CommercialServiceAgreement (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/CommercialServiceAgreement"/>
         <kau:alignsTo>FIBO: Contract (broadMatch)</kau:alignsTo>
         <skos:broadMatch rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract"/>
         <kau:alignsTo>schema.org: Service (related)</kau:alignsTo>
         <skos:relatedMatch rdf:resource="https://schema.org/Service"/>
-        <kau:alignsTo>ISO 55000: Service level agreement (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: Agreement (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -323,6 +338,9 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: WarrantyPromise (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/WarrantyPromise"/>
+        <kau:alignsTo>GS1 Web Vocabulary: WarrantyPromise (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://gs1.org/voc/WarrantyPromise"/>
+        <kau:alignsTo>Australian Consumer Law: Consumer guarantees / warranty against defects (reg 90) (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/WarrantyClaim">
@@ -336,9 +354,10 @@
         <kau:processDomain>Contracts &amp; Warranty</kau:processDomain>
         <kau:dataOwner>Warranty Administrator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>OAGIS: WarrantyClaim (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF: FailureEvent (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/FailureEvent"/>
         <kau:alignsTo>ISO 14224: Failure event record (related)</kau:alignsTo>
-        <kau:alignsTo>schema.org: WarrantyPromise (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://schema.org/WarrantyPromise"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/ServiceCampaign">
@@ -399,7 +418,7 @@
         <rdfs:label>abn</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/Customer"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>Australian Business Number</rdfs:comment>
+        <rdfs:comment>Australian Business Number (11 digits; schema:taxID)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 
@@ -717,7 +736,7 @@
         <rdfs:label>pin</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/EquipmentUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>ISO 10261 17-character product identification number</rdfs:comment>
+        <rdfs:comment>ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 

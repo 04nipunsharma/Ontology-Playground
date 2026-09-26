@@ -51,9 +51,9 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
-        <kau:alignsTo>MIMOSA CCOM: Model (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: ProductSpecification (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification"/>
+        <kau:alignsTo>MIMOSA CCOM: Model / ModelVariant (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GoodRelations: ProductOrServiceModel (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://purl.org/goodrelations/v1#ProductOrServiceModel"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit">
@@ -71,11 +71,12 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>IOF: PieceOfEquipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment"/>
         <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>GS1: GIAI (AI 8004) individual asset identifier (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -90,12 +91,13 @@
         <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
         <kau:dataOwner>Product Support / Component Management</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: MaintainableMaterialItem (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintainableMaterialItem"/>
+        <kau:alignsTo>IOF: MaterialComponent (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialComponent"/>
         <kau:alignsTo>ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>MIMOSA CCOM: Asset (installed on Segment) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaintainableMaterialItem (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintainableMaterialItem"/>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>MIMOSA CCOM: Asset + AssetSegmentEvent (install / remove) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GS1: SGTIN / GIAI serialised identifier (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder">
@@ -110,10 +112,14 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Coordinator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaintenanceProcess (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess"/>
+        <kau:alignsTo>IOF: MaintenanceWorkOrderRecord (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord"/>
+        <kau:alignsTo>IOF: MaintenanceProcess (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess"/>
         <kau:alignsTo>MIMOSA CCOM: WorkOrder (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>OAGIS: MaintenanceOrder (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Maintenance record (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 5.0 Deliver Services (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: WorkOrder (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -125,9 +131,9 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Planner</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaintenancePlan (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenancePlan"/>
-        <kau:alignsTo>ISO 55000: Asset management plan (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: MaintenanceStrategy (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy"/>
+        <kau:alignsTo>ISO 55000:2024: Asset management plan (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: AgreementBookingSetup (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -141,8 +147,10 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Reliability Engineering</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>ISO 14224: Failure mode / failure mechanism / failure cause (exactMatch)</kau:alignsTo>
-        <kau:alignsTo>MIMOSA CCOM: FailureMode (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 14224: Failure mode / failure mechanism / failure cause (Annex B) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF: FailureModeCode (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/FailureModeCode"/>
+        <kau:alignsTo>MIMOSA CCOM: HypotheticalEvent (FMECA) (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase">
@@ -157,8 +165,8 @@
         <kau:dataOwner>Customer Support Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
         <kau:alignsTo>Microsoft CDM: Case (incident) (exactMatch)</kau:alignsTo>
-        <kau:alignsTo>schema.org: Action (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/Action"/>
+        <kau:alignsTo>MIMOSA CCOM: WorkRequest (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 6.0 Manage Customer Service (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading">
@@ -169,10 +177,10 @@
         <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
         <kau:dataOwner>Digital Solutions (KOMTRAX)</kau:dataOwner>
         <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
-        <kau:alignsTo>ISO 15143-3: Fleet snapshot (CumulativeOperatingHours, FuelUsed, Location) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): Equipment snapshot (CumulativeOperatingHours, CumulativeIdleHours, FuelUsed, FuelRemaining, DEFRemaining, Location) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
         <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>schema.org: Observation (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://schema.org/Observation"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading">
@@ -187,9 +195,10 @@
         <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
         <kau:dataOwner>Equipment Administration</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): CumulativeOperatingHours (related)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>schema.org: QuantitativeValue (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://schema.org/QuantitativeValue"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert">
@@ -202,8 +211,11 @@
         <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
         <kau:dataOwner>Digital Solutions (KOMTRAX)</kau:dataOwner>
         <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
-        <kau:alignsTo>ISO 15143-3: Fault codes / caution messages (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>MIMOSA CCOM: Event (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>W3C SOSA: Observation (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): Fault code time series (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>SAE J1939-73: DM1 active / DM2 previously active DTC (related)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: ActualEvent (closeMatch)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: IoTAlert (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -215,8 +227,10 @@
         <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
         <kau:dataOwner>Product Support Engineering</kau:dataOwner>
         <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
-        <kau:alignsTo>SAE J1939-73: Diagnostic Trouble Code (SPN + FMI) (exactMatch)</kau:alignsTo>
-        <kau:alignsTo>ISO 15143-3: FaultCode (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>SAE J1939-73: Diagnostic Trouble Code (SPN 19 bits + FMI 5 bits) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): FaultCode (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>W3C SKOS: Concept (Komatsu error-code scheme) (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample">
@@ -230,10 +244,10 @@
         <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
         <kau:dataOwner>Condition Monitoring</kau:dataOwner>
         <kau:systemOfRecord>LIMC (oil analysis lab)</kau:systemOfRecord>
-        <kau:alignsTo>ISO 14224: Condition monitoring (related)</kau:alignsTo>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 14224: Detection method: condition monitoring (related)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>schema.org: MedicalTest (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://schema.org/MedicalTest"/>
     </owl:Class>
 
     <!-- ================ -->
@@ -323,7 +337,7 @@
         <rdfs:label>pin</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>ISO 10261 17-character product identification number</rdfs:comment>
+        <rdfs:comment>ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 
@@ -769,6 +783,32 @@
         <kau:propertyType>decimal</kau:propertyType>
     </owl:DatatypeProperty>
 
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_defRemainingPct">
+        <rdfs:label>defRemainingPct</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Diesel exhaust fluid remaining</rdfs:comment>
+        <kau:unit>%</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_cumulativeLoadCount">
+        <rdfs:label>cumulativeLoadCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Cumulative load (pass / cycle) count</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_cumulativePayloadTonnes">
+        <rdfs:label>cumulativePayloadTonnes</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Cumulative payload hauled (trucks)</rdfs:comment>
+        <kau:unit>t</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
     <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_latitude">
         <rdfs:label>latitude</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
@@ -871,6 +911,14 @@
         <rdfs:comment>Severity</rdfs:comment>
         <kau:enumValues>Info,Warning,Critical</kau:enumValues>
         <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_occurrenceCount">
+        <rdfs:label>occurrenceCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>J1939 occurrence count reported with the fault</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
     </owl:DatatypeProperty>
 
     <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_status">

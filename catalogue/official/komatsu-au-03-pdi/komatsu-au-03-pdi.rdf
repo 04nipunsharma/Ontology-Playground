@@ -104,11 +104,12 @@
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
         <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
         <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>IOF: PieceOfEquipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment"/>
         <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
         <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>GS1: GIAI (AI 8004) individual asset identifier (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -128,9 +129,10 @@
         <skos:exactMatch rdf:resource="https://schema.org/Product"/>
         <kau:alignsTo>GS1 Web Vocabulary: Product (closeMatch)</kau:alignsTo>
         <skos:closeMatch rdf:resource="https://gs1.org/voc/Product"/>
+        <kau:alignsTo>IOF: MaterialProduct (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialProduct"/>
         <kau:alignsTo>UNSPSC: 22101700 Heavy equipment components (broadMatch)</kau:alignsTo>
-        <kau:alignsTo>IOF Core: MaterialProduct (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        <kau:alignsTo>OAGIS: ItemMaster (related)</kau:alignsTo>
         <kau:alignsTo>Microsoft CDM: ReleasedProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -160,10 +162,11 @@
         <kau:processDomain>Sales to Cash</kau:processDomain>
         <kau:dataOwner>Customer Project Coordinator</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: ParcelDelivery (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/ParcelDelivery"/>
-        <kau:alignsTo>GS1 Web Vocabulary: CBV bizStep: commissioning / accepting (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/CBV bizStep: commissioning / accepting"/>
+        <kau:alignsTo>GS1 CBV 2.0: BizStep-accepting (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://ref.gs1.org/cbv/BizStep-accepting"/>
+        <kau:alignsTo>MIMOSA CCOM: AssetOwnerEvent (related)</kau:alignsTo>
+        <kau:alignsTo>schema.org: OwnershipInfo (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/OwnershipInfo"/>
         <kau:alignsTo>ASCM SCOR DS: Fulfill: Install product (related)</kau:alignsTo>
     </owl:Class>
 
@@ -175,11 +178,11 @@
         <kau:processDomain>Import &amp; Logistics</kau:processDomain>
         <kau:dataOwner>Logistics Coordinator</kau:dataOwner>
         <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: ParcelDelivery (broadMatch)</kau:alignsTo>
-        <skos:broadMatch rdf:resource="https://schema.org/ParcelDelivery"/>
-        <kau:alignsTo>GS1 Web Vocabulary: SSCC (logistic unit) (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/SSCC (logistic unit)"/>
-        <kau:alignsTo>UN/CEFACT: Consignment (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF Supply Chain: Shipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Shipment"/>
+        <kau:alignsTo>UN/CEFACT Vocabulary: Consignment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://vocabulary.uncefact.org/Consignment"/>
+        <kau:alignsTo>GS1: SSCC logistic unit (related)</kau:alignsTo>
         <kau:alignsTo>OAGIS: Shipment (closeMatch)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Fulfill: Transport product (related)</kau:alignsTo>
     </owl:Class>
@@ -192,9 +195,11 @@
         <kau:processDomain>Import &amp; Logistics</kau:processDomain>
         <kau:dataOwner>Logistics Coordinator</kau:dataOwner>
         <kau:systemOfRecord>Reference data</kau:systemOfRecord>
+        <kau:alignsTo>UN/CEFACT Vocabulary: InspectionEvent (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://vocabulary.uncefact.org/InspectionEvent"/>
+        <kau:alignsTo>GS1 CBV 2.0: BizStep-inspecting (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://ref.gs1.org/cbv/BizStep-inspecting"/>
         <kau:alignsTo>DAFF BICON: Machinery and equipment import conditions (related)</kau:alignsTo>
-        <kau:alignsTo>GS1 Web Vocabulary: CBV bizStep: inspecting (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://gs1.org/voc/CBV bizStep: inspecting"/>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-03-pdi/PdiJob">
@@ -209,8 +214,10 @@
         <kau:processDomain>Pre-Delivery Inspection</kau:processDomain>
         <kau:dataOwner>PDI Planner</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaintenanceProcess (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenanceProcess"/>
+        <kau:alignsTo>IOF: PlannedProcess (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PlannedProcess"/>
+        <kau:alignsTo>GS1 CBV 2.0: BizStep-inspecting (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://ref.gs1.org/cbv/BizStep-inspecting"/>
         <kau:alignsTo>ISO 14224: Maintenance activity: inspection / modification (related)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Fulfill: Prepare product for delivery (related)</kau:alignsTo>
     </owl:Class>
@@ -223,9 +230,11 @@
         <kau:processDomain>Pre-Delivery Inspection</kau:processDomain>
         <kau:dataOwner>Workshop Supervisor</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: Measurement (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/Measurement"/>
-        <kau:alignsTo>MIMOSA CCOM: Measurement / Event (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: MeasurementProcess (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MeasurementProcess"/>
+        <kau:alignsTo>GS1 CBV 2.0: Disp-conformant (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://ref.gs1.org/cbv/Disp-conformant"/>
+        <kau:alignsTo>MIMOSA CCOM: Measurement (related)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-03-pdi/PartsRequirement">
@@ -236,9 +245,9 @@
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Service Coordinator / Parts Interpreter</kau:dataOwner>
         <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: MaterialRequirement (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialRequirement"/>
+        <kau:alignsTo>ISA-95: Material requirement (related)</kau:alignsTo>
         <kau:alignsTo>ASCM SCOR DS: Plan: Demand requirement (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: WorkOrderProduct (closeMatch)</kau:alignsTo>
     </owl:Class>
 
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-03-pdi/WorkshopBay">
@@ -249,9 +258,8 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Workshop Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
-        <kau:alignsTo>IOF Core: Facility (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/Facility"/>
-        <kau:alignsTo>ISA-95: Equipment (work unit) (related)</kau:alignsTo>
+        <kau:alignsTo>IOF: Facility (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/Facility"/>
         <kau:alignsTo>Microsoft CDM: BookableResource (facility) (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -267,10 +275,10 @@
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Manager</kau:dataOwner>
         <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
-        <kau:alignsTo>schema.org: Person (closeMatch)</kau:alignsTo>
-        <skos:closeMatch rdf:resource="https://schema.org/Person"/>
-        <kau:alignsTo>IOF Core: MaintenanceTechnicianRole (related)</kau:alignsTo>
-        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintenanceTechnicianRole"/>
+        <kau:alignsTo>IOF: QualifiedMaintenancePerson (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/QualifiedMaintenancePerson"/>
+        <kau:alignsTo>schema.org: Person (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://schema.org/Person"/>
         <kau:alignsTo>Microsoft CDM: BookableResource (closeMatch)</kau:alignsTo>
     </owl:Class>
 
@@ -473,7 +481,7 @@
         <rdfs:label>pin</rdfs:label>
         <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-03-pdi/EquipmentUnit"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <rdfs:comment>ISO 10261 17-character product identification number</rdfs:comment>
+        <rdfs:comment>ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)</rdfs:comment>
         <kau:propertyType>string</kau:propertyType>
     </owl:DatatypeProperty>
 
