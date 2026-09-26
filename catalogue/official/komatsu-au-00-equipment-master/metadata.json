@@ -1,0 +1,15 @@
+{
+  "name": "Komatsu AU · 00 Equipment & Product Master",
+  "description": "The master-data backbone: ISO 6165 machine types, models, options, serialised units and components, part numbers and supersession, factories and suppliers.",
+  "icon": "🚜",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "master-data",
+    "equipment",
+    "annata-device",
+    "iso-6165",
+    "parts"
+  ],
+  "author": "komatsu-australia"
+}

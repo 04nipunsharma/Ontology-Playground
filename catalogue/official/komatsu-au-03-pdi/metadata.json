@@ -1,0 +1,14 @@
+{
+  "name": "Komatsu AU · 03 Pre-Delivery Inspection (PDI)",
+  "description": "PDI planning and execution: unit arrival, bay and technician scheduling, option and compliance fit-out, parts, checklists and handover.",
+  "icon": "🔧",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "pdi",
+    "workshop",
+    "fitment",
+    "scheduling"
+  ],
+  "author": "komatsu-australia"
+}

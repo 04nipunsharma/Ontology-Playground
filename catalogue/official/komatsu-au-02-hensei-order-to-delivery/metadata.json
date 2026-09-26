@@ -1,0 +1,15 @@
+{
+  "name": "Komatsu AU · 02 Hensei & Machine Order-to-Delivery",
+  "description": "Machine S&OP forecast, monthly Hensei cycle, factory allocation and orders, import, biosecurity and customs through to customer handover.",
+  "icon": "🗓️",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "hensei",
+    "factory-order",
+    "import",
+    "biosecurity",
+    "machine-supply"
+  ],
+  "author": "komatsu-australia"
+}

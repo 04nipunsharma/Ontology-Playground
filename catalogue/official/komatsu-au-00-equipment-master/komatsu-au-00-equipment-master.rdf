@@ -1,0 +1,1497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GENERATED FILE — do not edit by hand.
+     Source: src/data/komatsu/model.ts · Generator: scripts/generate-komatsu-catalogue.ts -->
+<rdf:RDF
+    xml:base="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:kau="https://ontology.komatsu.com.au/terms#">
+
+    <owl:Ontology rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/">
+        <rdfs:label>Komatsu AU · 00 Equipment &amp; Product Master</rdfs:label>
+        <rdfs:comment>The master-data backbone: ISO 6165 machine types, models, options, serialised units and components, part numbers and supersession, factories and suppliers.</rdfs:comment>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+        <dcterms:creator>komatsu-australia</dcterms:creator>
+        <dcterms:license rdf:resource="https://opensource.org/licenses/MIT"/>
+    </owl:Ontology>
+
+    <!-- Annotation vocabulary -->
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#icon"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#color"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#processDomain"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#dataOwner"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#systemOfRecord"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#alignsTo"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#isIdentifier"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#unit"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#enumValues"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#propertyType"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#cardinality"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#fromEntityId"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#toEntityId"/>
+
+    <!-- ===================== -->
+    <!-- Entity Types (Classes) -->
+    <!-- ===================== -->
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer">
+        <rdfs:label>Customer</rdfs:label>
+        <rdfs:comment>An organisation that buys, rents or has Komatsu equipment serviced — from owner-operators to tier-one miners and government.</rdfs:comment>
+        <skos:altLabel>Account (Dataverse)</skos:altLabel>
+        <skos:altLabel>Customer account (F&amp;O)</skos:altLabel>
+        <skos:altLabel>Key account</skos:altLabel>
+        <kau:icon>🏢</kau:icon>
+        <kau:color>#0078D4</kau:color>
+        <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
+        <kau:dataOwner>Customer Master Data Steward (Sales Operations)</kau:dataOwner>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: Organization (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://schema.org/Organization"/>
+        <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <kau:alignsTo>IOF Supply Chain: Customer (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Customer"/>
+        <kau:alignsTo>Microsoft CDM: Account (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite">
+        <rdfs:label>CustomerSite</rdfs:label>
+        <rdfs:comment>A physical location where a customer operates equipment — a mine, quarry, construction project, depot or yard.</rdfs:comment>
+        <kau:icon>📍</kau:icon>
+        <kau:color>#0078D4</kau:color>
+        <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
+        <kau:dataOwner>Customer Master Data Steward (Sales Operations)</kau:dataOwner>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: Place (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://schema.org/Place"/>
+        <kau:alignsTo>W3C ORG: Site (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Site"/>
+        <kau:alignsTo>ISO 14224: Installation / Plant (taxonomy levels 3–4) (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: FunctionalLocation (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier">
+        <rdfs:label>Supplier</rdfs:label>
+        <rdfs:comment>An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.</rdfs:comment>
+        <kau:icon>🏗️</kau:icon>
+        <kau:color>#0078D4</kau:color>
+        <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
+        <kau:dataOwner>Procurement</kau:dataOwner>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: Organization (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://schema.org/Organization"/>
+        <kau:alignsTo>IOF Supply Chain: Supplier (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Supplier"/>
+        <kau:alignsTo>W3C ORG: Organization (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Organization"/>
+        <kau:alignsTo>Microsoft CDM: Vendor (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType">
+        <rdfs:label>MachineType</rdfs:label>
+        <rdfs:comment>A basic type of machine as classified by ISO 6165 (e.g. hydraulic excavator, crawler dozer, rigid dumper, grader).</rdfs:comment>
+        <kau:icon>🧭</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Marketing</kau:dataOwner>
+        <kau:systemOfRecord>Reference data</kau:systemOfRecord>
+        <kau:alignsTo>ISO 6165: Earth-moving machinery — basic types (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>UNSPSC: 2210 Heavy construction machinery and equipment (broadMatch)</kau:alignsTo>
+        <kau:alignsTo>schema.org: ProductGroup (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/ProductGroup"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel">
+        <rdfs:label>MachineModel</rdfs:label>
+        <rdfs:comment>A Komatsu machine model and series, e.g. PC210LC-11, D375A-8, WA500-8 or 930E-5, that units are built to.</rdfs:comment>
+        <skos:altLabel>Device model (Annata)</skos:altLabel>
+        <skos:altLabel>Model code</skos:altLabel>
+        <skos:altLabel>Device class / model (CDM Automotive)</skos:altLabel>
+        <kau:icon>🚜</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Marketing</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
+        <kau:alignsTo>MIMOSA CCOM: Model (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF Core: ProductSpecification (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/ProductSpecification"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption">
+        <rdfs:label>MachineOption</rdfs:label>
+        <rdfs:comment>A factory option, locally fitted kit, attachment or Australian compliance item that configures a machine (e.g. fire suppression, mine-spec pack, tilt bucket).</rdfs:comment>
+        <skos:altLabel>Configuration option (Annata)</skos:altLabel>
+        <skos:altLabel>Local option</skos:altLabel>
+        <skos:altLabel>Attachment</skos:altLabel>
+        <skos:altLabel>Fit-out kit</skos:altLabel>
+        <kau:icon>🧩</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Marketing</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: Product (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://schema.org/Product"/>
+        <kau:alignsTo>schema.org: isAccessoryOrSparePartFor (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/isAccessoryOrSparePartFor"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit">
+        <rdfs:label>EquipmentUnit</rdfs:label>
+        <rdfs:comment>An individual serialised machine (Annata &quot;device&quot;) tracked from factory order through stock, PDI, delivery, service life, trade-in and disposal.</rdfs:comment>
+        <skos:altLabel>Device (Annata)</skos:altLabel>
+        <skos:altLabel>Unit</skos:altLabel>
+        <skos:altLabel>Machine</skos:altLabel>
+        <skos:altLabel>Customer asset (Field Service)</skos:altLabel>
+        <skos:altLabel>Stock unit</skos:altLabel>
+        <kau:icon>🏗️</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Equipment Administration (Annata device master)</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+        <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component">
+        <rdfs:label>Component</rdfs:label>
+        <rdfs:comment>A serialised major component (engine, transmission, final drive, pump, wheel motor…) that is installed on a unit, removed as a core and remanufactured.</rdfs:comment>
+        <skos:altLabel>Major component</skos:altLabel>
+        <skos:altLabel>Child device (Annata device hierarchy)</skos:altLabel>
+        <skos:altLabel>Exchange component</skos:altLabel>
+        <kau:icon>⚙️</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Support / Component Management</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Asset (installed on Segment) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF Core: MaintainableMaterialItem (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaintainableMaterialItem"/>
+        <kau:alignsTo>GS1 Web Vocabulary: IndividualAsset (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://gs1.org/voc/IndividualAsset"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part">
+        <rdfs:label>Part</rdfs:label>
+        <rdfs:comment>A stocked or orderable part number — Komatsu Genuine, reman exchange, filters, oils, GET, undercarriage, kits and approved aftermarket items.</rdfs:comment>
+        <skos:altLabel>Item</skos:altLabel>
+        <skos:altLabel>Released product</skos:altLabel>
+        <skos:altLabel>Part number</skos:altLabel>
+        <skos:altLabel>SKU</skos:altLabel>
+        <kau:icon>🔩</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Parts Product Management</kau:dataOwner>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: Product (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/Product"/>
+        <kau:alignsTo>GS1 Web Vocabulary: Product (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://gs1.org/voc/Product"/>
+        <kau:alignsTo>UNSPSC: 22101700 Heavy equipment components (broadMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF Core: MaterialProduct (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/core/Core/MaterialProduct"/>
+        <kau:alignsTo>Microsoft CDM: ReleasedProduct (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange">
+        <rdfs:label>PartInterchange</rdfs:label>
+        <rdfs:comment>A supersession, interchangeability or reman-alternate link from one part number to another.</rdfs:comment>
+        <skos:altLabel>Supersession</skos:altLabel>
+        <skos:altLabel>Alternate part</skos:altLabel>
+        <skos:altLabel>Multi-level supersession (Annata)</skos:altLabel>
+        <kau:icon>🔁</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Parts Product Management</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>OAGIS: ItemMaster / Supersession (related)</kau:alignsTo>
+        <kau:alignsTo>ECLASS: successor product (related)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory">
+        <rdfs:label>Factory</rdfs:label>
+        <rdfs:comment>A Komatsu group manufacturing plant that builds machines or components for Australia (e.g. Awazu, Osaka, Ibaraki, Rayong, Jakarta, Peoria, Milwaukee).</rdfs:comment>
+        <kau:icon>🏭</kau:icon>
+        <kau:color>#FFB900</kau:color>
+        <kau:processDomain>Hensei &amp; Factory Ordering</kau:processDomain>
+        <kau:dataOwner>Hensei Planner (Machine Supply)</kau:dataOwner>
+        <kau:systemOfRecord>Komatsu factory systems</kau:systemOfRecord>
+        <kau:alignsTo>W3C ORG: Site (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/org#Site"/>
+        <kau:alignsTo>schema.org: Organization (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/Organization"/>
+        <kau:alignsTo>IOF Supply Chain: Manufacturer (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/supplychain/SupplyChain/Manufacturer"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage">
+        <rdfs:label>WarrantyCoverage</rdfs:label>
+        <rdfs:comment>A warranty entitlement on a unit or component — standard machine, Premium Warranty, Long Haul Support, Parts Plus, Premium Used or reman component.</rdfs:comment>
+        <kau:icon>🛡️</kau:icon>
+        <kau:color>#1A5276</kau:color>
+        <kau:processDomain>Contracts &amp; Warranty</kau:processDomain>
+        <kau:dataOwner>Warranty Administrator</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: WarrantyPromise (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/WarrantyPromise"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading">
+        <rdfs:label>MeterReading</rdfs:label>
+        <rdfs:comment>A service-meter (SMR) or odometer reading recorded against a unit in Annata — from KOMTRAX, a technician, the customer portal or a delivery.</rdfs:comment>
+        <skos:altLabel>SMR</skos:altLabel>
+        <skos:altLabel>SMU</skos:altLabel>
+        <skos:altLabel>Counter reading (Annata)</skos:altLabel>
+        <skos:altLabel>Hour meter</skos:altLabel>
+        <kau:icon>🔢</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Equipment Administration</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>schema.org: QuantitativeValue (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://schema.org/QuantitativeValue"/>
+    </owl:Class>
+
+    <!-- ================ -->
+    <!-- Data Properties -->
+    <!-- ================ -->
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_customerAccount">
+        <rdfs:label>customerAccount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>D365 customer account number (dual-written CE ↔ F&amp;O)</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Registered or trading name</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_abn">
+        <rdfs:label>abn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Australian Business Number</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_segment">
+        <rdfs:label>segment</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Primary market segment served</rdfs:comment>
+        <kau:enumValues>Construction,Utilities,Mining,Quarry,Forestry,Industrial,Government,Rental,Waste</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_customerTier">
+        <rdfs:label>customerTier</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Commercial tier driving coverage model and pricing</rdfs:comment>
+        <kau:enumValues>Strategic,Key Account,Fleet,Commercial,Owner-Operator,Cash</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_state">
+        <rdfs:label>state</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Head-office state</rdfs:comment>
+        <kau:enumValues>NSW,VIC,QLD,WA,SA,TAS,NT,ACT</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_creditLimit">
+        <rdfs:label>creditLimit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Approved credit limit</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_paymentTerms">
+        <rdfs:label>paymentTerms</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Payment terms code, e.g. 30 days EOM</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customer_isOnCreditHold">
+        <rdfs:label>isOnCreditHold</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when the account is blocked for new transactions</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_siteId">
+        <rdfs:label>siteId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Functional location / delivery address identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Site name, e.g. &quot;Hunter Valley Operations — Pit 3&quot;</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_siteType">
+        <rdfs:label>siteType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kind of operating site</rdfs:comment>
+        <kau:enumValues>Mine Site,Underground Mine,Quarry,Construction Project,Depot,Yard,Forestry Coupe,Council Works</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_state">
+        <rdfs:label>state</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>State the site is located in</rdfs:comment>
+        <kau:enumValues>NSW,VIC,QLD,WA,SA,TAS,NT,ACT</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_latitude">
+        <rdfs:label>latitude</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>WGS84 latitude</rdfs:comment>
+        <kau:unit>deg</kau:unit>
+        <kau:propertyType>double</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_longitude">
+        <rdfs:label>longitude</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>WGS84 longitude</rdfs:comment>
+        <kau:unit>deg</kau:unit>
+        <kau:propertyType>double</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_requiresSiteInduction">
+        <rdfs:label>requiresSiteInduction</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when technicians must hold a site induction before attending</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/customerSite_isRemote">
+        <rdfs:label>isRemote</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True for fly-in/fly-out or remote-area sites affecting travel and parts logistics</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_vendorAccount">
+        <rdfs:label>vendorAccount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>F&amp;O vendor account number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Supplier name</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_supplierType">
+        <rdfs:label>supplierType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Role the supplier plays in the supply chain</rdfs:comment>
+        <kau:enumValues>Komatsu Factory,Komatsu Parts Depot,Intercompany,Local OEM,Aftermarket Vendor,Subcontractor,Transport Carrier,Freight Forwarder,Customs Broker</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_abn">
+        <rdfs:label>abn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Australian Business Number (local suppliers)</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_countryCode">
+        <rdfs:label>countryCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>ISO 3166 country of the supplying entity</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_leadTimeDays">
+        <rdfs:label>leadTimeDays</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Standard replenishment lead time</rdfs:comment>
+        <kau:unit>days</kau:unit>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_isPreferred">
+        <rdfs:label>isPreferred</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Preferred supplier flag</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/supplier_onTimeInFullPct">
+        <rdfs:label>onTimeInFullPct</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Rolling on-time-in-full delivery performance</rdfs:comment>
+        <kau:unit>%</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineType_machineTypeCode">
+        <rdfs:label>machineTypeCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Internal machine type code</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineType_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Type name, e.g. &quot;Hydraulic excavator&quot;</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineType_iso6165Term">
+        <rdfs:label>iso6165Term</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Matching ISO 6165 basic type term</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineType_unspscCode">
+        <rdfs:label>unspscCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>UNSPSC commodity code, e.g. 22101526 (track excavators)</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineType_productLine">
+        <rdfs:label>productLine</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu product line the type belongs to</rdfs:comment>
+        <kau:enumValues>Construction,Utility,Surface Mining,Underground Mining,Forestry,Industrial</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_modelCode">
+        <rdfs:label>modelCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Model and series code, e.g. PC210LC-11</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_series">
+        <rdfs:label>series</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Generation / dash number, e.g. -11</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_productLine">
+        <rdfs:label>productLine</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Product line</rdfs:comment>
+        <kau:enumValues>Construction,Utility,Surface Mining,Underground Mining,Forestry,Industrial</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_operatingWeightKg">
+        <rdfs:label>operatingWeightKg</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Nominal operating weight</rdfs:comment>
+        <kau:unit>kg</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_enginePowerKw">
+        <rdfs:label>enginePowerKw</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Rated engine power</rdfs:comment>
+        <kau:unit>kW</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_powertrain">
+        <rdfs:label>powertrain</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Powertrain / energy source</rdfs:comment>
+        <kau:enumValues>Diesel,Hybrid,Diesel-Electric,Battery-Electric,Trolley-Assist,Electric (cable)</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_isCurrentModel">
+        <rdfs:label>isCurrentModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True while the model is available to order</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineModel_listPrice">
+        <rdfs:label>listPrice</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Current recommended retail price (base spec)</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_optionCode">
+        <rdfs:label>optionCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Option or kit code</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Option name</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_optionType">
+        <rdfs:label>optionType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>How and where the option is supplied</rdfs:comment>
+        <kau:enumValues>Factory Option,Local Fitment Kit,Attachment,Compliance Item,Technology (Smart Construction)</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_isMandatoryForAU">
+        <rdfs:label>isMandatoryForAU</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Required for Australian compliance or site rules</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_complianceStandard">
+        <rdfs:label>complianceStandard</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Standard satisfied, e.g. MDG 15, AS 2958.1, ISO 3471 ROPS</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_fitmentHours">
+        <rdfs:label>fitmentHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Standard fitment labour when fitted at PDI</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/machineOption_listPrice">
+        <rdfs:label>listPrice</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Recommended retail price</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_serialNumber">
+        <rdfs:label>serialNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu machine serial number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_pin">
+        <rdfs:label>pin</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>ISO 10261 17-character product identification number</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_stockNumber">
+        <rdfs:label>stockNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Internal stock / unit number while in Komatsu inventory</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_unitStatus">
+        <rdfs:label>unitStatus</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Lifecycle status of the unit</rdfs:comment>
+        <kau:enumValues>On Order,In Production,In Transit,In Stock,In PDI,Ready for Delivery,Delivered,In Service,Rental Fleet,Used Stock,Sold,Scrapped</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_ownershipType">
+        <rdfs:label>ownershipType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Who owns the unit</rdfs:comment>
+        <kau:enumValues>Komatsu Stock,Customer Owned,Rental Fleet,Demonstrator,Consignment,Leased</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_smrHours">
+        <rdfs:label>smrHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Latest service meter reading</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_yearOfManufacture">
+        <rdfs:label>yearOfManufacture</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Year the unit was built</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_deliveryDate">
+        <rdfs:label>deliveryDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date the unit was handed over to the first customer</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_warrantyStartDate">
+        <rdfs:label>warrantyStartDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Start of the factory warranty period</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/equipmentUnit_komtraxEnabled">
+        <rdfs:label>komtraxEnabled</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when KOMTRAX / KOMTRAX Plus telematics is active</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_componentSerial">
+        <rdfs:label>componentSerial</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Component serial number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_componentType">
+        <rdfs:label>componentType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kind of major component</rdfs:comment>
+        <kau:enumValues>Engine,Transmission,Torque Converter,Final Drive,Differential,Hydraulic Pump,Swing Machinery,Travel Motor,Wheel Motor,Alternator,Cylinder,Radiator,Axle</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_componentStatus">
+        <rdfs:label>componentStatus</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Where the component is in its lifecycle</rdfs:comment>
+        <kau:enumValues>Installed,Removed - Core,In Rebuild,Reman Stock,Scrapped</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_installedDate">
+        <rdfs:label>installedDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date installed on the current unit</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_hoursAtInstall">
+        <rdfs:label>hoursAtInstall</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Unit SMR when installed</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_componentHours">
+        <rdfs:label>componentHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Hours accumulated by this component</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_lifeTargetHours">
+        <rdfs:label>lifeTargetHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Planned component replacement (PCR) life target</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/component_rebuildCount">
+        <rdfs:label>rebuildCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of times this component has been remanufactured</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_partNumber">
+        <rdfs:label>partNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu or supplier part number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_description">
+        <rdfs:label>description</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Part description</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_brand">
+        <rdfs:label>brand</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Brand, e.g. Komatsu Genuine, Hensley, KVX</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_partCategory">
+        <rdfs:label>partCategory</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Commercial category</rdfs:comment>
+        <kau:enumValues>Genuine,Reman Exchange,Filter,Oil and Lubricant,Ground Engaging Tools,Undercarriage,Kit,Attachment,Aftermarket,Consumable</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_lifecycleStatus">
+        <rdfs:label>lifecycleStatus</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Engineering / supply lifecycle status</rdfs:comment>
+        <kau:enumValues>Active,Superseded,Obsolete,No Longer Available</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_abcClass">
+        <rdfs:label>abcClass</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Value/velocity classification used by parts planning</rdfs:comment>
+        <kau:enumValues>A,B,C,D</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_unitOfMeasure">
+        <rdfs:label>unitOfMeasure</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Stocking unit of measure</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_listPrice">
+        <rdfs:label>listPrice</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Parts list price</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_weightKg">
+        <rdfs:label>weightKg</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Net weight</rdfs:comment>
+        <kau:unit>kg</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_hsCode">
+        <rdfs:label>hsCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Harmonized System tariff code for import (e.g. 8431.49)</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_isSerialised">
+        <rdfs:label>isSerialised</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when each unit is serial-tracked (reman components, attachments)</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/part_isDangerousGoods">
+        <rdfs:label>isDangerousGoods</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True for batteries, pressurised or flammable items</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/partInterchange_interchangeId">
+        <rdfs:label>interchangeId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Interchange record identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/partInterchange_interchangeType">
+        <rdfs:label>interchangeType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nature of the substitution</rdfs:comment>
+        <kau:enumValues>One-way Supersession,Two-way Interchangeable,Reman Alternate,Kit Replacement</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/partInterchange_effectiveDate">
+        <rdfs:label>effectiveDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date the interchange takes effect</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/partInterchange_quantityRatio">
+        <rdfs:label>quantityRatio</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>New-part quantity per old-part quantity</rdfs:comment>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/partInterchange_useUpOldStock">
+        <rdfs:label>useUpOldStock</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when existing stock of the old part should be consumed first</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/factory_factoryCode">
+        <rdfs:label>factoryCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Factory code used on factory orders</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/factory_name">
+        <rdfs:label>name</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Plant name</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/factory_countryCode">
+        <rdfs:label>countryCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>ISO 3166 country code</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/factory_legalEntity">
+        <rdfs:label>legalEntity</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu group entity that invoices from this plant</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/factory_standardLeadTimeDays">
+        <rdfs:label>standardLeadTimeDays</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Typical order-to-ship lead time</rdfs:comment>
+        <kau:unit>days</kau:unit>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_warrantyId">
+        <rdfs:label>warrantyId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Warranty registration identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_warrantyType">
+        <rdfs:label>warrantyType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Coverage product</rdfs:comment>
+        <kau:enumValues>Standard Machine,Premium Warranty,Long Haul Support,Parts Plus Warranty,Premium Used,Reman Component,Service Workmanship</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_startDate">
+        <rdfs:label>startDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Coverage start</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_endDate">
+        <rdfs:label>endDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Coverage end</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_hoursLimit">
+        <rdfs:label>hoursLimit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Meter limit of coverage</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantyCoverage_status">
+        <rdfs:label>status</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Coverage status</rdfs:comment>
+        <kau:enumValues>Registered,Active,Expired,Void</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_meterReadingId">
+        <rdfs:label>meterReadingId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Counter reading identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_readingTime">
+        <rdfs:label>readingTime</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the reading was taken</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_meterType">
+        <rdfs:label>meterType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Meter / counter type</rdfs:comment>
+        <kau:enumValues>SMR Hours,Odometer,Payload Cycles,Engine Hours</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_meterValue">
+        <rdfs:label>meterValue</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Reading value</rdfs:comment>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_readingSource">
+        <rdfs:label>readingSource</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Where the reading came from</rdfs:comment>
+        <kau:enumValues>KOMTRAX,Technician,Customer Portal,Delivery,Estimated</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterReading_isValidated">
+        <rdfs:label>isValidated</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when the reading passed plausibility checks</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <!-- ================== -->
+    <!-- Object Properties -->
+    <!-- ================== -->
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/operatesSite">
+        <rdfs:label>operatesSite</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:comment>A customer operates one or more job, mine or depot sites</rdfs:comment>
+        <kau:cardinality>one-to-many</kau:cardinality>
+        <kau:fromEntityId>customer</kau:fromEntityId>
+        <kau:toEntityId>customerSite</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/isOfType">
+        <rdfs:label>isOfType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <rdfs:comment>A model is of one ISO 6165 machine type</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineModel</kau:fromEntityId>
+        <kau:toEntityId>machineType</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/producedAt">
+        <rdfs:label>producedAt</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:comment>A model is built at a source factory for Australia</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineModel</kau:fromEntityId>
+        <kau:toEntityId>factory</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/optionForModel">
+        <rdfs:label>optionForModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:comment>An option or kit is available for one or more models</rdfs:comment>
+        <kau:cardinality>many-to-many</kau:cardinality>
+        <kau:fromEntityId>machineOption</kau:fromEntityId>
+        <kau:toEntityId>machineModel</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/unitOfModel">
+        <rdfs:label>unitOfModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:comment>A unit is built to a model</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>equipmentUnit</kau:fromEntityId>
+        <kau:toEntityId>machineModel</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/ownedBy">
+        <rdfs:label>ownedBy</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <rdfs:comment>A unit is owned by a customer (current owner)</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>equipmentUnit</kau:fromEntityId>
+        <kau:toEntityId>customer</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/operatesAt">
+        <rdfs:label>operatesAt</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <rdfs:comment>A unit currently operates at a customer site</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>equipmentUnit</kau:fromEntityId>
+        <kau:toEntityId>customerSite</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/fittedWithOption">
+        <rdfs:label>fittedWithOption</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <rdfs:comment>A unit is configured with factory options and local fitments</rdfs:comment>
+        <kau:cardinality>many-to-many</kau:cardinality>
+        <kau:fromEntityId>equipmentUnit</kau:fromEntityId>
+        <kau:toEntityId>machineOption</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/installedOn">
+        <rdfs:label>installedOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:comment>A major component is installed on a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>component</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/isPartNumber">
+        <rdfs:label>isPartNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:comment>A serialised component is an instance of a part number</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>component</kau:fromEntityId>
+        <kau:toEntityId>part</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/fitsModel">
+        <rdfs:label>fitsModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <rdfs:comment>A part is applicable to machine models (by serial range)</rdfs:comment>
+        <kau:cardinality>many-to-many</kau:cardinality>
+        <kau:fromEntityId>part</kau:fromEntityId>
+        <kau:toEntityId>machineModel</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/fitsModel_serialFrom">
+        <rdfs:label>serialFrom</rdfs:label>
+        <rdfs:comment>Relationship attribute for fitsModel</rdfs:comment>
+        <kau:relationshipAttributeOf>fitsModel</kau:relationshipAttributeOf>
+        <kau:attributeType>string</kau:attributeType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/fitsModel_serialTo">
+        <rdfs:label>serialTo</rdfs:label>
+        <rdfs:comment>Relationship attribute for fitsModel</rdfs:comment>
+        <kau:relationshipAttributeOf>fitsModel</kau:relationshipAttributeOf>
+        <kau:attributeType>string</kau:attributeType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/fitsModel_qtyPerMachine">
+        <rdfs:label>qtyPerMachine</rdfs:label>
+        <rdfs:comment>Relationship attribute for fitsModel</rdfs:comment>
+        <kau:relationshipAttributeOf>fitsModel</kau:relationshipAttributeOf>
+        <kau:attributeType>decimal</kau:attributeType>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/replacesPart">
+        <rdfs:label>replacesPart</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:comment>An interchange record replaces an old part number</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>partInterchange</kau:fromEntityId>
+        <kau:toEntityId>part</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/withPart">
+        <rdfs:label>withPart</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:comment>An interchange record points to the new or alternate part number</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>partInterchange</kau:fromEntityId>
+        <kau:toEntityId>part</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/primarySupplier">
+        <rdfs:label>primarySupplier</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:comment>A part has a primary (default) supplier</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>part</kau:fromEntityId>
+        <kau:toEntityId>supplier</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/tradesAsSupplier">
+        <rdfs:label>tradesAsSupplier</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <rdfs:comment>A factory is bought from through a Komatsu group vendor account</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>factory</kau:fromEntityId>
+        <kau:toEntityId>supplier</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantsUnit">
+        <rdfs:label>warrantsUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:comment>A warranty covers a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>warrantyCoverage</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/warrantsComponent">
+        <rdfs:label>warrantsComponent</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <rdfs:comment>A reman or component warranty covers a component</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>warrantyCoverage</kau:fromEntityId>
+        <kau:toEntityId>component</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/meterOfUnit">
+        <rdfs:label>meterOfUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <rdfs:comment>A meter reading is for a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>meterReading</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <!-- ============================================== -->
+    <!-- Data Bindings (system of record → Fabric table) -->
+    <!-- ============================================== -->
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_customer">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Customer"/>
+        <kau:boundEntityId>customer</kau:boundEntityId>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.custtable</kau:table>
+        <kau:rowFilter>dataareaid = &apos;kau&apos;</kau:rowFilter>
+        <kau:alternateTable>account (Dataverse, dual-write: accountnumber = accountnum)</kau:alternateTable>
+        <kau:columnMapping>customerAccount=accountnum</kau:columnMapping>
+        <kau:columnMapping>name=dirpartytable.name</kau:columnMapping>
+        <kau:columnMapping>abn=vatnum</kau:columnMapping>
+        <kau:columnMapping>segment=segmentid</kau:columnMapping>
+        <kau:columnMapping>customerTier=custgroup</kau:columnMapping>
+        <kau:columnMapping>creditLimit=creditmax</kau:columnMapping>
+        <kau:columnMapping>paymentTerms=paymtermid</kau:columnMapping>
+        <kau:columnMapping>isOnCreditHold=blocked</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_customerSite">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/CustomerSite"/>
+        <kau:boundEntityId>customerSite</kau:boundEntityId>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.msdyn_functionallocation</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>siteId=msdyn_functionallocationid</kau:columnMapping>
+        <kau:columnMapping>name=msdyn_name</kau:columnMapping>
+        <kau:columnMapping>latitude=msdyn_latitude</kau:columnMapping>
+        <kau:columnMapping>longitude=msdyn_longitude</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_supplier">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Supplier"/>
+        <kau:boundEntityId>supplier</kau:boundEntityId>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.vendtable</kau:table>
+        <kau:alternateTable>msdyn_vendor (Dataverse, dual-write)</kau:alternateTable>
+        <kau:columnMapping>vendorAccount=accountnum</kau:columnMapping>
+        <kau:columnMapping>name=dirpartytable.name</kau:columnMapping>
+        <kau:columnMapping>supplierType=vendgroup</kau:columnMapping>
+        <kau:columnMapping>abn=vatnum</kau:columnMapping>
+        <kau:columnMapping>countryCode=countryregionid</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_machineType">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineType"/>
+        <kau:boundEntityId>machineType</kau:boundEntityId>
+        <kau:systemOfRecord>Reference data</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_reference (curated reference &amp; external feeds)</kau:source>
+        <kau:table>lh_reference.dbo.machine_type</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>machineTypeCode=machine_type_code</kau:columnMapping>
+        <kau:columnMapping>name=name</kau:columnMapping>
+        <kau:columnMapping>iso6165Term=iso6165_term</kau:columnMapping>
+        <kau:columnMapping>unspscCode=unspsc_code</kau:columnMapping>
+        <kau:columnMapping>productLine=product_line</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_machineModel">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineModel"/>
+        <kau:boundEntityId>machineModel</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicemodel</kau:table>
+        <kau:alternateTable>msauto_devicemodel / msauto_devicemodelcode (Dataverse)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>modelCode=modelid</kau:columnMapping>
+        <kau:columnMapping>series=modelcode</kau:columnMapping>
+        <kau:columnMapping>operatingWeightKg=operatingweight</kau:columnMapping>
+        <kau:columnMapping>enginePowerKw=enginepower</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_machineOption">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MachineOption"/>
+        <kau:boundEntityId>machineOption</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdeviceconfigoption</kau:table>
+        <kau:alternateTable>msauto_configurationoption (Dataverse)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>optionCode=optionid</kau:columnMapping>
+        <kau:columnMapping>name=name</kau:columnMapping>
+        <kau:columnMapping>optionType=optiontype</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_equipmentUnit">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/EquipmentUnit"/>
+        <kau:boundEntityId>equipmentUnit</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicetable</kau:table>
+        <kau:alternateTable>msauto_device (Dataverse) / msdyn_customerasset (Field Service)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>serialNumber=serialnumber</kau:columnMapping>
+        <kau:columnMapping>pin=vin</kau:columnMapping>
+        <kau:columnMapping>stockNumber=deviceid</kau:columnMapping>
+        <kau:columnMapping>unitStatus=devicestatus</kau:columnMapping>
+        <kau:columnMapping>ownershipType=ownership</kau:columnMapping>
+        <kau:columnMapping>smrHours=lastcountervalue</kau:columnMapping>
+        <kau:columnMapping>yearOfManufacture=modelyear</kau:columnMapping>
+        <kau:columnMapping>deliveryDate=deliverydate</kau:columnMapping>
+        <kau:columnMapping>warrantyStartDate=warrantystartdate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_component">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Component"/>
+        <kau:boundEntityId>component</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicetable</kau:table>
+        <kau:rowFilter>device class = major component (child of a machine device)</kau:rowFilter>
+        <kau:alternateTable>msauto_devicecomponent (Dataverse)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>componentSerial=serialnumber</kau:columnMapping>
+        <kau:columnMapping>componentType=deviceclass</kau:columnMapping>
+        <kau:columnMapping>installedDate=installeddate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_part">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Part"/>
+        <kau:boundEntityId>part</kau:boundEntityId>
+        <kau:systemOfRecord>D365 F&amp;O</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.inventtable</kau:table>
+        <kau:columnMapping>partNumber=itemid</kau:columnMapping>
+        <kau:columnMapping>description=namealias</kau:columnMapping>
+        <kau:columnMapping>abcClass=abcrevenue</kau:columnMapping>
+        <kau:columnMapping>unitOfMeasure=unitid</kau:columnMapping>
+        <kau:columnMapping>weightKg=netweight</kau:columnMapping>
+        <kau:columnMapping>hsCode=intracode</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_partInterchange">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/PartInterchange"/>
+        <kau:boundEntityId>partInterchange</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amitemsupersession</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>interchangeId=recid</kau:columnMapping>
+        <kau:columnMapping>interchangeType=supersessiontype</kau:columnMapping>
+        <kau:columnMapping>effectiveDate=fromdate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_factory">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/Factory"/>
+        <kau:boundEntityId>factory</kau:boundEntityId>
+        <kau:systemOfRecord>Komatsu factory systems</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_reference (curated reference &amp; external feeds)</kau:source>
+        <kau:table>lh_reference.dbo.factory</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>factoryCode=factory_code</kau:columnMapping>
+        <kau:columnMapping>name=name</kau:columnMapping>
+        <kau:columnMapping>countryCode=country_code</kau:columnMapping>
+        <kau:columnMapping>legalEntity=legal_entity</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_warrantyCoverage">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/WarrantyCoverage"/>
+        <kau:boundEntityId>warrantyCoverage</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicewarranty</kau:table>
+        <kau:alternateTable>msauto_devicewarranty (Dataverse) / msdyn_warranty</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>warrantyId=warrantyid</kau:columnMapping>
+        <kau:columnMapping>warrantyType=warrantytype</kau:columnMapping>
+        <kau:columnMapping>startDate=startdate</kau:columnMapping>
+        <kau:columnMapping>endDate=enddate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/binding_meterReading">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-00-equipment-master/MeterReading"/>
+        <kau:boundEntityId>meterReading</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicemeterreading</kau:table>
+        <kau:alternateTable>msauto_devicemeasurement (Dataverse) / msdyn_propertylog (Field Service)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>meterReadingId=recid</kau:columnMapping>
+        <kau:columnMapping>readingTime=readingdatetime</kau:columnMapping>
+        <kau:columnMapping>meterType=metertype</kau:columnMapping>
+        <kau:columnMapping>meterValue=metervalue</kau:columnMapping>
+        <kau:columnMapping>readingSource=source</kau:columnMapping>
+    </kau:DataBinding>
+
+</rdf:RDF>

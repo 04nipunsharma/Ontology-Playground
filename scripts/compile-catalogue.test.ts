@@ -54,7 +54,7 @@ describe('catalogue compilation (end-to-end)', () => {
     expect(output.count).toBe(output.entries.length);
     expect(output.entries.length).toBeGreaterThan(0);
     expect(output.generatedAt).toBeTruthy();
-  });
+  }, 30000);
 
   it('catalogue.json entries have required fields', () => {
     const output = readCatalogue();
@@ -91,7 +91,7 @@ describe('catalogue compilation (end-to-end)', () => {
 
 describe('catalogue metadata validation', () => {
   it('all entries reference valid categories', () => {
-    const validCats = ['retail', 'healthcare', 'finance', 'manufacturing', 'education', 'general', 'food', 'media', 'events', 'technology', 'iq-lab', 'school', 'fibo'];
+    const validCats = ['komatsu', 'retail', 'healthcare', 'finance', 'manufacturing', 'education', 'general', 'food', 'media', 'events', 'technology', 'iq-lab', 'school', 'fibo'];
     for (const entry of readCatalogue().entries) {
       expect(validCats).toContain(entry.category);
     }

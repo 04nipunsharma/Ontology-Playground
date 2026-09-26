@@ -1,0 +1,14 @@
+{
+  "name": "Komatsu Australia Enterprise Ontology",
+  "description": "End-to-end ontology for Komatsu Australia: customers and sites, machine sales to delivery, Hensei factory ordering, import and PDI, parts supply chain and planning, service and technicians, contracts and warranty, REMAN, customer support and KOMTRAX — aligned to industry standards and bound to D365 CE, F&O and Annata 365.",
+  "icon": "🚜",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "enterprise",
+    "d365",
+    "annata",
+    "end-to-end"
+  ],
+  "author": "komatsu-australia"
+}

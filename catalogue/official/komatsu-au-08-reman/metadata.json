@@ -1,0 +1,14 @@
+{
+  "name": "Komatsu AU · 08 Remanufacturing (REMAN)",
+  "description": "Component exchange and core returns, core credits, rebuild jobs, reman stock and reman warranty.",
+  "icon": "🔄",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "reman",
+    "core-return",
+    "component",
+    "circular-economy"
+  ],
+  "author": "komatsu-australia"
+}

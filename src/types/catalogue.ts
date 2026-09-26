@@ -20,6 +20,7 @@ export interface Catalogue {
 }
 
 export const CATEGORY_LABELS: Record<string, string> = {
+  komatsu: 'Komatsu Australia',
   retail: 'Retail',
   healthcare: 'Healthcare',
   finance: 'Finance',
@@ -35,6 +36,7 @@ export const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export const CATEGORY_COLORS: Record<string, string> = {
+  komatsu: '#140A9A',
   retail: '#0078D4',
   healthcare: '#D13438',
   finance: '#107C10',
