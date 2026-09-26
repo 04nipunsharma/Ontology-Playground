@@ -31,10 +31,10 @@ D365 / Annata 365 environment (see [open questions](open-questions.md)).
 | 🏢 **Customer** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 F&O | `lh_d365.dbo.custtable` | [schema.org: Organization](https://schema.org/Organization)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>[IOF Supply Chain: Customer](https://spec.industrialontologies.org/ontology/construct/Customer)<br>OAGIS: CustomerPartyMaster<br>Microsoft CDM: Account |
 | 📍 **CustomerSite** | Customers, People & Organisation | Customer Master Data Steward (Sales Operations) | D365 CE | `lh_d365.dbo.msdyn_functionallocation` ⚠️ | [schema.org: Place](https://schema.org/Place)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[IOF: GeospatialSite](https://spec.industrialontologies.org/ontology/construct/GeospatialSite)<br>MIMOSA CCOM: Segment (functional location)<br>ISO 14224: Installation / Plant (taxonomy levels 3–4)<br>Microsoft CDM: FunctionalLocation |
 | 👤 **Contact** | Customers, People & Organisation | Sales Operations | D365 CE | `lh_d365.dbo.contact` | [schema.org: Person](https://schema.org/Person)<br>[schema.org: ContactPoint](https://schema.org/ContactPoint)<br>Microsoft CDM: Contact |
-| 🏭 **Branch** | Customers, People & Organisation | Operations Finance (organisation structure) | D365 F&O | `lh_d365.dbo.inventsite` ⚠️ | [W3C ORG: OrganizationalUnit](http://www.w3.org/ns/org#OrganizationalUnit)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[schema.org: LocalBusiness](https://schema.org/LocalBusiness) |
+| 🏪 **Branch** | Customers, People & Organisation | Operations Finance (organisation structure) | D365 F&O | `lh_d365.dbo.inventsite` ⚠️ | [W3C ORG: OrganizationalUnit](http://www.w3.org/ns/org#OrganizationalUnit)<br>[W3C ORG: Site](http://www.w3.org/ns/org#Site)<br>[schema.org: LocalBusiness](https://schema.org/LocalBusiness) |
 | 🗺️ **SalesTerritory** | Customers, People & Organisation | Sales Operations | D365 CE | `lh_d365.dbo.territory` | [schema.org: AdministrativeArea](https://schema.org/AdministrativeArea)<br>Microsoft CDM: Territory |
 | 🧑‍💼 **Employee** | Customers, People & Organisation | People & Culture (HR master data) | D365 F&O | `lh_d365.dbo.hcmworker` ⚠️ | [schema.org: Person](https://schema.org/Person)<br>[W3C ORG: Membership](http://www.w3.org/ns/org#Membership)<br>[W3C ORG: Role](http://www.w3.org/ns/org#Role)<br>Microsoft CDM: Worker |
-| 🏗️ **Supplier** | Customers, People & Organisation | Procurement | D365 F&O | `lh_d365.dbo.vendtable` | [schema.org: Organization](https://schema.org/Organization)<br>[IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/construct/Supplier)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>OAGIS: SupplierPartyMaster<br>Microsoft CDM: Vendor |
+| 🚚 **Supplier** | Customers, People & Organisation | Procurement | D365 F&O | `lh_d365.dbo.vendtable` | [schema.org: Organization](https://schema.org/Organization)<br>[IOF Supply Chain: Supplier](https://spec.industrialontologies.org/ontology/construct/Supplier)<br>[W3C ORG: Organization](http://www.w3.org/ns/org#Organization)<br>OAGIS: SupplierPartyMaster<br>Microsoft CDM: Vendor |
 | 🧭 **MachineType** | Product & Equipment Master | Product Marketing | Reference data | `lh_reference.dbo.machine_type` ⚠️ | ISO 6165: Earth-moving machinery — basic types<br>UNSPSC: 2210 Heavy construction machinery and equipment<br>[schema.org: ProductGroup](https://schema.org/ProductGroup) |
 | 🚜 **MachineModel** | Product & Equipment Master | Product Marketing | Annata 365 (F&O) | `lh_d365.dbo.amdevicemodel` ⚠️ | [schema.org: ProductModel](https://schema.org/ProductModel)<br>MIMOSA CCOM: Model / ModelVariant<br>[GoodRelations: ProductOrServiceModel](http://purl.org/goodrelations/v1#ProductOrServiceModel) |
 | 🧩 **MachineOption** | Product & Equipment Master | Product Marketing | Annata 365 (F&O) | `lh_d365.dbo.amdeviceconfigoption` ⚠️ | [schema.org: Product](https://schema.org/Product)<br>[schema.org: isAccessoryOrSparePartFor](https://schema.org/isAccessoryOrSparePartFor) |
@@ -65,7 +65,7 @@ D365 / Annata 365 environment (see [open questions](open-questions.md)).
 | 🏬 **Warehouse** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.inventlocation` | [IOF: DistributionCenter](https://spec.industrialontologies.org/ontology/construct/DistributionCenter)<br>[IOF: StorageFacility](https://spec.industrialontologies.org/ontology/construct/StorageFacility)<br>GS1: GLN (Global Location Number)<br>Microsoft CDM: Warehouse |
 | 📦 **InventoryPosition** | Parts Supply Chain & Procurement | Parts Planner | D365 F&O | `lh_d365.dbo.inventsum` | [IOF: IndustrialInventory](https://spec.industrialontologies.org/ontology/construct/IndustrialInventory)<br>OAGIS: InventoryBalance<br>ASCM SCOR DS: Plan: Inventory position<br>Microsoft CDM: InventoryOnHand |
 | 📑 **PurchaseOrder** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchtable` | [schema.org: Order](https://schema.org/Order)<br>OAGIS: PurchaseOrder<br>[IOF Supply Chain: PurchaseOrder](https://spec.industrialontologies.org/ontology/construct/PurchaseOrder)<br>Microsoft CDM: PurchaseOrder<br>ASCM SCOR DS: Source: Issue purchase order |
-| 🧾 **PurchaseOrderLine** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchline` | [schema.org: OrderItem](https://schema.org/OrderItem)<br>OAGIS: PurchaseOrderLine<br>Microsoft CDM: PurchaseOrderLine |
+| 📎 **PurchaseOrderLine** | Parts Supply Chain & Procurement | Supply Planner / Procurement | D365 F&O | `lh_d365.dbo.purchline` | [schema.org: OrderItem](https://schema.org/OrderItem)<br>OAGIS: PurchaseOrderLine<br>Microsoft CDM: PurchaseOrderLine |
 | 📜 **PurchaseAgreement** | Parts Supply Chain & Procurement | Procurement | D365 F&O | `lh_d365.dbo.agreementheader` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>OAGIS: PurchaseAgreement<br>Microsoft CDM: PurchaseAgreement |
 | 📥 **GoodsReceipt** | Parts Supply Chain & Procurement | Parts Operations Manager | D365 F&O | `lh_d365.dbo.vendpackingslipjour` | [IOF: ReceivingProcess](https://spec.industrialontologies.org/ontology/construct/ReceivingProcess)<br>[GS1 CBV 2.0: BizStep-receiving](https://ref.gs1.org/cbv/BizStep-receiving)<br>OAGIS: ReceiveDelivery<br>ASCM SCOR DS: Source: Receive product |
 | 🔀 **TransferOrder** | Parts Supply Chain & Procurement | Supply Planner | D365 F&O | `lh_d365.dbo.inventtransfertable` | [GS1 CBV 2.0: BizStep-shipping](https://ref.gs1.org/cbv/BizStep-shipping)<br>OAGIS: InventoryMovement<br>ASCM SCOR DS: Fulfill: Transfer product |
@@ -78,7 +78,7 @@ D365 / Annata 365 environment (see [open questions](open-questions.md)).
 | 🛠️ **WorkOrder** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF: MaintenanceWorkOrderRecord](https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord)<br>[IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess)<br>MIMOSA CCOM: WorkOrder<br>OAGIS: MaintenanceOrder<br>ISO 14224: Maintenance record<br>APQC PCF 8.0: 5.0 Deliver Services<br>Microsoft CDM: WorkOrder |
 | 🔨 **WorkOrderJob** | Service & Technicians | Service Coordinator | Annata 365 (F&O) | `lh_d365.dbo.amworkorderjob` ⚠️ | [IOF: MaintenanceActivity](https://spec.industrialontologies.org/ontology/construct/MaintenanceActivity)<br>MIMOSA CCOM: WorkStep<br>ISO 14224: Maintenance activity<br>Microsoft CDM: WorkOrderIncident |
 | 📘 **StandardJob** | Service & Technicians | Service Engineering | Annata 365 (F&O) | `lh_d365.dbo.amjoblist` ⚠️ | MIMOSA CCOM: SolutionPackage<br>[IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy)<br>ISO 14224: Maintenance activity type<br>Microsoft CDM: IncidentType |
-| 🗓️ **MaintenancePlan** | Service & Technicians | Service Planner | Annata 365 (F&O) | `lh_d365.dbo.ammaintenanceplan` ⚠️ | [IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy)<br>ISO 55000:2024: Asset management plan<br>Microsoft CDM: AgreementBookingSetup |
+| ⏰ **MaintenancePlan** | Service & Technicians | Service Planner | Annata 365 (F&O) | `lh_d365.dbo.ammaintenanceplan` ⚠️ | [IOF: MaintenanceStrategy](https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy)<br>ISO 55000:2024: Asset management plan<br>Microsoft CDM: AgreementBookingSetup |
 | 👷 **Technician** | Service & Technicians | Service Manager | D365 CE | `lh_d365.dbo.bookableresource` | [IOF: QualifiedMaintenancePerson](https://spec.industrialontologies.org/ontology/construct/QualifiedMaintenancePerson)<br>[schema.org: Person](https://schema.org/Person)<br>Microsoft CDM: BookableResource |
 | 🎓 **Skill** | Service & Technicians | Technical Training | D365 CE | `lh_d365.dbo.characteristic` | [IOF: QualificationSpecification](https://spec.industrialontologies.org/ontology/construct/QualificationSpecification)<br>[schema.org: EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential)<br>ESCO: Skill / competence<br>Microsoft CDM: Characteristic |
 | 📅 **ResourceBooking** | Service & Technicians | Service Planner / PDI Planner | D365 CE | `lh_d365.dbo.bookableresourcebooking` | [schema.org: Reservation](https://schema.org/Reservation)<br>Microsoft CDM: BookableResourceBooking |
@@ -90,7 +90,7 @@ D365 / Annata 365 environment (see [open questions](open-questions.md)).
 | 📨 **WarrantyClaim** | Contracts & Warranty | Warranty Administrator | Annata 365 (F&O) | `lh_d365.dbo.amwarrantyclaimtable` ⚠️ | OAGIS: WarrantyClaim<br>[IOF: FailureEvent](https://spec.industrialontologies.org/ontology/construct/FailureEvent)<br>ISO 14224: Failure event record |
 | 📢 **ServiceCampaign** | Contracts & Warranty | Warranty Administrator / Product Support | Annata 365 (F&O) | `lh_d365.dbo.amcampaigntable` ⚠️ | ACCC Product Safety: Recall<br>[schema.org: Action](https://schema.org/Action) |
 | 🔑 **RentalAgreement** | Contracts & Warranty | Rental Manager | Annata 365 (F&O) | `lh_d365.dbo.amrentalordertable` ⚠️ | [FIBO: Contract](https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/Contract)<br>[schema.org: RentAction](https://schema.org/RentAction) |
-| 📦 **CoreReturn** | Remanufacturing (REMAN) | Reman Coordinator | D365 F&O | `lh_d365.dbo.salestable` ⚠️ | [GS1 CBV 2.0: Disp-returned](https://ref.gs1.org/cbv/Disp-returned)<br>[GS1 CBV 2.0: BTT-rma](https://ref.gs1.org/cbv/BTT-rma)<br>[schema.org: ReturnAction](https://schema.org/ReturnAction)<br>ASCM SCOR DS: Return: Return product |
+| ↩️ **CoreReturn** | Remanufacturing (REMAN) | Reman Coordinator | D365 F&O | `lh_d365.dbo.salestable` ⚠️ | [GS1 CBV 2.0: Disp-returned](https://ref.gs1.org/cbv/Disp-returned)<br>[GS1 CBV 2.0: BTT-rma](https://ref.gs1.org/cbv/BTT-rma)<br>[schema.org: ReturnAction](https://schema.org/ReturnAction)<br>ASCM SCOR DS: Return: Return product |
 | 🔄 **RemanJob** | Remanufacturing (REMAN) | Reman Centre Manager | Annata 365 (F&O) | `lh_d365.dbo.amworkordertable` ⚠️ | [IOF: MaintenanceProcess](https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess)<br>[GS1 CBV 2.0: BizStep-repairing](https://ref.gs1.org/cbv/BizStep-repairing)<br>ISO 14224: Maintenance activity: overhaul<br>ASCM SCOR DS: Transform: Remanufacture |
 | 🎧 **SupportCase** | Customer Support & Portal | Customer Support Manager | D365 CE | `lh_d365.dbo.incident` | Microsoft CDM: Case (incident)<br>MIMOSA CCOM: WorkRequest<br>APQC PCF 8.0: 6.0 Manage Customer Service |
 | 🌐 **PortalUser** | Customer Support & Portal | Digital Channels Manager | Power Pages portal | `lh_d365.dbo.contact` ⚠️ | [FOAF: OnlineAccount](http://xmlns.com/foaf/0.1/OnlineAccount)<br>[W3C PROV-O: Agent](http://www.w3.org/ns/prov#Agent) |
@@ -180,7 +180,7 @@ A person at a customer or supplier organisation that Komatsu deals with — flee
 |---|---|---|---|
 | `worksFor` | Customer | many-to-one | A contact works for a customer organisation |
 
-### 🏭 Branch
+### 🏪 Branch
 
 A Komatsu Australia operating location — e.g. Fairfield East head office, Wacol DC and reman centre, Welshpool, Utility Central PDI, Truganina rental hub, or an on-site mine office.
 
@@ -244,7 +244,7 @@ A Komatsu Australia worker acting in a business role — sales, planning, coordi
 | `managesTerritory` | SalesTerritory | one-to-many | A territory manager manages one or more territories |
 | `basedAtBranch` | Branch | many-to-one | An employee is based at a branch |
 
-### 🏗️ Supplier
+### 🚚 Supplier
 
 An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.
 
@@ -1081,7 +1081,7 @@ An order placed on a supplier for parts, services or subcontract work — stock 
 | `receivesInto` | Warehouse | many-to-one | A purchase order is received into a warehouse |
 | `releasedFromAgreement` | PurchaseAgreement | many-to-one | A purchase order is released against an agreement |
 
-### 🧾 PurchaseOrderLine
+### 📎 PurchaseOrderLine
 
 A line on a purchase order for a quantity of a part with price and delivery dates.
 
@@ -1435,7 +1435,7 @@ A reusable service template (Annata job list) — e.g. PC210-11 500-hour service
 | `includesKitPart` | Part | many-to-many | A standard job includes a parts kit |
 | `requiresSkill` | Skill | many-to-many | A standard job requires skills or certifications |
 
-### 🗓️ MaintenancePlan
+### ⏰ MaintenancePlan
 
 A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).
 
@@ -1756,7 +1756,7 @@ A rental contract for one or more rental-fleet units (e.g. from the Truganina re
 
 ## Remanufacturing (REMAN)
 
-### 📦 CoreReturn
+### ↩️ CoreReturn
 
 The return of a failed component (core) after a Component Exchange Program sale, inspected to determine the core credit.
 

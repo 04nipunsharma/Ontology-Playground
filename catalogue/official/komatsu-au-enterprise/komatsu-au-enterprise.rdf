@@ -96,7 +96,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-enterprise/Branch">
         <rdfs:label>Branch</rdfs:label>
         <rdfs:comment>A Komatsu Australia operating location — e.g. Fairfield East head office, Wacol DC and reman centre, Welshpool, Utility Central PDI, Truganina rental hub, or an on-site mine office.</rdfs:comment>
-        <kau:icon>🏭</kau:icon>
+        <kau:icon>🏪</kau:icon>
         <kau:color>#0078D4</kau:color>
         <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
         <kau:dataOwner>Operations Finance (organisation structure)</kau:dataOwner>
@@ -142,7 +142,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-enterprise/Supplier">
         <rdfs:label>Supplier</rdfs:label>
         <rdfs:comment>An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.</rdfs:comment>
-        <kau:icon>🏗️</kau:icon>
+        <kau:icon>🚚</kau:icon>
         <kau:color>#0078D4</kau:color>
         <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
         <kau:dataOwner>Procurement</kau:dataOwner>
@@ -643,7 +643,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-enterprise/PurchaseOrderLine">
         <rdfs:label>PurchaseOrderLine</rdfs:label>
         <rdfs:comment>A line on a purchase order for a quantity of a part with price and delivery dates.</rdfs:comment>
-        <kau:icon>🧾</kau:icon>
+        <kau:icon>📎</kau:icon>
         <kau:color>#008272</kau:color>
         <kau:processDomain>Parts Supply Chain &amp; Procurement</kau:processDomain>
         <kau:dataOwner>Supply Planner / Procurement</kau:dataOwner>
@@ -837,7 +837,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-enterprise/MaintenancePlan">
         <rdfs:label>MaintenancePlan</rdfs:label>
         <rdfs:comment>A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).</rdfs:comment>
-        <kau:icon>🗓️</kau:icon>
+        <kau:icon>⏰</kau:icon>
         <kau:color>#D83B01</kau:color>
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Planner</kau:dataOwner>
@@ -1033,7 +1033,7 @@
         <skos:altLabel>Core</skos:altLabel>
         <skos:altLabel>Core RMA</skos:altLabel>
         <skos:altLabel>Core credit</skos:altLabel>
-        <kau:icon>📦</kau:icon>
+        <kau:icon>↩️</kau:icon>
         <kau:color>#498205</kau:color>
         <kau:processDomain>Remanufacturing (REMAN)</kau:processDomain>
         <kau:dataOwner>Reman Coordinator</kau:dataOwner>

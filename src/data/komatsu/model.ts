@@ -174,7 +174,7 @@ const contact: KomatsuEntityType = {
 };
 
 const branch: KomatsuEntityType = {
-  id: 'branch', name: 'Branch', icon: '🏭', color: C.party, domain: 'party',
+  id: 'branch', name: 'Branch', icon: '🏪', color: C.party, domain: 'party',
   description: 'A Komatsu Australia operating location — e.g. Fairfield East head office, Wacol DC and reman centre, Welshpool, Utility Central PDI, Truganina rental hub, or an on-site mine office.',
   owner: 'Operations Finance (organisation structure)',
   properties: [
@@ -225,7 +225,7 @@ const employee: KomatsuEntityType = {
 };
 
 const supplier: KomatsuEntityType = {
-  id: 'supplier', name: 'Supplier', icon: '🏗️', color: C.party, domain: 'party',
+  id: 'supplier', name: 'Supplier', icon: '🚚', color: C.party, domain: 'party',
   description: 'An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.',
   owner: 'Procurement',
   properties: [
@@ -804,7 +804,7 @@ const purchaseOrder: KomatsuEntityType = {
 };
 
 const purchaseOrderLine: KomatsuEntityType = {
-  id: 'purchaseOrderLine', name: 'PurchaseOrderLine', icon: '🧾', color: C.parts, domain: 'parts',
+  id: 'purchaseOrderLine', name: 'PurchaseOrderLine', icon: '📎', color: C.parts, domain: 'parts',
   description: 'A line on a purchase order for a quantity of a part with price and delivery dates.',
   owner: 'Supply Planner / Procurement',
   properties: [
@@ -1029,7 +1029,7 @@ const standardJob: KomatsuEntityType = {
 };
 
 const maintenancePlan: KomatsuEntityType = {
-  id: 'maintenancePlan', name: 'MaintenancePlan', icon: '🗓️', color: C.service, domain: 'service',
+  id: 'maintenancePlan', name: 'MaintenancePlan', icon: '⏰', color: C.service, domain: 'service',
   description: 'A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).',
   owner: 'Service Planner',
   properties: [
@@ -1235,7 +1235,7 @@ const rentalAgreement: KomatsuEntityType = {
 // ─── REMAN ──────────────────────────────────────────────────────────────────
 
 const coreReturn: KomatsuEntityType = {
-  id: 'coreReturn', name: 'CoreReturn', icon: '📦', color: C.reman, domain: 'reman',
+  id: 'coreReturn', name: 'CoreReturn', icon: '↩️', color: C.reman, domain: 'reman',
   description: 'The return of a failed component (core) after a Component Exchange Program sale, inspected to determine the core credit.',
   synonyms: ['Core', 'Core RMA', 'Core credit'],
   owner: 'Reman Coordinator',

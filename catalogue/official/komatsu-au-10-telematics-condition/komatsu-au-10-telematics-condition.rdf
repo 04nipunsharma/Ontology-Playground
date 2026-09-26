@@ -126,7 +126,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan">
         <rdfs:label>MaintenancePlan</rdfs:label>
         <rdfs:comment>A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).</rdfs:comment>
-        <kau:icon>🗓️</kau:icon>
+        <kau:icon>⏰</kau:icon>
         <kau:color>#D83B01</kau:color>
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Planner</kau:dataOwner>

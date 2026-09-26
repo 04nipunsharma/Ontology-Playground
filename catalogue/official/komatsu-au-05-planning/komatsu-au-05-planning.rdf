@@ -58,7 +58,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-05-planning/Supplier">
         <rdfs:label>Supplier</rdfs:label>
         <rdfs:comment>An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.</rdfs:comment>
-        <kau:icon>🏗️</kau:icon>
+        <kau:icon>🚚</kau:icon>
         <kau:color>#0078D4</kau:color>
         <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
         <kau:dataOwner>Procurement</kau:dataOwner>

@@ -70,7 +70,11 @@ export function validateKomatsuModel(): ModelProblems {
   for (const e of validateOntology(enterpriseOntology())) errors.push(e.message);
 
   const entityIds = new Set<string>();
+  const iconOwner = new Map<string, string>();
   for (const e of komatsuEntities) {
+    const other = iconOwner.get(e.icon);
+    if (other) warnings.push(`${e.name} reuses the icon of ${other}; distinct icons keep graph nodes recognisable`);
+    iconOwner.set(e.icon, e.name);
     if (!ENTITY_ID_RE.test(e.id)) errors.push(`Entity id "${e.id}" must be lowerCamelCase alphanumeric`);
     entityIds.add(e.id);
     if (e.alignments.length === 0) warnings.push(`${e.name} has no industry-standard alignment`);

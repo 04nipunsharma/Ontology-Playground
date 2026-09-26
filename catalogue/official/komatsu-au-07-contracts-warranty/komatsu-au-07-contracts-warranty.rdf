@@ -98,7 +98,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/Supplier">
         <rdfs:label>Supplier</rdfs:label>
         <rdfs:comment>An organisation Komatsu Australia buys from — Komatsu factories and parts depots, local OEM and aftermarket vendors, carriers, forwarders and customs brokers.</rdfs:comment>
-        <kau:icon>🏗️</kau:icon>
+        <kau:icon>🚚</kau:icon>
         <kau:color>#0078D4</kau:color>
         <kau:processDomain>Customers, People &amp; Organisation</kau:processDomain>
         <kau:dataOwner>Procurement</kau:dataOwner>
@@ -267,7 +267,7 @@
     <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-07-contracts-warranty/MaintenancePlan">
         <rdfs:label>MaintenancePlan</rdfs:label>
         <rdfs:comment>A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).</rdfs:comment>
-        <kau:icon>🗓️</kau:icon>
+        <kau:icon>⏰</kau:icon>
         <kau:color>#D83B01</kau:color>
         <kau:processDomain>Service &amp; Technicians</kau:processDomain>
         <kau:dataOwner>Service Planner</kau:dataOwner>
