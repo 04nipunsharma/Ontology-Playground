@@ -16,6 +16,29 @@ fully static site with zero backend dependencies.
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
+## Komatsu Australia Enterprise Ontology (this fork)
+
+This fork puts an end-to-end **Komatsu Australia** ontology at the centre of
+the Playground. It covers customers and sites, machine sales to delivery,
+Hensei factory ordering, import and biosecurity, PDI, parts supply chain and
+procurement, demand/supply planning, service and technicians, contracts,
+warranty and rental, REMAN, customer support and portal, and KOMTRAX
+telematics. That is **71 entity types and 199 relationships**, aligned to
+industry standards and bound to D365 CE, D365 F&O and Annata 365.
+
+- **Opens by default** on the home page. The gallery's **Komatsu Australia**
+  category holds the full model plus 11 focused modules. The upstream
+  examples are kept, grouped under *Sample ontologies*.
+- **Ontology School course**: `/#/learn/komatsu-au-ontology` (7 lessons, in
+  presentation mode for workshops).
+- **Docs**: [overview](docs/komatsu/README.md) ·
+  [data dictionary](docs/komatsu/data-dictionary.md) ·
+  [system mapping](docs/komatsu/system-mapping.md) ·
+  [standards alignment](docs/komatsu/standards-alignment.md) ·
+  [glossary](docs/komatsu/glossary.md) ·
+  [open questions](docs/komatsu/open-questions.md)
+- **Edit** `src/data/komatsu/model.ts`, then run `npm run komatsu:generate`.
+
 ## Features
 
 ### Interactive Graph Exploration
@@ -129,6 +152,7 @@ Client-side hash routing with shareable URLs for every page:
 
 | Domain | Ontology | Entities | Relationships |
 |--------|----------|----------|---------------|
+| Komatsu Australia | Komatsu Australia Enterprise Ontology (+ 11 modules) | 71 | 199 |
 | Retail | Fourth Coffee | 6 | 7 |
 | E-Commerce | Online Retail | 5 | 6 |
 | Healthcare | Clinical System | 5 | 6 |
@@ -212,6 +236,8 @@ GitHub Pages build so asset paths resolve correctly.
 | `VITE_BASE_PATH` | `/` | Base path for the app (set automatically for GitHub Pages) |
 | `VITE_GITHUB_CLIENT_ID` | *(empty)* | GitHub OAuth App client ID for one-click catalogue PRs ([setup guide](docs/github-oauth-setup.md)) |
 | `VITE_GITHUB_OAUTH_BASE` | *(empty)* | External OAuth proxy URL for GitHub Pages deployments (e.g. Cloudflare Worker URL) |
+| `VITE_FEATURED_CATEGORY` | *(empty)* | Catalogue category shown first in the gallery; entries in other categories are labelled as samples (`.env` sets `komatsu`) |
+| `VITE_DEFAULT_CATALOGUE_ID` | *(empty)* | Catalogue entry opened on the home page instead of the built-in Fourth Coffee sample (`.env` sets `official/komatsu-au-enterprise`) |
 
 ## Project Structure
 
@@ -249,6 +275,7 @@ The table below lists the main end-user and contributor guides. Internal plannin
 | [Learning Content Guide](docs/learn-content-guide.md) | How to author courses, articles, quizzes, and ontology embeds for the Ontology School |
 | [Ontology School Review Workflow](docs/ontology-school-review-workflow.md) | Human review and approval flow for school lesson content |
 | [Theme Authoring Guide](docs/theme-authoring-guide.md) | How to plug a new color theme into the Playground — token contract, the appStore + CSS steps, and contrast gotchas |
+| [Komatsu Australia Enterprise Ontology](docs/komatsu/README.md) | The fork's end-to-end Komatsu ontology: design, modules, data dictionary, D365/Annata/Fabric mapping, standards alignment, glossary and open questions |
 
 ## AI Agent Quickstart
 
