@@ -20,10 +20,10 @@ export function WelcomeModal({ onClose }: WelcomeModalProps) {
         transition={{ type: 'spring', damping: 20 }}
       >
         <div className="modal-header">
-          <div className="modal-logo">☕</div>
-          <h1 className="modal-title">Welcome to Ontology Playground (Preview)</h1>
+          <div className="modal-logo">🚜</div>
+          <h1 className="modal-title">Welcome to the Komatsu Ontology Workbench</h1>
           <p className="modal-subtitle">
-            Explore Microsoft Fabric IQ Ontology through the lens of Fourth Coffee
+            Explore the Komatsu Australia enterprise ontology and deploy it to Microsoft Fabric IQ
           </p>
         </div>
 

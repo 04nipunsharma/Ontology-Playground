@@ -462,6 +462,43 @@ social media) often land on mobile — if users can't interact, adoption stalls.
 
 ---
 
+## 11. Komatsu Australia Enterprise Ontology (fork)
+
+See [docs/komatsu/README.md](docs/komatsu/README.md).
+
+### 11.1 v0.1.0 — first draft (done)
+- [x] Source-of-truth model `src/data/komatsu/model.ts` — 71 entity types,
+  199 relationships, 13 process domains, data owners, synonyms
+- [x] Industry alignment (ISO 6165/10261/14224/15143-3, IOF, CCOM,
+  schema.org, GS1, UN/CEFACT, OAGIS, W3C, FIBO, CDM, SCOR, APQC) — IOF and
+  schema.org terms verified against published files
+- [x] System bindings to D365 CE / F&O / Annata 365 / KOMTRAX / portal with
+  alternates and ⚠️ to-confirm flags
+- [x] Generator (`npm run komatsu:generate` / `komatsu:check`) emitting the
+  enterprise model + 11 module catalogue entries + data dictionary
+- [x] Validation of Fabric IQ rules, binding integrity, RDF round-trip and
+  Fabric conversion tests
+- [x] Feature Komatsu in the app (`VITE_FEATURED_CATEGORY`,
+  `VITE_DEFAULT_CATALOGUE_ID`); upstream samples kept under "Sample
+  ontologies"
+- [x] Ontology School course `komatsu-au-ontology` (under human review)
+- [x] Docs: overview, glossary, standards alignment, system mapping, open
+  questions, sources
+
+### 11.2 Next
+- [ ] Workshop each module with process owners; resolve
+  [open questions](docs/komatsu/open-questions.md)
+- [ ] Confirm Annata `AM*` and Dataverse `msauto_*` tables; clear ⚠️ bindings
+- [ ] Decide work-order master (Annata vs Field Service) before the Feb 2027
+  Field Service ↔ F&O integration retirement
+- [ ] SKOS concept schemes for controlled lists (ISO 6165 types, ISO 14224
+  codes, Komatsu error codes, order / contract / warranty types)
+- [ ] Fabric gold layer (one table per entity + relationship link tables) and
+  Fabric IQ binding; KOMTRAX time-series properties
+- [ ] Sample instance data for demo queries in the NL query playground
+
+---
+
 ## Low-priority / deferred
 
 - [ ] **"Use in Fabric IQ" export wizard** — A guided flow (validate →

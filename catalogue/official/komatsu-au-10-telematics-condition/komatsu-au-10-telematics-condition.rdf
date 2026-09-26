@@ -1,0 +1,1397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GENERATED FILE — do not edit by hand.
+     Source: src/data/komatsu/model.ts · Generator: scripts/generate-komatsu-catalogue.ts -->
+<rdf:RDF
+    xml:base="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:kau="https://ontology.komatsu.com.au/terms#">
+
+    <owl:Ontology rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/">
+        <rdfs:label>Komatsu AU · 10 Telematics &amp; Condition Monitoring</rdfs:label>
+        <rdfs:comment>KOMTRAX snapshots, meter readings, alerts and fault codes, and oil analysis linked to units, components and service.</rdfs:comment>
+        <owl:versionInfo>0.1.0</owl:versionInfo>
+        <dcterms:creator>komatsu-australia</dcterms:creator>
+        <dcterms:license rdf:resource="https://opensource.org/licenses/MIT"/>
+    </owl:Ontology>
+
+    <!-- Annotation vocabulary -->
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#icon"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#color"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#processDomain"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#dataOwner"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#systemOfRecord"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#alignsTo"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#isIdentifier"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#unit"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#enumValues"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#propertyType"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#cardinality"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#fromEntityId"/>
+    <owl:AnnotationProperty rdf:about="https://ontology.komatsu.com.au/terms#toEntityId"/>
+
+    <!-- ===================== -->
+    <!-- Entity Types (Classes) -->
+    <!-- ===================== -->
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel">
+        <rdfs:label>MachineModel</rdfs:label>
+        <rdfs:comment>A Komatsu machine model and series, e.g. PC210LC-11, D375A-8, WA500-8 or 930E-5, that units are built to.</rdfs:comment>
+        <skos:altLabel>Device model (Annata)</skos:altLabel>
+        <skos:altLabel>Model code</skos:altLabel>
+        <skos:altLabel>Device class / model (CDM Automotive)</skos:altLabel>
+        <kau:icon>🚜</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Marketing</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: ProductModel (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/ProductModel"/>
+        <kau:alignsTo>MIMOSA CCOM: Model / ModelVariant (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GoodRelations: ProductOrServiceModel (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://purl.org/goodrelations/v1#ProductOrServiceModel"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit">
+        <rdfs:label>EquipmentUnit</rdfs:label>
+        <rdfs:comment>An individual serialised machine (Annata &quot;device&quot;) tracked from factory order through stock, PDI, delivery, service life, trade-in and disposal.</rdfs:comment>
+        <skos:altLabel>Device (Annata)</skos:altLabel>
+        <skos:altLabel>Unit</skos:altLabel>
+        <skos:altLabel>Machine</skos:altLabel>
+        <skos:altLabel>Customer asset (Field Service)</skos:altLabel>
+        <skos:altLabel>Stock unit</skos:altLabel>
+        <kau:icon>🏗️</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Equipment Administration (Annata device master)</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>schema.org: IndividualProduct (exactMatch)</kau:alignsTo>
+        <skos:exactMatch rdf:resource="https://schema.org/IndividualProduct"/>
+        <kau:alignsTo>IOF: PieceOfEquipment (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/PieceOfEquipment"/>
+        <kau:alignsTo>ISO 10261: Product identification number (PIN) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Asset (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 14224: Equipment unit (taxonomy level 6) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GS1: GIAI (AI 8004) individual asset identifier (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: CustomerAsset (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component">
+        <rdfs:label>Component</rdfs:label>
+        <rdfs:comment>A serialised major component (engine, transmission, final drive, pump, wheel motor…) that is installed on a unit, removed as a core and remanufactured.</rdfs:comment>
+        <skos:altLabel>Major component</skos:altLabel>
+        <skos:altLabel>Child device (Annata device hierarchy)</skos:altLabel>
+        <skos:altLabel>Exchange component</skos:altLabel>
+        <kau:icon>⚙️</kau:icon>
+        <kau:color>#5C2D91</kau:color>
+        <kau:processDomain>Product &amp; Equipment Master</kau:processDomain>
+        <kau:dataOwner>Product Support / Component Management</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: MaintainableMaterialItem (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintainableMaterialItem"/>
+        <kau:alignsTo>IOF: MaterialComponent (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaterialComponent"/>
+        <kau:alignsTo>ISO 14224: Subunit / maintainable item (levels 7–8) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Asset + AssetSegmentEvent (install / remove) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>GS1: SGTIN / GIAI serialised identifier (related)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder">
+        <rdfs:label>WorkOrder</rdfs:label>
+        <rdfs:comment>A workshop or field work order on a unit — scheduled maintenance, breakdown, warranty, campaign, component change-out or inspection.</rdfs:comment>
+        <skos:altLabel>Service order</skos:altLabel>
+        <skos:altLabel>Job card</skos:altLabel>
+        <skos:altLabel>Work order (Annata)</skos:altLabel>
+        <skos:altLabel>Work order (Field Service)</skos:altLabel>
+        <kau:icon>🛠️</kau:icon>
+        <kau:color>#D83B01</kau:color>
+        <kau:processDomain>Service &amp; Technicians</kau:processDomain>
+        <kau:dataOwner>Service Coordinator</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: MaintenanceWorkOrderRecord (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceWorkOrderRecord"/>
+        <kau:alignsTo>IOF: MaintenanceProcess (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceProcess"/>
+        <kau:alignsTo>MIMOSA CCOM: WorkOrder (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>OAGIS: MaintenanceOrder (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 14224: Maintenance record (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 5.0 Deliver Services (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: WorkOrder (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan">
+        <rdfs:label>MaintenancePlan</rdfs:label>
+        <rdfs:comment>A preventive maintenance schedule for a unit or contract that generates work orders by hours or calendar interval (e.g. Komplimentary Maintenance services at 500–2,000 hours).</rdfs:comment>
+        <kau:icon>⏰</kau:icon>
+        <kau:color>#D83B01</kau:color>
+        <kau:processDomain>Service &amp; Technicians</kau:processDomain>
+        <kau:dataOwner>Service Planner</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>IOF: MaintenanceStrategy (related)</kau:alignsTo>
+        <skos:relatedMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/MaintenanceStrategy"/>
+        <kau:alignsTo>ISO 55000:2024: Asset management plan (related)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: AgreementBookingSetup (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode">
+        <rdfs:label>FailureMode</rdfs:label>
+        <rdfs:comment>A coded failure mode, mechanism and cause used on repairs, warranty claims and reman teardowns (ISO 14224 style).</rdfs:comment>
+        <skos:altLabel>Claim code (Annata: symptom, cause, resolution, failure)</skos:altLabel>
+        <skos:altLabel>Damage code</skos:altLabel>
+        <kau:icon>💥</kau:icon>
+        <kau:color>#D83B01</kau:color>
+        <kau:processDomain>Service &amp; Technicians</kau:processDomain>
+        <kau:dataOwner>Reliability Engineering</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>ISO 14224: Failure mode / failure mechanism / failure cause (Annex B) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>IOF: FailureModeCode (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="https://spec.industrialontologies.org/ontology/construct/FailureModeCode"/>
+        <kau:alignsTo>MIMOSA CCOM: HypotheticalEvent (FMECA) (related)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase">
+        <rdfs:label>SupportCase</rdfs:label>
+        <rdfs:comment>A customer support case — technical support, parts or invoice enquiry, complaint, warranty query, KOMTRAX or portal support, or breakdown request.</rdfs:comment>
+        <skos:altLabel>Case</skos:altLabel>
+        <skos:altLabel>Incident</skos:altLabel>
+        <skos:altLabel>Ticket</skos:altLabel>
+        <kau:icon>🎧</kau:icon>
+        <kau:color>#C239B3</kau:color>
+        <kau:processDomain>Customer Support &amp; Portal</kau:processDomain>
+        <kau:dataOwner>Customer Support Manager</kau:dataOwner>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:alignsTo>Microsoft CDM: Case (incident) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: WorkRequest (related)</kau:alignsTo>
+        <kau:alignsTo>APQC PCF 8.0: 6.0 Manage Customer Service (related)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading">
+        <rdfs:label>TelematicsReading</rdfs:label>
+        <rdfs:comment>A KOMTRAX snapshot of a unit — hours, fuel, idle, location and utilisation — aligned to the ISO 15143-3 (AEMP 2.0) data elements.</rdfs:comment>
+        <kau:icon>📡</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Digital Solutions (KOMTRAX)</kau:dataOwner>
+        <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): Equipment snapshot (CumulativeOperatingHours, CumulativeIdleHours, FuelUsed, FuelRemaining, DEFRemaining, Location) (exactMatch)</kau:alignsTo>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading">
+        <rdfs:label>MeterReading</rdfs:label>
+        <rdfs:comment>A service-meter (SMR) or odometer reading recorded against a unit in Annata — from KOMTRAX, a technician, the customer portal or a delivery.</rdfs:comment>
+        <skos:altLabel>SMR</skos:altLabel>
+        <skos:altLabel>SMU</skos:altLabel>
+        <skos:altLabel>Counter reading (Annata)</skos:altLabel>
+        <skos:altLabel>Hour meter</skos:altLabel>
+        <kau:icon>🔢</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Equipment Administration</kau:dataOwner>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): CumulativeOperatingHours (related)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert">
+        <rdfs:label>MachineAlert</rdfs:label>
+        <rdfs:comment>A KOMTRAX caution or fault event, maintenance-due notice, geofence or curfew breach raised for a unit.</rdfs:comment>
+        <skos:altLabel>KOMTRAX caution</skos:altLabel>
+        <skos:altLabel>IoT alert</skos:altLabel>
+        <kau:icon>🚨</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Digital Solutions (KOMTRAX)</kau:dataOwner>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:alignsTo>W3C SOSA: Observation (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): Fault code time series (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>SAE J1939-73: DM1 active / DM2 previously active DTC (related)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: ActualEvent (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>Microsoft CDM: IoTAlert (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode">
+        <rdfs:label>FaultCode</rdfs:label>
+        <rdfs:comment>A machine-generated diagnostic trouble code (Komatsu error code, mapped to SAE J1939 SPN/FMI where applicable).</rdfs:comment>
+        <kau:icon>⚠️</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Product Support Engineering</kau:dataOwner>
+        <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
+        <kau:alignsTo>SAE J1939-73: Diagnostic Trouble Code (SPN 19 bits + FMI 5 bits) (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>ISO 15143-3 (AEMP 2.0): FaultCode (closeMatch)</kau:alignsTo>
+        <kau:alignsTo>W3C SKOS: Concept (Komatsu error-code scheme) (broadMatch)</kau:alignsTo>
+        <skos:broadMatch rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample">
+        <rdfs:label>OilSample</rdfs:label>
+        <rdfs:comment>An oil analysis sample (KOWA, Condition Monitoring Services) taken from a unit compartment, with a laboratory condition rating.</rdfs:comment>
+        <skos:altLabel>KOWA sample</skos:altLabel>
+        <skos:altLabel>CMS sample</skos:altLabel>
+        <skos:altLabel>Fluid analysis</skos:altLabel>
+        <kau:icon>🧪</kau:icon>
+        <kau:color>#E81123</kau:color>
+        <kau:processDomain>Telematics &amp; Condition Monitoring</kau:processDomain>
+        <kau:dataOwner>Condition Monitoring</kau:dataOwner>
+        <kau:systemOfRecord>LIMC (oil analysis lab)</kau:systemOfRecord>
+        <kau:alignsTo>W3C SOSA: Observation (closeMatch)</kau:alignsTo>
+        <skos:closeMatch rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+        <kau:alignsTo>ISO 14224: Detection method: condition monitoring (related)</kau:alignsTo>
+        <kau:alignsTo>MIMOSA CCOM: Measurement (closeMatch)</kau:alignsTo>
+    </owl:Class>
+
+    <!-- ================ -->
+    <!-- Data Properties -->
+    <!-- ================ -->
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_modelCode">
+        <rdfs:label>modelCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Model and series code, e.g. PC210LC-11</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_series">
+        <rdfs:label>series</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Generation / dash number, e.g. -11</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_productLine">
+        <rdfs:label>productLine</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Product line</rdfs:comment>
+        <kau:enumValues>Construction,Utility,Surface Mining,Underground Mining,Forestry,Industrial</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_operatingWeightKg">
+        <rdfs:label>operatingWeightKg</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Nominal operating weight</rdfs:comment>
+        <kau:unit>kg</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_enginePowerKw">
+        <rdfs:label>enginePowerKw</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Rated engine power</rdfs:comment>
+        <kau:unit>kW</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_powertrain">
+        <rdfs:label>powertrain</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Powertrain / energy source</rdfs:comment>
+        <kau:enumValues>Diesel,Hybrid,Diesel-Electric,Battery-Electric,Trolley-Assist,Electric (cable)</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_isCurrentModel">
+        <rdfs:label>isCurrentModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True while the model is available to order</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineModel_listPrice">
+        <rdfs:label>listPrice</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Current recommended retail price (base spec)</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_serialNumber">
+        <rdfs:label>serialNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu machine serial number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_pin">
+        <rdfs:label>pin</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>ISO 10261 17-character PIN (3 manufacturer code + 5 descriptor + 1 check + 8 serial)</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_stockNumber">
+        <rdfs:label>stockNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Internal stock / unit number while in Komatsu inventory</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_unitStatus">
+        <rdfs:label>unitStatus</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Lifecycle status of the unit</rdfs:comment>
+        <kau:enumValues>On Order,In Production,In Transit,In Stock,In PDI,Ready for Delivery,Delivered,In Service,Rental Fleet,Used Stock,Sold,Scrapped</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_ownershipType">
+        <rdfs:label>ownershipType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Who owns the unit</rdfs:comment>
+        <kau:enumValues>Komatsu Stock,Customer Owned,Rental Fleet,Demonstrator,Consignment,Leased</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_smrHours">
+        <rdfs:label>smrHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Latest service meter reading</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_yearOfManufacture">
+        <rdfs:label>yearOfManufacture</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Year the unit was built</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_deliveryDate">
+        <rdfs:label>deliveryDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date the unit was handed over to the first customer</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_warrantyStartDate">
+        <rdfs:label>warrantyStartDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Start of the factory warranty period</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/equipmentUnit_komtraxEnabled">
+        <rdfs:label>komtraxEnabled</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when KOMTRAX / KOMTRAX Plus telematics is active</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_componentSerial">
+        <rdfs:label>componentSerial</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Component serial number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_componentType">
+        <rdfs:label>componentType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kind of major component</rdfs:comment>
+        <kau:enumValues>Engine,Transmission,Torque Converter,Final Drive,Differential,Hydraulic Pump,Swing Machinery,Travel Motor,Wheel Motor,Alternator,Cylinder,Radiator,Axle</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_componentStatus">
+        <rdfs:label>componentStatus</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Where the component is in its lifecycle</rdfs:comment>
+        <kau:enumValues>Installed,Removed - Core,In Rebuild,Reman Stock,Scrapped</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_installedDate">
+        <rdfs:label>installedDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date installed on the current unit</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_hoursAtInstall">
+        <rdfs:label>hoursAtInstall</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Unit SMR when installed</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_componentHours">
+        <rdfs:label>componentHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Hours accumulated by this component</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_lifeTargetHours">
+        <rdfs:label>lifeTargetHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Planned component replacement (PCR) life target</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/component_rebuildCount">
+        <rdfs:label>rebuildCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of times this component has been remanufactured</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_workOrderNumber">
+        <rdfs:label>workOrderNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Annata work order number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_serviceType">
+        <rdfs:label>serviceType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Type of service</rdfs:comment>
+        <kau:enumValues>Scheduled Maintenance,Breakdown Repair,Warranty Repair,Campaign (PIP),Component Change-out,Inspection,Condition Monitoring,Internal</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_serviceLocation">
+        <rdfs:label>serviceLocation</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Where the work is done</rdfs:comment>
+        <kau:enumValues>Workshop,Field,Mine Site Resident</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_priority">
+        <rdfs:label>priority</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Service priority</rdfs:comment>
+        <kau:enumValues>P1 Machine Down,P2 Urgent,P3 Planned,P4 Opportunistic</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_billingType">
+        <rdfs:label>billingType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Who pays</rdfs:comment>
+        <kau:enumValues>Customer,Warranty,Contract,Goodwill,Internal</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_status">
+        <rdfs:label>status</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Order status</rdfs:comment>
+        <kau:enumValues>Open,Scheduled,In Progress,Awaiting Parts,Awaiting Approval,Completed,Invoiced,Closed</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_openedOn">
+        <rdfs:label>openedOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the order was opened</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_completedOn">
+        <rdfs:label>completedOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When technical work was completed</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_smrAtService">
+        <rdfs:label>smrAtService</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Service meter reading at the job</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/workOrder_estimatedAmount">
+        <rdfs:label>estimatedAmount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Estimated / quoted value</rdfs:comment>
+        <kau:unit>AUD</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_maintenancePlanId">
+        <rdfs:label>maintenancePlanId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Plan identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_intervalBasis">
+        <rdfs:label>intervalBasis</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Interval trigger</rdfs:comment>
+        <kau:enumValues>Hours,Calendar,Hours or Calendar</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_intervalHours">
+        <rdfs:label>intervalHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Interval in hours</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_nextDueSmr">
+        <rdfs:label>nextDueSmr</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Meter reading at which the next service is due</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_nextDueDate">
+        <rdfs:label>nextDueDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Forecast date the next service is due</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/maintenancePlan_status">
+        <rdfs:label>status</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Plan status</rdfs:comment>
+        <kau:enumValues>Active,Suspended,Completed</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/failureMode_failureCode">
+        <rdfs:label>failureCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Failure / damage code</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/failureMode_failureModeName">
+        <rdfs:label>failureModeName</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Failure mode, e.g. &quot;external leakage&quot;, &quot;overheating&quot;</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/failureMode_failureMechanism">
+        <rdfs:label>failureMechanism</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Failure mechanism, e.g. wear, fatigue, contamination</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/failureMode_failureCause">
+        <rdfs:label>failureCause</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Root-cause category</rdfs:comment>
+        <kau:enumValues>Design,Manufacturing,Operation / Misuse,Maintenance,Wear and Tear,Contamination,Unknown</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_caseNumber">
+        <rdfs:label>caseNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Case (ticket) number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_title">
+        <rdfs:label>title</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Case title</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_caseType">
+        <rdfs:label>caseType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Case category</rdfs:comment>
+        <kau:enumValues>Breakdown Request,Technical Support,Parts Enquiry,Order Status,Invoice Query,Warranty Query,Complaint,KOMTRAX Support,Portal Support,Service Booking</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_caseOrigin">
+        <rdfs:label>caseOrigin</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Channel the case came from</rdfs:comment>
+        <kau:enumValues>Phone,Email,Customer Portal,KOMTRAX Alert,Field Technician,Web Form</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_priority">
+        <rdfs:label>priority</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Priority</rdfs:comment>
+        <kau:enumValues>P1 Machine Down,P2 Urgent,P3 Planned,P4 Opportunistic</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_status">
+        <rdfs:label>status</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Case status</rdfs:comment>
+        <kau:enumValues>New,In Progress,Waiting on Customer,Escalated,Resolved,Cancelled</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_createdOn">
+        <rdfs:label>createdOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the case was created</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_resolvedOn">
+        <rdfs:label>resolvedOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the case was resolved</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/supportCase_slaBreached">
+        <rdfs:label>slaBreached</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when the response or resolution SLA was missed</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_readingId">
+        <rdfs:label>readingId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Snapshot identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_readingTime">
+        <rdfs:label>readingTime</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Timestamp of the snapshot</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_smrHours">
+        <rdfs:label>smrHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Cumulative operating hours</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_idleHours">
+        <rdfs:label>idleHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Cumulative idle hours</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_fuelUsedLitres">
+        <rdfs:label>fuelUsedLitres</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Cumulative fuel used</rdfs:comment>
+        <kau:unit>L</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_fuelLevelPct">
+        <rdfs:label>fuelLevelPct</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Fuel remaining</rdfs:comment>
+        <kau:unit>%</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_defRemainingPct">
+        <rdfs:label>defRemainingPct</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Diesel exhaust fluid remaining</rdfs:comment>
+        <kau:unit>%</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_cumulativeLoadCount">
+        <rdfs:label>cumulativeLoadCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Cumulative load (pass / cycle) count</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_cumulativePayloadTonnes">
+        <rdfs:label>cumulativePayloadTonnes</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Cumulative payload hauled (trucks)</rdfs:comment>
+        <kau:unit>t</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_latitude">
+        <rdfs:label>latitude</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>WGS84 latitude</rdfs:comment>
+        <kau:unit>deg</kau:unit>
+        <kau:propertyType>double</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/telematicsReading_longitude">
+        <rdfs:label>longitude</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <rdfs:comment>WGS84 longitude</rdfs:comment>
+        <kau:unit>deg</kau:unit>
+        <kau:propertyType>double</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_meterReadingId">
+        <rdfs:label>meterReadingId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Counter reading identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_readingTime">
+        <rdfs:label>readingTime</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the reading was taken</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_meterType">
+        <rdfs:label>meterType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Meter / counter type</rdfs:comment>
+        <kau:enumValues>SMR Hours,Odometer,Payload Cycles,Engine Hours</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_meterValue">
+        <rdfs:label>meterValue</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Reading value</rdfs:comment>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_readingSource">
+        <rdfs:label>readingSource</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Where the reading came from</rdfs:comment>
+        <kau:enumValues>KOMTRAX,Technician,Customer Portal,Delivery,Estimated</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterReading_isValidated">
+        <rdfs:label>isValidated</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>True when the reading passed plausibility checks</rdfs:comment>
+        <kau:propertyType>boolean</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_alertId">
+        <rdfs:label>alertId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Alert identifier</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_alertTime">
+        <rdfs:label>alertTime</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>When the alert was raised</rdfs:comment>
+        <kau:propertyType>datetime</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_alertType">
+        <rdfs:label>alertType</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Alert category</rdfs:comment>
+        <kau:enumValues>Fault Code,Caution,Maintenance Due,Geofence,Curfew,Abnormal Operation,Low Fuel</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_severity">
+        <rdfs:label>severity</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Severity</rdfs:comment>
+        <kau:enumValues>Info,Warning,Critical</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_occurrenceCount">
+        <rdfs:label>occurrenceCount</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>J1939 occurrence count reported with the fault</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/machineAlert_status">
+        <rdfs:label>status</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Handling status</rdfs:comment>
+        <kau:enumValues>New,Acknowledged,Case Created,Service Ordered,Closed</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_faultCodeId">
+        <rdfs:label>faultCodeId</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Komatsu error code, e.g. CA234</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_faultDescription">
+        <rdfs:label>faultDescription</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Fault description</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_spn">
+        <rdfs:label>spn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>SAE J1939 suspect parameter number</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_fmi">
+        <rdfs:label>fmi</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>SAE J1939 failure mode identifier</rdfs:comment>
+        <kau:propertyType>integer</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_system">
+        <rdfs:label>system</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Machine system</rdfs:comment>
+        <kau:enumValues>Engine,Hydraulic,Electrical,Powertrain,Brakes,Aftertreatment,Controller</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultCode_severity">
+        <rdfs:label>severity</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Default severity</rdfs:comment>
+        <kau:enumValues>Info,Warning,Critical</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_sampleNumber">
+        <rdfs:label>sampleNumber</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Laboratory sample number</rdfs:comment>
+        <kau:isIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:isIdentifier>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_sampleDate">
+        <rdfs:label>sampleDate</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date sampled</rdfs:comment>
+        <kau:propertyType>date</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_compartment">
+        <rdfs:label>compartment</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Compartment sampled</rdfs:comment>
+        <kau:enumValues>Engine,Transmission,Hydraulic,Final Drive,Differential,Swing Circle,Coolant</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_oilHours">
+        <rdfs:label>oilHours</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Hours on the oil</rdfs:comment>
+        <kau:unit>hours</kau:unit>
+        <kau:propertyType>decimal</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_conditionRating">
+        <rdfs:label>conditionRating</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Laboratory rating</rdfs:comment>
+        <kau:enumValues>Normal,Monitor,Action,Urgent</kau:enumValues>
+        <kau:propertyType>enum</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/oilSample_recommendation">
+        <rdfs:label>recommendation</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Laboratory recommendation</rdfs:comment>
+        <kau:propertyType>string</kau:propertyType>
+    </owl:DatatypeProperty>
+
+    <!-- ================== -->
+    <!-- Object Properties -->
+    <!-- ================== -->
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/unitOfModel">
+        <rdfs:label>unitOfModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:comment>A unit is built to a model</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>equipmentUnit</kau:fromEntityId>
+        <kau:toEntityId>machineModel</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/installedOn">
+        <rdfs:label>installedOn</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A major component is installed on a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>component</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/servicesUnit">
+        <rdfs:label>servicesUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A work order is for a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>workOrder</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/generatedByPlan">
+        <rdfs:label>generatedByPlan</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:comment>A scheduled service is generated by a maintenance plan</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>workOrder</kau:fromEntityId>
+        <kau:toEntityId>maintenancePlan</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/raisedFromCase">
+        <rdfs:label>raisedFromCase</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:comment>A work order is raised from a support case</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>workOrder</kau:fromEntityId>
+        <kau:toEntityId>supportCase</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/plansUnit">
+        <rdfs:label>plansUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A maintenance plan is for a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>maintenancePlan</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/caseAboutUnit">
+        <rdfs:label>caseAboutUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A case concerns a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>supportCase</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/reportedByUnit">
+        <rdfs:label>reportedByUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A KOMTRAX snapshot is reported by a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>telematicsReading</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/meterOfUnit">
+        <rdfs:label>meterOfUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>A meter reading is for a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>meterReading</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/alertOnUnit">
+        <rdfs:label>alertOnUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>An alert is raised on a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineAlert</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/alertFaultCode">
+        <rdfs:label>alertFaultCode</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:comment>A fault alert carries a fault code</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineAlert</kau:fromEntityId>
+        <kau:toEntityId>faultCode</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/escalatedToCase">
+        <rdfs:label>escalatedToCase</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <rdfs:comment>An alert is escalated to a support case</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineAlert</kau:fromEntityId>
+        <kau:toEntityId>supportCase</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/alertActionedBy">
+        <rdfs:label>alertActionedBy</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:comment>An alert is actioned by a work order</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>machineAlert</kau:fromEntityId>
+        <kau:toEntityId>workOrder</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/faultForModel">
+        <rdfs:label>faultForModel</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <rdfs:comment>A fault code applies to machine models</rdfs:comment>
+        <kau:cardinality>many-to-many</kau:cardinality>
+        <kau:fromEntityId>faultCode</kau:fromEntityId>
+        <kau:toEntityId>machineModel</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/suggestsFailure">
+        <rdfs:label>suggestsFailure</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <rdfs:comment>A fault code suggests likely failure modes</rdfs:comment>
+        <kau:cardinality>many-to-many</kau:cardinality>
+        <kau:fromEntityId>faultCode</kau:fromEntityId>
+        <kau:toEntityId>failureMode</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/sampledFromUnit">
+        <rdfs:label>sampledFromUnit</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <rdfs:comment>An oil sample is taken from a unit</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>oilSample</kau:fromEntityId>
+        <kau:toEntityId>equipmentUnit</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/sampledComponent">
+        <rdfs:label>sampledComponent</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <rdfs:comment>An oil sample is taken from a component compartment</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>oilSample</kau:fromEntityId>
+        <kau:toEntityId>component</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/sampleActionedBy">
+        <rdfs:label>sampleActionedBy</rdfs:label>
+        <rdfs:domain rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <rdfs:range rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <rdfs:comment>An adverse oil result is actioned by a work order</rdfs:comment>
+        <kau:cardinality>many-to-one</kau:cardinality>
+        <kau:fromEntityId>oilSample</kau:fromEntityId>
+        <kau:toEntityId>workOrder</kau:toEntityId>
+    </owl:ObjectProperty>
+
+    <!-- ============================================== -->
+    <!-- Data Bindings (system of record → Fabric table) -->
+    <!-- ============================================== -->
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_machineModel">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineModel"/>
+        <kau:boundEntityId>machineModel</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicemodel</kau:table>
+        <kau:alternateTable>msauto_devicemodel / msauto_devicemodelcode (Dataverse)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>modelCode=modelid</kau:columnMapping>
+        <kau:columnMapping>series=modelcode</kau:columnMapping>
+        <kau:columnMapping>operatingWeightKg=operatingweight</kau:columnMapping>
+        <kau:columnMapping>enginePowerKw=enginepower</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_equipmentUnit">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/EquipmentUnit"/>
+        <kau:boundEntityId>equipmentUnit</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicetable</kau:table>
+        <kau:alternateTable>msauto_device (Dataverse) / msdyn_customerasset (Field Service)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>serialNumber=serialnumber</kau:columnMapping>
+        <kau:columnMapping>pin=vin</kau:columnMapping>
+        <kau:columnMapping>stockNumber=deviceid</kau:columnMapping>
+        <kau:columnMapping>unitStatus=devicestatus</kau:columnMapping>
+        <kau:columnMapping>ownershipType=ownership</kau:columnMapping>
+        <kau:columnMapping>smrHours=lastcountervalue</kau:columnMapping>
+        <kau:columnMapping>yearOfManufacture=modelyear</kau:columnMapping>
+        <kau:columnMapping>deliveryDate=deliverydate</kau:columnMapping>
+        <kau:columnMapping>warrantyStartDate=warrantystartdate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_component">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/Component"/>
+        <kau:boundEntityId>component</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicetable</kau:table>
+        <kau:rowFilter>device class = major component (child of a machine device)</kau:rowFilter>
+        <kau:alternateTable>msauto_devicecomponent (Dataverse)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>componentSerial=serialnumber</kau:columnMapping>
+        <kau:columnMapping>componentType=deviceclass</kau:columnMapping>
+        <kau:columnMapping>installedDate=installeddate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_workOrder">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/WorkOrder"/>
+        <kau:boundEntityId>workOrder</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amworkordertable</kau:table>
+        <kau:alternateTable>msdyn_workorder (Field Service) / msauto_serviceorder (CDM Automotive)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>workOrderNumber=workorderid</kau:columnMapping>
+        <kau:columnMapping>serviceType=workordertype</kau:columnMapping>
+        <kau:columnMapping>status=workorderstatus</kau:columnMapping>
+        <kau:columnMapping>openedOn=createddatetime</kau:columnMapping>
+        <kau:columnMapping>smrAtService=countervalue</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_maintenancePlan">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MaintenancePlan"/>
+        <kau:boundEntityId>maintenancePlan</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.ammaintenanceplan</kau:table>
+        <kau:alternateTable>msdyn_agreementbookingsetup (Field Service)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>maintenancePlanId=maintenanceplanid</kau:columnMapping>
+        <kau:columnMapping>nextDueSmr=nextcountervalue</kau:columnMapping>
+        <kau:columnMapping>nextDueDate=nextdate</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_failureMode">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FailureMode"/>
+        <kau:boundEntityId>failureMode</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amwarrantyclaimcode</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>failureCode=claimcode</kau:columnMapping>
+        <kau:columnMapping>failureModeName=description</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_supportCase">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/SupportCase"/>
+        <kau:boundEntityId>supportCase</kau:boundEntityId>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.incident</kau:table>
+        <kau:columnMapping>caseNumber=ticketnumber</kau:columnMapping>
+        <kau:columnMapping>title=title</kau:columnMapping>
+        <kau:columnMapping>caseType=casetypecode</kau:columnMapping>
+        <kau:columnMapping>caseOrigin=caseorigincode</kau:columnMapping>
+        <kau:columnMapping>priority=prioritycode</kau:columnMapping>
+        <kau:columnMapping>status=statuscode</kau:columnMapping>
+        <kau:columnMapping>createdOn=createdon</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_telematicsReading">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/TelematicsReading"/>
+        <kau:boundEntityId>telematicsReading</kau:boundEntityId>
+        <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
+        <kau:source>Eventhouse · eh_komtrax (ISO 15143-3 / KOMTRAX API feed)</kau:source>
+        <kau:table>eh_komtrax.machine_snapshots</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>readingId=snapshot_id</kau:columnMapping>
+        <kau:columnMapping>readingTime=snapshot_time</kau:columnMapping>
+        <kau:columnMapping>smrHours=cumulative_operating_hours</kau:columnMapping>
+        <kau:columnMapping>idleHours=cumulative_idle_hours</kau:columnMapping>
+        <kau:columnMapping>fuelUsedLitres=fuel_used_l</kau:columnMapping>
+        <kau:columnMapping>latitude=latitude</kau:columnMapping>
+        <kau:columnMapping>longitude=longitude</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_meterReading">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MeterReading"/>
+        <kau:boundEntityId>meterReading</kau:boundEntityId>
+        <kau:systemOfRecord>Annata 365 (F&amp;O)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.amdevicemeterreading</kau:table>
+        <kau:alternateTable>msauto_devicemeasurement (Dataverse) / msdyn_propertylog (Field Service)</kau:alternateTable>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>meterReadingId=recid</kau:columnMapping>
+        <kau:columnMapping>readingTime=readingdatetime</kau:columnMapping>
+        <kau:columnMapping>meterType=metertype</kau:columnMapping>
+        <kau:columnMapping>meterValue=metervalue</kau:columnMapping>
+        <kau:columnMapping>readingSource=source</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_machineAlert">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/MachineAlert"/>
+        <kau:boundEntityId>machineAlert</kau:boundEntityId>
+        <kau:systemOfRecord>D365 CE</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_d365 (Link to Fabric: Dataverse + F&amp;O)</kau:source>
+        <kau:table>lh_d365.dbo.msdyn_iotalert</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>alertId=msdyn_iotalertid</kau:columnMapping>
+        <kau:columnMapping>alertTime=msdyn_alerttime</kau:columnMapping>
+        <kau:columnMapping>alertType=msdyn_alerttype</kau:columnMapping>
+        <kau:columnMapping>status=statuscode</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_faultCode">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/FaultCode"/>
+        <kau:boundEntityId>faultCode</kau:boundEntityId>
+        <kau:systemOfRecord>KOMTRAX</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_reference (curated reference &amp; external feeds)</kau:source>
+        <kau:table>lh_reference.dbo.fault_code</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>faultCodeId=fault_code</kau:columnMapping>
+        <kau:columnMapping>faultDescription=description</kau:columnMapping>
+        <kau:columnMapping>spn=spn</kau:columnMapping>
+        <kau:columnMapping>fmi=fmi</kau:columnMapping>
+        <kau:columnMapping>system=system</kau:columnMapping>
+    </kau:DataBinding>
+
+    <kau:DataBinding rdf:about="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/binding_oilSample">
+        <kau:boundClass rdf:resource="https://ontology.komatsu.com.au/komatsu-au-10-telematics-condition/OilSample"/>
+        <kau:boundEntityId>oilSample</kau:boundEntityId>
+        <kau:systemOfRecord>LIMC (oil analysis lab)</kau:systemOfRecord>
+        <kau:source>Lakehouse · lh_reference (curated reference &amp; external feeds)</kau:source>
+        <kau:table>lh_reference.dbo.kowa_oil_sample</kau:table>
+        <kau:toConfirm rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</kau:toConfirm>
+        <kau:columnMapping>sampleNumber=sample_number</kau:columnMapping>
+        <kau:columnMapping>sampleDate=sample_date</kau:columnMapping>
+        <kau:columnMapping>compartment=compartment</kau:columnMapping>
+        <kau:columnMapping>oilHours=oil_hours</kau:columnMapping>
+        <kau:columnMapping>conditionRating=rating</kau:columnMapping>
+    </kau:DataBinding>
+
+</rdf:RDF>

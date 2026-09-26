@@ -1,6 +1,20 @@
 # Coding Guidelines for AI Agents
 
-This document contains guidelines for AI coding assistants working on this project.
+This document contains guidelines for AI coding assistants working on the
+**Komatsu Ontology Workbench**.
+
+## Golden rules for this repo
+
+- The ontology source of truth is `src/data/komatsu/model.ts`. Never hand-edit
+  `catalogue/official/komatsu-au-*` or `docs/komatsu/data-dictionary.md`; run
+  `npm run komatsu:generate` and commit the result.
+- Keep every entity Fabric IQ-safe: names ≤26 chars, one string identifier,
+  same property name ⇒ same type, unique relationship names, no self-relationships
+  (`validateKomatsuModel()` and `scripts/komatsu-ontology.test.ts` enforce this).
+- New Komatsu-specific facts need a source in `docs/komatsu/sources.md` or an
+  entry in `docs/komatsu/open-questions.md`.
+- `reference/microsoft-upstream/` is read-only reference material. Do not import
+  from it, build it or move content back out of it.
 
 ## Git Workflow
 
@@ -42,10 +56,12 @@ Ontology-Playground/
 │   ├── store/         # Zustand state management (app + designer)
 │   ├── styles/        # CSS styles
 │   └── types/         # TypeScript type definitions
-├── catalogue/         # Official + community ontology RDF files
-├── content/learn/     # Markdown articles for the learning section
+├── catalogue/official # Generated Komatsu ontology RDF files
+├── content/learn/     # Komatsu Ontology School course
 ├── scripts/           # Build-time compilers (catalogue, learning content)
-├── docs/              # Guides and documentation
+├── docs/komatsu/      # Ontology, systems, standards, Azure/Fabric docs
+├── infra/             # Bicep for the Azure resource group
+├── reference/         # Upstream Microsoft material (unused)
 ├── api/               # Azure Functions backend (optional)
 ├── build/             # Production build output
 └── public/            # Static assets (compiled catalogue.json, learn.json)

@@ -23,7 +23,7 @@ export function AboutModal({ onClose }: AboutModalProps) {
         style={{ maxWidth: 720 }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 600 }}>About Ontology Playground</h2>
+          <h2 style={{ fontSize: 24, fontWeight: 600 }}>About Komatsu Ontology Workbench</h2>
           <button className="icon-btn" onClick={onClose} aria-label="Close about dialog">
             <X size={20} />
           </button>
@@ -32,8 +32,9 @@ export function AboutModal({ onClose }: AboutModalProps) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div className="feature-card" style={{ marginBottom: 0 }}>
             <p className="feature-text" style={{ margin: 0 }}>
-              Ontology Playground is a community learning and design experience for building RDF/OWL ontologies,
-              exploring graph relationships, and preparing models compatible with Microsoft Fabric IQ workflows.
+              The Komatsu Ontology Workbench is where Komatsu Australia designs, reviews and publishes its enterprise
+              ontology — the shared business vocabulary across D365 CE, F&amp;O, Annata 365 and KOMTRAX — and deploys
+              it to Microsoft Fabric IQ. It is built on the open-source Microsoft Ontology Playground (MIT licence).
             </p>
             <p className="feature-text" style={{ margin: '10px 0 0 0' }}>
               Learn more about Microsoft Fabric IQ:{' '}

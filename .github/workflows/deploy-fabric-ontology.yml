@@ -1,0 +1,51 @@
+name: Deploy ontology to Microsoft Fabric IQ
+
+# Pushes the Komatsu enterprise ontology (and optionally a module) to the Fabric
+# workspace in variable FABRIC_WORKSPACE_ID. Opt-in with FABRIC_DEPLOY_ENABLED=true.
+# The OIDC identity must be a Contributor on the workspace, and the tenant must
+# allow service principals to use Fabric APIs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: "Module slug (e.g. 03-pdi). Leave empty for the full enterprise model."
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - "src/data/komatsu/**"
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    if: vars.FABRIC_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Validate model
+        run: npx vitest run scripts/komatsu-ontology.test.ts
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          allow-no-subscriptions: true
+      - name: Push ontology to Fabric
+        env:
+          FABRIC_WORKSPACE_ID: ${{ vars.FABRIC_WORKSPACE_ID }}
+        run: |
+          if [ -n "${{ github.event.inputs.module }}" ]; then
+            npm run fabric:deploy -- --module "${{ github.event.inputs.module }}"
+          else
+            npm run fabric:deploy
+          fi

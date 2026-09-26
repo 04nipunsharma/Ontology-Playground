@@ -1,0 +1,15 @@
+{
+  "name": "Komatsu AU · 06 Service & Technicians",
+  "description": "Work orders and jobs, standard jobs, maintenance plans, technicians, skills, bookings, labour, parts and failure coding.",
+  "icon": "🛠️",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "service",
+    "field-service",
+    "workshop",
+    "technicians",
+    "annata"
+  ],
+  "author": "komatsu-australia"
+}

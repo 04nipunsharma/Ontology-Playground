@@ -1,0 +1,15 @@
+{
+  "name": "Komatsu AU · 10 Telematics & Condition Monitoring",
+  "description": "KOMTRAX snapshots, meter readings, alerts and fault codes, and oil analysis linked to units, components and service.",
+  "icon": "📡",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "komtrax",
+    "telematics",
+    "iso-15143-3",
+    "condition-monitoring",
+    "kowa"
+  ],
+  "author": "komatsu-australia"
+}

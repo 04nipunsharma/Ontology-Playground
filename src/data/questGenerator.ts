@@ -25,7 +25,7 @@ export function generateQuestsForOntology(ontology: Ontology): Quest[] {
     quests.push({
       id: "quest-1",
       title: "Meet the Entities",
-      description: `Discover the core entity types in the ${ontology.name} ontology.`,
+      description: `Discover the core entity types in the ${ontology.name}${/\bontology$/i.test(ontology.name.trim()) ? '' : ' ontology'}.`,
       difficulty: "beginner",
       category: "exploration",
       steps: explorationSteps,

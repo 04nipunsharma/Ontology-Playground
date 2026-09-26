@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { serializeToRDF } from './serializer';
 import { parseRDF } from './parser';
-import { cosmicCoffeeOntology, sampleBindings } from '../../data/ontology';
-import { sampleOntologies } from '../../data/sampleOntologies';
+import { cosmicCoffeeOntology, sampleBindings } from '../../test/fixtures/fourthCoffee';
+import { komatsuEnterpriseOntology, komatsuModuleOntology, komatsuModules } from '../../data/komatsu';
 import type { Ontology, DataBinding } from '../../data/ontology';
 
 /**
@@ -86,11 +86,11 @@ describe('RDF round-trip tests', () => {
     expectBindingsEqual(bindings, sampleBindings);
   });
 
-  for (const entry of sampleOntologies) {
-    it(`round-trips the "${entry.name}" sample ontology`, () => {
-      const rdf = serializeToRDF(entry.ontology);
+  for (const source of [komatsuEnterpriseOntology, ...komatsuModules.map(komatsuModuleOntology)]) {
+    it(`round-trips the "${source.name}" ontology`, () => {
+      const rdf = serializeToRDF(source);
       const { ontology } = parseRDF(rdf);
-      expectOntologiesEqual(ontology, entry.ontology);
+      expectOntologiesEqual(ontology, source);
     });
   }
 

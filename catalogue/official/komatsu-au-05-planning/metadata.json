@@ -1,0 +1,16 @@
+{
+  "name": "Komatsu AU · 05 Demand & Supply Planning",
+  "description": "Parts forecasting, stocking policies, master planning runs and planned orders for supply planners, alongside machine forecasts and PDI capacity.",
+  "icon": "📊",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "planning",
+    "mrp",
+    "forecast",
+    "s-and-op",
+    "supply-planner",
+    "parts-planner"
+  ],
+  "author": "komatsu-australia"
+}

@@ -1,5 +1,3 @@
-import { Sparkles } from 'lucide-react';
-
 export function AppFooter() {
   const deployedCommitSha = import.meta.env.VITE_DEPLOYED_COMMIT_SHA;
   const deployedRepo = import.meta.env.VITE_REPOSITORY;
@@ -10,13 +8,10 @@ export function AppFooter() {
 
   return (
     <footer className="app-footer">
-      <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">
-        <Sparkles size={14} />
-        Built with GitHub Copilot
-      </a>
+      <span>Komatsu Australia Ontology Workbench</span>
       <span className="app-footer-sep">&middot;</span>
-      <a href="https://github.com/videlalvaro" target="_blank" rel="noopener noreferrer">
-        Supervised by videlalvaro
+      <a href="https://github.com/microsoft/Ontology-Playground" target="_blank" rel="noopener noreferrer">
+        Based on Microsoft Ontology Playground (MIT)
       </a>
       {shortCommit && (
         <>

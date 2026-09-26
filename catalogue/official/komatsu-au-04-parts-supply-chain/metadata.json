@@ -1,0 +1,15 @@
+{
+  "name": "Komatsu AU · 04 Parts Supply Chain & Procurement",
+  "description": "Part master and supersession, suppliers and agreements, purchase orders and receipts, warehouses, stock, transfers, shipments and parts orders.",
+  "icon": "🔩",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "parts",
+    "procurement",
+    "warehouse",
+    "inventory",
+    "d365-fo"
+  ],
+  "author": "komatsu-australia"
+}

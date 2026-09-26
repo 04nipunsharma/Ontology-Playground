@@ -108,7 +108,7 @@ export function LearnPage({ route }: LearnPageProps) {
 
 function CourseCatalogue({ courses }: { courses: LearnCourse[] }) {
   const orderedCourses = useMemo(() => {
-    const pinnedSlug = 'ontology-fundamentals';
+    const pinnedSlug = 'komatsu-au-ontology';
     return [...courses].sort((a, b) => {
       if (a.slug === pinnedSlug) return -1;
       if (b.slug === pinnedSlug) return 1;
@@ -120,8 +120,8 @@ function CourseCatalogue({ courses }: { courses: LearnCourse[] }) {
     <div className="learn-index">
       <div className="learn-index-hero">
         <p>
-          Learning paths and hands-on labs to help you understand and build
-          ontologies for Microsoft Fabric IQ.
+          Walk-throughs of the Komatsu Australia enterprise ontology — for
+          process-owner workshops, onboarding and Fabric IQ delivery.
         </p>
       </div>
       <div className="learn-card-grid">

@@ -9,6 +9,7 @@ import { navigate, parseHash } from '../lib/router';
 import { buildOntologyEmbedSnippet } from '../lib/contentSafety';
 import type { CatalogueEntry, Catalogue } from '../types/catalogue';
 import { CATEGORY_COLORS, CATEGORY_LABELS } from '../types/catalogue';
+import { CATALOGUE_REPO_URL } from '../lib/repoConfig';
 
 interface GalleryModalProps {
   onClose: () => void;
@@ -516,7 +517,7 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
           <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
             Want to contribute? See{' '}
             <a
-              href="https://github.com/microsoft/Ontology-Playground/blob/main/CONTRIBUTING.md"
+              href={`${CATALOGUE_REPO_URL}/blob/main/docs/komatsu/README.md#changing-the-model`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -525,11 +526,11 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
                 cursor: 'pointer',
               }}
             >
-              <strong>CONTRIBUTING.md</strong>
+              <strong>Changing the model</strong>
             </a>
-            {' '}— add your ontology as an RDF file and{' '}
+            {' '}— edit the model, regenerate and{' '}
             <a
-              href="https://github.com/microsoft/Ontology-Playground/fork"
+              href={`${CATALOGUE_REPO_URL}/pulls`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

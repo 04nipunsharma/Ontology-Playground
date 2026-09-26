@@ -1,0 +1,14 @@
+{
+  "name": "Komatsu AU · 09 Customer Support & Portal",
+  "description": "Support cases, entitlements and SLAs, customer portal users, KOMTRAX alerts and the work orders they trigger.",
+  "icon": "🎧",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "customer-support",
+    "portal",
+    "power-pages",
+    "cases"
+  ],
+  "author": "komatsu-australia"
+}

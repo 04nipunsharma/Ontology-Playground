@@ -1,0 +1,14 @@
+{
+  "name": "Komatsu AU · 01 Customer & Sales to Cash",
+  "description": "Customers, sites, contacts and territories through opportunity, quote, order, trade-in, finance, handover and invoice.",
+  "icon": "🤝",
+  "category": "komatsu",
+  "tags": [
+    "komatsu",
+    "sales",
+    "crm",
+    "d365-ce",
+    "order-to-cash"
+  ],
+  "author": "komatsu-australia"
+}

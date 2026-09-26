@@ -8,6 +8,9 @@ interface DataSourcesModalProps {
 
 export function DataSourcesModal({ onClose }: DataSourcesModalProps) {
   const { currentOntology, dataBindings } = useAppStore();
+  const boundIds = new Set(dataBindings.map((b) => b.entityTypeId));
+  const boundCount = currentOntology.entityTypes.filter((e) => boundIds.has(e.id)).length;
+  const unboundEntityNames = currentOntology.entityTypes.filter((e) => !boundIds.has(e.id)).map((e) => e.name);
   
   return (
     <motion.div
@@ -29,7 +32,7 @@ export function DataSourcesModal({ onClose }: DataSourcesModalProps) {
           <div>
             <h2 style={{ fontSize: 24, fontWeight: 600 }}>Data Sources</h2>
             <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginTop: 4 }}>
-              How the Fourth Coffee ontology binds to a Data Lakehouse
+              How {currentOntology.name} binds to its data sources
             </p>
           </div>
           <button className="icon-btn" onClick={onClose}>
@@ -74,7 +77,9 @@ export function DataSourcesModal({ onClose }: DataSourcesModalProps) {
 
             const sourceNormalized = binding.source.toLowerCase();
             const isLakehouse = sourceNormalized.includes('lakehouse') || binding.table.startsWith('lakehouse.');
+            const isEventhouse = sourceNormalized.includes('eventhouse');
             const isSemanticModel = sourceNormalized.includes('semantic') || binding.table.startsWith('semantic_model.');
+            const sourceLabel = isSemanticModel ? 'Semantic model' : isEventhouse ? 'Eventhouse' : 'Lakehouse';
 
             return (
               <div key={binding.entityTypeId} className="binding-card" style={{ margin: 0 }}>
@@ -111,7 +116,7 @@ export function DataSourcesModal({ onClose }: DataSourcesModalProps) {
                     color: isLakehouse ? 'var(--ms-blue)' : 'var(--ms-yellow)'
                   }}>
                     {isSemanticModel ? <BarChart3 size={14} /> : <Table size={14} />}
-                    {isSemanticModel ? 'Semantic model' : 'Lakehouse'}
+                    {sourceLabel}
                   </div>
                 </div>
 
@@ -161,13 +166,21 @@ export function DataSourcesModal({ onClose }: DataSourcesModalProps) {
             borderRadius: 'var(--radius-md)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 4 }}>
-              <strong>Other Entity Types:</strong> Store, Supplier, Shipment
-            </div>
-            <div style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>
-              In this demo, bindings are shown for Customer, Order, and Product. 
-              In a real deployment, all entities would be bound to data platform sources.
-            </div>
+            {unboundEntityNames.length > 0 ? (
+              <>
+                <div style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 4 }}>
+                  <strong>Other Entity Types:</strong> {unboundEntityNames.join(', ')}
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>
+                  Bindings are shown for {boundCount} of {currentOntology.entityTypes.length} entity types.
+                  In a real deployment, all entities would be bound to data platform sources.
+                </div>
+              </>
+            ) : (
+              <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
+                All {currentOntology.entityTypes.length} entity types are bound to a data source.
+              </div>
+            )}
           </div>
         </div>
 

@@ -3,7 +3,7 @@
  * and mounts an interactive ontology viewer inside each one.
  *
  * Supported data attributes on each container:
- *   data-catalogue-id="official/cosmic-coffee"  — load from catalogue.json
+ *   data-catalogue-id="official/komatsu-au-enterprise"  — load from catalogue.json
  *   data-ontology-url="https://…/my.rdf"        — fetch an RDF or JSON file
  *   data-ontology-inline="<base64-encoded JSON>" — inline ontology JSON
  *   data-theme="dark" | "light"                  — color theme (default: dark)

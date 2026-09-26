@@ -231,7 +231,7 @@ export function convertToFabricParts(ontology: Ontology): ConversionResult {
 /**
  * Sanitize a name to match Fabric's regex: ^[a-zA-Z][a-zA-Z0-9_-]{0,127}$
  */
-function sanitizeName(name: string): string {
+export function sanitizeName(name: string): string {
   // Replace spaces and invalid chars with underscores
   let sanitized = name.replace(/[^a-zA-Z0-9_-]/g, '_');
   // Ensure starts with a letter

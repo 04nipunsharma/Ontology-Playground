@@ -17,8 +17,7 @@ const dom = new JSDOM();
 import { parseRDF } from '../src/lib/rdf/parser';
 import { validateOntology } from '../src/store/designerStore';
 import { validateOntologyStyle } from './style-validator';
-import { cosmicCoffeeOntology } from '../src/data/ontology';
-import { sampleOntologies } from '../src/data/sampleOntologies';
+import { komatsuEnterpriseOntology } from '../src/data/komatsu';
 import { existsSync, readdirSync, readFileSync, statSync } from 'fs';
 import { join, basename } from 'path';
 
@@ -79,10 +78,7 @@ if (args.length > 0) {
   // --- Mode: validate all built-in + catalogue ontologies ---
 
   // 1. Built-in TS ontology objects
-  report('Fourth Coffee (built-in)', validateOntology(cosmicCoffeeOntology));
-  for (const s of sampleOntologies) {
-    report(`${s.name} (built-in)`, validateOntology(s.ontology));
-  }
+  report('Komatsu Australia Enterprise Ontology (built-in)', validateOntology(komatsuEnterpriseOntology));
 
   // 2. Catalogue RDF files
   const catalogueDir = join(process.cwd(), 'catalogue/official');

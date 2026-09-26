@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namePrefix": { "value": "kau-ontology" },
+    "swaLocation": { "value": "eastasia" },
+    "swaSku": { "value": "Standard" },
+    "deployFabricCapacity": { "value": false },
+    "fabricLocation": { "value": "australiaeast" },
+    "fabricSku": { "value": "F2" },
+    "fabricAdmins": { "value": [] },
+    "tags": {
+      "value": {
+        "app": "komatsu-ontology-workbench",
+        "costCentre": "TBC"
+      }
+    }
+  }
+}
