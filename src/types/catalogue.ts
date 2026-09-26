@@ -36,7 +36,7 @@ export const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export const CATEGORY_COLORS: Record<string, string> = {
-  komatsu: '#140A9A',
+  komatsu: '#2F6FED',
   retail: '#0078D4',
   healthcare: '#D13438',
   finance: '#107C10',

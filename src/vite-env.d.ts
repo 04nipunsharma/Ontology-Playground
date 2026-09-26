@@ -8,6 +8,8 @@ interface ImportMetaEnv {
   readonly VITE_GITHUB_OAUTH_BASE: string;
   readonly VITE_DEPLOYED_COMMIT_SHA?: string;
   readonly VITE_REPOSITORY?: string;
+  readonly VITE_FEATURED_CATEGORY?: string;
+  readonly VITE_DEFAULT_CATALOGUE_ID?: string;
 }
 
 interface ImportMeta {

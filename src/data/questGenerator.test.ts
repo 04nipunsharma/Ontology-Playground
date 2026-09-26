@@ -59,4 +59,11 @@ describe('generateQuestsForOntology', () => {
     expect(traversalStep?.instruction).toBe('Try a traversal query: "How does Service connect to ConfigurationItem?"');
     expect(traversalStep?.instruction).not.toContain('Show me all is supported by connections');
   });
+
+  it('does not repeat "ontology" when the ontology name already ends with it', () => {
+    const named = generateQuestsForOntology({ ...ontology, name: 'Komatsu Australia Enterprise Ontology' });
+    expect(named[0].description).toBe('Discover the core entity types in the Komatsu Australia Enterprise Ontology.');
+    const plain = generateQuestsForOntology(ontology);
+    expect(plain[0].description).toBe('Discover the core entity types in the Incident Management ontology.');
+  });
 });
