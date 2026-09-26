@@ -1,0 +1,44 @@
+name: Deploy workbench to Azure Static Web Apps
+
+# Opt-in: set repository variable AZURE_SWA_ENABLED=true and secret
+# AZURE_STATIC_WEB_APPS_API_TOKEN (from the SWA created by infra/main.bicep).
+# See docs/komatsu/azure-fabric-setup.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    if: vars.AZURE_SWA_ENABLED == 'true' && (github.event_name != 'pull_request' || github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build and deploy
+        uses: Azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9 # v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: "/"
+          api_location: "api"
+          output_location: "build"
+        env:
+          VITE_GITHUB_CLIENT_ID: ${{ secrets.VITE_GITHUB_CLIENT_ID }}
+          VITE_FABRIC_WORKSPACE_ID: ${{ vars.FABRIC_WORKSPACE_ID }}
+          VITE_REPOSITORY: ${{ github.repository }}
+          VITE_DEPLOYED_COMMIT_SHA: ${{ github.sha }}
+
+  close_pull_request:
+    if: vars.AZURE_SWA_ENABLED == 'true' && github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close staging environment
+        uses: Azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9 # v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: close

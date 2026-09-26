@@ -21,7 +21,7 @@ export function FabricExportModal({ onClose }: FabricExportModalProps) {
 
   const [step, setStep] = useState<Step>('credentials');
   const [token, setToken] = useState('');
-  const [workspaceId, setWorkspaceId] = useState('');
+  const [workspaceId, setWorkspaceId] = useState(import.meta.env.VITE_FABRIC_WORKSPACE_ID ?? '');
   const [existingOntologies, setExistingOntologies] = useState<FabricOntologyResponse[]>([]);
   const [selectedOntologyId, setSelectedOntologyId] = useState<string | ''>('');
   const [mode, setMode] = useState<'create' | 'update'>('create');

@@ -2,7 +2,17 @@
   "$schema": "https://json.schemastore.org/staticwebapp.config.json",
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "*.js", "*.css", "*.svg", "*.ico", "*.png", "*.jpg", "*.woff", "*.woff2"]
+    "exclude": [
+      "/assets/*",
+      "*.js",
+      "*.css",
+      "*.svg",
+      "*.ico",
+      "*.png",
+      "*.jpg",
+      "*.woff",
+      "*.woff2"
+    ]
   },
   "routes": [
     {
@@ -19,7 +29,7 @@
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://github.com https://api.github.com",
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://github.com https://api.github.com https://api.fabric.microsoft.com https://login.microsoftonline.com",
     "Referrer-Policy": "strict-origin-when-cross-origin"
   },
   "mimeTypes": {
