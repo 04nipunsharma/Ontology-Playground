@@ -79,7 +79,7 @@ is listed in [open-questions.md](open-questions.md).
 | Relationship names unique; source ≠ target | Enforced (supersession modelled as `PartInterchange`) |
 | **One static data binding per entity type** | One binding per entity. Where several entities share a physical table (e.g. `amworkordertable` for WorkOrder / PDIJob / RemanJob), the gold layer materialises one filtered table each |
 | Bindings must use **managed** lakehouse tables without Delta column mapping | Bind to the gold lakehouse, not to Link-to-Fabric shortcuts |
-| `Decimal` values return null in Graph | Cast amounts and quantities to `double` in the gold tables (the Playground's Fabric export already maps decimal → Double) |
+| `Decimal` values return null in Graph | Cast amounts and quantities to `double` in the gold tables (the workbench's Fabric export already maps decimal → Double) |
 | Relationships are bound through a mapping table and carry no properties | One link table per relationship. Attributes such as `fitsModel.serialFrom` live in that table |
 
 ### Recommended medallion pattern
@@ -97,9 +97,10 @@ is listed in [open-questions.md](open-questions.md).
    and Annata tables listed in the data dictionary.
 2. Build the silver and gold transformations (notebooks or Dataflow Gen2).
    The data dictionary gives each property's source column.
-3. In the Playground, load `official/komatsu-au-enterprise` (or a module) →
-   **Fabric Export** to create the ontology item in your workspace. You can
-   also download the RDF and use your own pipeline.
+3. Publish the ontology item with `npm run fabric:deploy` or the
+   **Deploy ontology to Microsoft Fabric IQ** workflow (see
+   [azure-fabric-setup.md](azure-fabric-setup.md)). Alternatively use
+   **Import / Export → Push to Microsoft Fabric** in the workbench.
 4. In Fabric, bind each entity type to its gold table and each relationship
    type to its link table. Refresh the graph after data changes.
 

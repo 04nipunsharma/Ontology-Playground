@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { X, Github, ExternalLink, Download, Check } from 'lucide-react';
 import { useDesignerStore } from '../../store/designerStore';
 import { serializeToRDF } from '../../lib/rdf/serializer';
+import { CATALOGUE_REPO_URL } from '../../lib/repoConfig';
 
 interface SubmitCatalogueModalProps {
   onClose: () => void;
 }
 
-const REPO_URL = 'https://github.com/microsoft/Ontology-Playground';
+const REPO_URL = CATALOGUE_REPO_URL;
 
 export function SubmitCatalogueModal({ onClose }: SubmitCatalogueModalProps) {
   const ontology = useDesignerStore((s) => s.ontology);

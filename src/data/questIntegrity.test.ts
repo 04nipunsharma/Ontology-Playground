@@ -3,8 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Ontology } from './ontology';
 import type { Quest, QuestStep } from './quests';
-import { quests as defaultQuests } from './quests';
-import { cosmicCoffeeOntology } from './ontology';
+import { quests as defaultQuests } from '../test/fixtures/fourthCoffee';
+import { cosmicCoffeeOntology } from '../test/fixtures/fourthCoffee';
 import { generateQuestsForOntology } from './questGenerator';
 
 interface CatalogueEntry {

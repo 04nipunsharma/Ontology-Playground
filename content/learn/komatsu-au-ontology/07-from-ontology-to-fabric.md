@@ -28,7 +28,7 @@ Open **Data Sources** (database icon in the header) with any Komatsu module load
 1. **Bronze** — Link to Fabric exposes Dataverse and selected F&O / Annata tables.
 2. **Silver** — clean, decode enums, conform keys (`DataAreaId|Id`).
 3. **Gold** — one managed Delta table per entity type and one link table per relationship; amounts cast to `double`.
-4. **Ontology** — push this model with **Fabric Export** and bind each entity to its gold table.
+4. **Ontology** — publish this model with `npm run fabric:deploy` (or the GitHub workflow) and bind each entity to its gold table.
 
 The model already respects Fabric IQ rules: names ≤ 26 characters, one string key per entity, consistent property types, unique relationship names and no self-relationships.
 

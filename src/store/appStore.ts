@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import type { Quest } from '../data/quests';
-import { quests as defaultQuests } from '../data/quests';
 import type { Ontology, DataBinding } from '../data/ontology';
-import { cosmicCoffeeOntology, sampleBindings } from '../data/ontology';
+import { komatsuEnterpriseOntology, komatsuEnterpriseBindings } from '../data/komatsu';
 import { generateQuestsForOntology } from '../data/questGenerator';
+
+const defaultQuests = generateQuestsForOntology(komatsuEnterpriseOntology);
 
 export type ThemeId = 'dark' | 'light' | 'aurora' | 'crimson';
 
@@ -111,8 +112,8 @@ interface AppState {
 
 export const useAppStore = create<AppState>((set, get) => ({
   // Initial Ontology State
-  currentOntology: cosmicCoffeeOntology,
-  dataBindings: sampleBindings,
+  currentOntology: komatsuEnterpriseOntology,
+  dataBindings: komatsuEnterpriseBindings,
   
   // Initial UI State
   selectedEntityId: null,
@@ -123,7 +124,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   theme: initialTheme,
   darkMode: isDarkTheme(initialTheme),
   
-  // Initial Quest State - use default quests for Fourth Coffee
+  // Initial Quest State - generated for the default (Komatsu) ontology
   availableQuests: defaultQuests,
   activeQuest: null,
   currentStepIndex: 0,
@@ -155,8 +156,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
   
   resetToDefault: () => set({
-    currentOntology: cosmicCoffeeOntology,
-    dataBindings: sampleBindings,
+    currentOntology: komatsuEnterpriseOntology,
+    dataBindings: komatsuEnterpriseBindings,
     selectedEntityId: null,
     selectedRelationshipId: null,
     highlightedEntities: [],

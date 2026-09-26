@@ -23,8 +23,8 @@ const manifestFixture: LearnManifest = {
       ],
     },
     {
-      slug: 'ontology-fundamentals',
-      title: 'Ontology Fundamentals',
+      slug: 'komatsu-au-ontology',
+      title: 'Komatsu Australia Enterprise Ontology',
       description: 'Foundational concepts',
       type: 'path',
       icon: '📘',
@@ -62,7 +62,7 @@ describe('LearnPage course ordering', () => {
     vi.restoreAllMocks();
   });
 
-  it('pins ontology fundamentals first while preserving order of other courses', async () => {
+  it('pins the Komatsu course first while preserving order of other courses', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue({
       ok: true,
       json: () => Promise.resolve(manifestFixture),
@@ -71,10 +71,10 @@ describe('LearnPage course ordering', () => {
     const { container } = render(<LearnPage route={{ page: 'learn' }} />);
 
     await waitFor(() => {
-      expect(screen.getByText('Ontology Fundamentals')).toBeInTheDocument();
+      expect(screen.getByText('Komatsu Australia Enterprise Ontology')).toBeInTheDocument();
     });
 
     const titles = Array.from(container.querySelectorAll('.learn-card h2')).map((node) => node.textContent?.trim());
-    expect(titles).toEqual(['Ontology Fundamentals', 'Finance Path', 'Healthcare Path']);
+    expect(titles).toEqual(['Komatsu Australia Enterprise Ontology', 'Finance Path', 'Healthcare Path']);
   });
 });

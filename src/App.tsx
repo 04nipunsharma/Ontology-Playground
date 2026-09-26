@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef, lazy, Suspense } from 'react';
+import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { 
   Header, 
@@ -32,8 +32,6 @@ import { useRoute } from './hooks/useRoute';
 import { navigate } from './lib/router';
 import { decodeSharePayload } from './lib/shareCodec';
 import type { Catalogue } from './types/catalogue';
-import { DEFAULT_CATALOGUE_ID } from './lib/featuredCatalogue';
-import { cosmicCoffeeOntology } from './data/ontology';
 import { Search, MessageSquare, Info, Compass, LayoutGrid, PenTool, BookOpen, FileJson, HelpCircle, Database, Palette, FileText } from 'lucide-react';
 import './styles/app.css';
 
@@ -99,29 +97,6 @@ function App() {
         });
     }
   }, [route, loadOntology]);
-
-  // Home route: open the configured default catalogue ontology (e.g. the
-  // Komatsu enterprise model) instead of the built-in sample. Only on the
-  // initial page load, and only if nothing else has been loaded meanwhile.
-  const openDefaultOnLoad = useRef(route.page === 'home');
-  useEffect(() => {
-    if (!openDefaultOnLoad.current || !DEFAULT_CATALOGUE_ID) return;
-    openDefaultOnLoad.current = false;
-    fetch(`${import.meta.env.BASE_URL}catalogue.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Failed to load catalogue (${res.status})`);
-        return res.json() as Promise<Catalogue>;
-      })
-      .then((data) => {
-        const entry = data.entries.find((e) => e.id === DEFAULT_CATALOGUE_ID);
-        if (entry && useAppStore.getState().currentOntology === cosmicCoffeeOntology) {
-          loadOntology(entry.ontology, entry.bindings);
-        }
-      })
-      .catch(() => {
-        // Keep the built-in default ontology
-      });
-  }, [loadOntology]);
 
   // Deep-link: /#/share/<data> — decode an inline-shared ontology
   useEffect(() => {

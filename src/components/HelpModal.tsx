@@ -23,7 +23,7 @@ export function HelpModal({ onClose }: HelpModalProps) {
         style={{ maxWidth: 700 }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 600 }}>How to Use Ontology Playground (Preview)</h2>
+          <h2 style={{ fontSize: 24, fontWeight: 600 }}>How to Use the Komatsu Ontology Workbench</h2>
           <button className="icon-btn" onClick={onClose}>
             <X size={20} />
           </button>
@@ -87,7 +87,7 @@ export function HelpModal({ onClose }: HelpModalProps) {
               <strong style={{ color: 'var(--ms-blue)' }}>About Microsoft Fabric IQ Ontology</strong>
               <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.5 }}>
                 An ontology is a shared, machine-understandable vocabulary of your business. It defines entity types (like Customer, Product), 
-                their properties, and relationships. This demo uses a fictional "Fourth Coffee" to illustrate these concepts.
+                their properties, and relationships. The workbench opens with the Komatsu Australia enterprise ontology; the gallery holds focused modules for each process area.
               </p>
             </div>
           </div>

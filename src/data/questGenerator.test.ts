@@ -2,8 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { generateQuestsForOntology } from './questGenerator';
 import type { Ontology } from './ontology';
 import { validateQueryQuestSteps } from './questQueryValidator';
-import { cosmicCoffeeOntology } from './ontology';
-import { quests as defaultQuests } from './quests';
+import { komatsuEnterpriseOntology } from './komatsu';
 
 const ontology: Ontology = {
   name: 'Incident Management',
@@ -38,8 +37,8 @@ const ontology: Ontology = {
 };
 
 describe('generateQuestsForOntology', () => {
-  it('keeps default Fourth Coffee query quests executable in the live query engine', () => {
-    const issues = validateQueryQuestSteps(defaultQuests, cosmicCoffeeOntology);
+  it('keeps default (Komatsu) query quests executable in the live query engine', () => {
+    const issues = validateQueryQuestSteps(generateQuestsForOntology(komatsuEnterpriseOntology), komatsuEnterpriseOntology);
 
     expect(issues).toEqual([]);
   });

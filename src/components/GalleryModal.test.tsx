@@ -223,6 +223,8 @@ describe('GalleryModal', () => {
   });
 
   it('loads an ontology and navigates to its deep link', async () => {
+    // Make the first entry the active ontology so its card has no Load button
+    useAppStore.getState().loadOntology(fakeCatalogue.entries[0].ontology);
     mockFetchSuccess();
     const user = userEvent.setup();
     render(<GalleryModal onClose={onClose} />);

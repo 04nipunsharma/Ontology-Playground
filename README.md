@@ -1,329 +1,107 @@
-# Ontology Playground (Preview) ☕
-
-> Note: This project was developed with AI-assisted coding.
-
-**[Try it live &#x2192; microsoft.github.io/Ontology-Playground](https://microsoft.github.io/Ontology-Playground/)**
-
-[![Ontology Playground screenshot](public/og-image.png)](https://microsoft.github.io/Ontology-Playground/)
-
-A free, open-source web application for learning about ontologies and
-**Microsoft Fabric IQ**. Explore pre-built ontologies, design your own in a
-visual editor, export as RDF/XML, and share interactive diagrams — all from a
-fully static site with zero backend dependencies.
-
-![Microsoft Fabric](https://img.shields.io/badge/Microsoft-Fabric-0078D4?style=flat-square&logo=microsoft)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-
-## Komatsu Australia Enterprise Ontology (this fork)
-
-This fork puts an end-to-end **Komatsu Australia** ontology at the centre of
-the Playground. It covers customers and sites, machine sales to delivery,
-Hensei factory ordering, import and biosecurity, PDI, parts supply chain and
-procurement, demand/supply planning, service and technicians, contracts,
-warranty and rental, REMAN, customer support and portal, and KOMTRAX
-telematics. That is **71 entity types and 199 relationships**, aligned to
-industry standards and bound to D365 CE, D365 F&O and Annata 365.
-
-- **Opens by default** on the home page. The gallery's **Komatsu Australia**
-  category holds the full model plus 11 focused modules. The upstream
-  examples are kept, grouped under *Sample ontologies*.
-- **Ontology School course**: `/#/learn/komatsu-au-ontology` (7 lessons, in
-  presentation mode for workshops).
-- **Docs**: [overview](docs/komatsu/README.md) ·
-  [data dictionary](docs/komatsu/data-dictionary.md) ·
-  [system mapping](docs/komatsu/system-mapping.md) ·
-  [standards alignment](docs/komatsu/standards-alignment.md) ·
-  [glossary](docs/komatsu/glossary.md) ·
-  [open questions](docs/komatsu/open-questions.md)
-- **Edit** `src/data/komatsu/model.ts`, then run `npm run komatsu:generate`.
-
-## Features
-
-### Interactive Graph Exploration
-
-Cytoscape.js-powered graph that renders any ontology as an interactive
-node-and-edge diagram. Pan, zoom, click nodes to inspect properties, and use
-the live search bar to filter entities and relationships.
-
-### Ontology Catalogue
-
-A curated library of official and community-contributed ontologies spanning six
-domains (Retail, E-Commerce, Healthcare, Finance, Manufacturing, Education).
-Browse by category, search by name or tags, load any ontology with one click,
-and view its RDF source. Every ontology has a shareable deep link
-(`/#/catalogue/official/cosmic-coffee`).
-
-### Visual Ontology Designer
-
-A full-screen, split-pane editor for creating ontologies from scratch or
-editing existing ones. Add entity types with icons, colors, and typed
-properties; define relationships with cardinalities; see a live graph preview
-that updates as you work. Includes undo/redo (50 levels), real-time validation,
-and export to RDF/XML or JSON.
-
-### RDF Import & Export
-
-Full round-trip support for RDF/XML (OWL classes, datatype properties, object
-properties with cardinalities). Import `.rdf` / `.owl` files, export in the
-exact format Microsoft Fabric IQ expects, and verify fidelity with automated
-round-trip tests.
-
-### One-Click Catalogue PR
-
-Sign in with GitHub (device flow) and submit your ontology to the community
-catalogue directly from the designer — the app forks the repo, creates a
-branch, commits the RDF + metadata, and opens a pull request automatically.
-
-### Embeddable Widget
-
-A self-contained JavaScript file (`ontology-embed.js`) that renders an
-interactive ontology viewer on any web page with a single `<script>` tag.
-Supports dark/light themes, multiple loading methods (catalogue ID, URL,
-inline base64), and click-to-inspect. See the
-[Embedding Guide](docs/embed-guide.md) for details.
-
-### Ontology School
-
-A structured learning hub (`/#/learn`) with **9 courses** spanning conceptual
-learning paths and hands-on labs:
-
-- **Ontology Fundamentals** — 6 articles covering core concepts (What is an
-  Ontology? → RDF/OWL → Fabric IQ → Build Your First → Design Patterns →
-  Contributing)
-- **7 Domain Learning Paths** — Fourth Coffee, E-Commerce, Finance, Healthcare,
-  Manufacturing, University, and HR System. Each path has 4 progressive articles
-  that build an ontology step-by-step, with live embedded graphs showing new
-  entities at each stage.
-- **IQ Lab: Retail Supply Chain** — A 7-step hands-on lab that builds a 15-entity
-  ontology from scratch (3 → 15 entities across 6 progressive catalogue entries).
-
-Every article supports **presentation mode** (slides split at `##` headings)
-and includes **interactive quizzes** with instant feedback. Ontology embeds
-load live graphs from the catalogue with optional diff highlighting.
-
-### Quest System
-
-Five progressive quests that guide users through ontology concepts with
-multi-step instructions, hints, progress bars, and achievement badges.
-
-### Natural Language Query Playground
-
-Type natural language questions ("Which customers placed orders?") and see how
-they map to ontology entities and relationships — a preview of Fabric IQ's
-NL2Ontology capability.
-
-### Command Palette & Keyboard Shortcuts
-
-Press `⌘K` / `Ctrl+K` anywhere to open a searchable command palette. Jump
-to the Catalogue, Designer, Ontology School, Import/Export, Help, and more without
-leaving the keyboard. Press `?` for quick help access. Arrow keys + Enter to
-navigate the palette.
-
-### Starter Templates
-
-The designer offers five domain templates (Retail, Healthcare, Finance, IoT,
-Education) so new users never face a blank page. Each template creates 3
-entities with properties and 2 relationships, ready to customise.
-
-### Interactive Onboarding Tour
-
-First-time visitors get a 5-step guided tour with a spotlight overlay that
-highlights the Header, Graph, Quests, Inspector, and Designer in sequence.
-Dismissable with a "don't show again" option persisted to `localStorage`.
-
-### Deep Linking & URL Routing
-
-Client-side hash routing with shareable URLs for every page:
-
-| Route | Page |
-|-------|------|
-| `/#/` | Home (default ontology) |
-| `/#/catalogue` | Ontology gallery |
-| `/#/catalogue/<source>/<slug>` | Specific ontology (e.g. `/#/catalogue/official/cosmic-coffee`) |
-| `/#/designer` | Visual designer |
-| `/#/designer/<source>/<slug>` | Designer with catalogue ontology (e.g. `/#/designer/official/cosmic-coffee`) |
-| `/#/learn` | Ontology School — course catalogue |
-| `/#/learn/<course>` | Course detail — article list |
-| `/#/learn/<course>/<article>` | Article view (with presentation mode) |
-
-## Official Ontologies
-
-| Domain | Ontology | Entities | Relationships |
-|--------|----------|----------|---------------|
-| Komatsu Australia | Komatsu Australia Enterprise Ontology (+ 11 modules) | 71 | 199 |
-| Retail | Fourth Coffee | 6 | 7 |
-| E-Commerce | Online Retail | 5 | 6 |
-| Healthcare | Clinical System | 5 | 6 |
-| Finance | Banking & Finance | 5 | 6 |
-| Manufacturing | Industry 4.0 | 5 | 5 |
-| Education | University System | 5 | 6 |
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm 9+
-
-### Installation
-
-```bash
-cd Ontology-Playground
-npm install
-```
-
-### Development
-
-```bash
-npm run dev
-```
-
-Visit http://localhost:5173
-
-### Production Build
-
-```bash
-npm run build
-```
-
-The build pipeline compiles the catalogue, compiles learning content markdown,
-type-checks, bundles the app, and builds the embed widget. Output is in
-`build/`.
-
-### Running Tests
-
-```bash
-npm test            # single run
-npm run test:watch  # watch mode
-```
-
-## Deployment
-
-### Azure Static Web Apps (primary)
-
-The repo ships with a GitHub Actions workflow that deploys to Azure SWA on every
-push to `main`.
-
-1. Create a Static Web App in the Azure Portal
-2. Connect to your GitHub repository
-3. Copy the deployment token and add it as the GitHub secret
-   `AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_PLANT_0BB1D2910`
-4. Push to `main` — the workflow at
-   `.github/workflows/azure-static-web-apps-green-plant-0bb1d2910.yml` handles
-   the rest
-5. PR preview environments are created automatically for pull requests
-
-### GitHub Pages (for forks)
-
-A separate workflow deploys to GitHub Pages, ideal for forks:
-
-1. Fork this repo
-2. Go to **Settings → Pages → Source** and select **GitHub Actions**
-3. Push to `main` — the workflow at `.github/workflows/deploy-ghpages.yml`
-   builds and deploys to `https://<username>.github.io/<repo-name>/`
-
-The `VITE_BASE_PATH` env var is set automatically to `/<repo-name>/` during the
-GitHub Pages build so asset paths resolve correctly.
-
-### Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `VITE_ENABLE_AI_BUILDER` | `false` | Enable the Azure OpenAI ontology builder |
-| `VITE_ENABLE_LEGACY_FORMATS` | `false` | Enable JSON/YAML/CSV import/export formats |
-| `VITE_BASE_PATH` | `/` | Base path for the app (set automatically for GitHub Pages) |
-| `VITE_GITHUB_CLIENT_ID` | *(empty)* | GitHub OAuth App client ID for one-click catalogue PRs ([setup guide](docs/github-oauth-setup.md)) |
-| `VITE_GITHUB_OAUTH_BASE` | *(empty)* | External OAuth proxy URL for GitHub Pages deployments (e.g. Cloudflare Worker URL) |
-| `VITE_FEATURED_CATEGORY` | *(empty)* | Catalogue category shown first in the gallery; entries in other categories are labelled as samples (`.env` sets `komatsu`) |
-| `VITE_DEFAULT_CATALOGUE_ID` | *(empty)* | Catalogue entry opened on the home page instead of the built-in Fourth Coffee sample (`.env` sets `official/komatsu-au-enterprise`) |
-
-## Project Structure
-
-```
-Ontology-Playground/
-├── src/
-│   ├── components/       # React components (graph, designer, modals, learn page)
-│   ├── data/             # Ontology model, query engine, quest definitions
-│   ├── lib/              # Router, RDF parser/serializer, catalogue helpers
-│   ├── store/            # Zustand stores (app state, designer state)
-│   ├── styles/           # CSS (Microsoft Fluent-inspired dark/light themes)
-│   └── types/            # TypeScript type definitions
-├── catalogue/            # Official + community ontology RDF files
-├── content/learn/        # Course directories with markdown articles, quizzes, and metadata
-├── scripts/              # Build-time compilers (catalogue, learning content)
-├── api/                  # Azure Functions backend (optional, for AI builder)
-├── docs/                 # Guides and documentation
-├── public/               # Static assets (compiled catalogue.json, learn.json)
-└── .github/workflows/    # CI/CD (Azure SWA + GitHub Pages)
-```
+# Komatsu Ontology Workbench
+
+The home of the **Komatsu Australia Enterprise Ontology**: one shared business
+vocabulary for how Komatsu Australia sells, delivers, supports and rebuilds
+machines, bound to the systems that run the business (D365 CE, D365 F&O,
+Annata 365, KOMTRAX) and deployable to **Microsoft Fabric IQ**.
+
+| | |
+|---|---|
+| Entity types / relationships | **71 / 199**, in 13 process domains |
+| Modules | Enterprise model + 11 focused modules (equipment master, sales, Hensei, PDI, parts, planning, service, contracts & warranty, REMAN, support & portal, telematics) |
+| Standards | ISO 6165 / 10261 / 14224 / 15143-3, SAE J1939, IOF, MIMOSA CCOM, schema.org, GS1, UN/CEFACT, OAGIS, W3C, FIBO, Microsoft CDM, SCOR, APQC |
+| Systems bound | D365 F&O, Annata 365, D365 CE / Dataverse, KOMTRAX, Power Pages portal, LIMC, KACF |
+| Target platform | Microsoft Fabric IQ ontology on Komatsu's Fabric workspace; web app on Azure Static Web Apps in Komatsu's resource group |
+
+## What's in the workbench
+
+- **Interactive graph** of the enterprise ontology (opens by default), with an
+  inspector, path finder, search and natural-language query playground.
+- **Gallery** of the enterprise model and the 11 modules.
+- **Data Sources** panel showing, for every entity, the system of record,
+  table and column mapping.
+- **Visual designer** to change the model, with Komatsu modules as starter
+  templates, Fabric IQ validation, and RDF/OWL import and export.
+- **Ontology School course** `/#/learn/komatsu-au-ontology`: 7 lessons with
+  live graphs and quizzes, and a presentation mode for process-owner workshops.
+- **Push to Microsoft Fabric** from the browser, plus the `npm run fabric:deploy` CLI and a GitHub Action.
 
 ## Documentation
 
-The table below lists the main end-user and contributor guides. Internal planning notes (for example, `docs/TODO-*.md`) are intentionally not part of the published documentation set.
+| Guide | |
+|---|---|
+| [Ontology overview](docs/komatsu/README.md) | Design layers, value streams, modules, data ownership, conventions, roadmap |
+| [Data dictionary](docs/komatsu/data-dictionary.md) | Generated: every entity, property, relationship, standard and binding |
+| [System mapping](docs/komatsu/system-mapping.md) | D365 CE / F&O / Annata systems of record, work-order ownership decision, Fabric medallion pattern |
+| [Azure & Fabric setup](docs/komatsu/azure-fabric-setup.md) | Connecting to Komatsu's resource group and Fabric workspace |
+| [Standards alignment](docs/komatsu/standards-alignment.md) | Which standards, why, and the traps we avoided |
+| [Glossary](docs/komatsu/glossary.md) | Komatsu, system and standards terms |
+| [Open questions](docs/komatsu/open-questions.md) | What we still need from the business and IT |
+| [Sources](docs/komatsu/sources.md) | Evidence behind the Komatsu facts |
 
-| Guide | Description |
-|-------|-------------|
-| [Ontology Authoring Guide](docs/authoring-guide.md) | How to create ontologies that work well in the Playground — field-by-field reference, best practices, and a step-by-step walkthrough |
-| [Contribute an Ontology: From Design to GitHub](docs/contributing-ontology-from-design-to-github.md) | End-to-end contributor workflow: design, RDF export, metadata, local validation, and pull request |
-| [Playground Feature Demo Guide](docs/playground-features-demo-guide.md) | Step-by-step demo script to showcase key Playground capabilities and connect them to Fabric IQ and Real-Time Intelligence |
-| [Ontology School Demo Guide](docs/ontology-school-demo-guide.md) | Step-by-step live demo plan for courses, embeds, quizzes, presentation mode, and learning workflow |
-| [Embedding Guide](docs/embed-guide.md) | How to embed interactive ontology widgets on any web page |
-| [GitHub OAuth Setup](docs/github-oauth-setup.md) | How to configure GitHub OAuth for one-click catalogue PRs |
-| [Embed Security](docs/embed-security.md) | Security model for the embeddable widget |
-| [Learning Content Guide](docs/learn-content-guide.md) | How to author courses, articles, quizzes, and ontology embeds for the Ontology School |
-| [Ontology School Review Workflow](docs/ontology-school-review-workflow.md) | Human review and approval flow for school lesson content |
-| [Theme Authoring Guide](docs/theme-authoring-guide.md) | How to plug a new color theme into the Playground — token contract, the appStore + CSS steps, and contrast gotchas |
-| [Komatsu Australia Enterprise Ontology](docs/komatsu/README.md) | The fork's end-to-end Komatsu ontology: design, modules, data dictionary, D365/Annata/Fabric mapping, standards alignment, glossary and open questions |
-
-## AI Agent Quickstart
-
-This repository includes Copilot customization files so agents can reliably:
-
-- import customer RDF/OWL into catalogue-ready format
-- generate progressive Ontology School modules
-- route lesson content through human review workflows
-
-Included assets:
-
-- Skills:
-   - `.github/skills/ontology-catalog-import/` — import external/customer RDF/OWL into catalogue format
-   - `.github/skills/ontology-school-path-generator/` — generate progressive Ontology School modules
-   - `.github/skills/community-ontology-contribution/` — add a contributor ontology under `catalogue/community/` with the correct directory structure, metadata, and validation
-   - `.github/skills/name-generator/` — generate person names for examples, demos, quests, tests, and sample data from the approved CSV fixture
-- RDF intake instruction:
-   - `.github/instructions/rdf-intake.instructions.md`
-- Reusable prompts:
-   - `.github/prompts/import-rdf-to-catalog.prompt.md`
-   - `.github/prompts/generate-ontology-school-module.prompt.md`
-
-Recommended validation before merge:
+## Getting started
 
 ```bash
-npm run qa:tutorial-content
-npm run build
+npm ci
+npm run dev          # http://localhost:5173
+npm test             # unit + model tests
+npm run build        # compiles catalogue + course, type-checks, bundles to build/
 ```
 
-## Technologies
+### Changing the ontology
 
-- **React 19** + TypeScript 5
-- **Cytoscape.js** — Graph visualization (fcose layout)
-- **Zustand** — State management
-- **Vite** — Build tool
-- **Framer Motion** — Animations
-- **Lucide Icons** — Icon library
-- **marked** — Markdown compilation (build-time)
+```bash
+# edit src/data/komatsu/model.ts (entities, relationships, bindings, modules)
+npm run komatsu:generate    # regenerates catalogue/official/komatsu-au-* and the data dictionary
+npm test                    # validation, RDF round-trip, Fabric conversion
+```
 
-## Learn More
+`npm run komatsu:check` (also run by the tests) fails if the generated files
+are out of date.
 
-- [Microsoft Fabric IQ Ontology Documentation](https://learn.microsoft.com/en-us/fabric/iq/ontology/overview)
-- [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/)
+### Deploying
 
-## License
+| Target | How | Guide |
+|---|---|---|
+| Azure resources (Static Web App, optional Fabric capacity) | `infra/main.bicep`, or the **Deploy Azure infrastructure** workflow | [Azure & Fabric setup](docs/komatsu/azure-fabric-setup.md) |
+| Web app | **Deploy workbench to Azure Static Web Apps** workflow (opt-in: `AZURE_SWA_ENABLED`) | same |
+| Ontology → Fabric IQ | `npm run fabric:deploy`, or the **Deploy ontology to Microsoft Fabric IQ** workflow (opt-in: `FABRIC_DEPLOY_ENABLED`) | same |
 
-MIT
+## Repository layout
 
-## Trademark Notice
+```
+src/                      React app (graph, designer, inspector, learn, Fabric export)
+  data/komatsu/           ★ Source of truth: model.ts, types, validation, runtime entry
+  test/fixtures/          Small upstream sample used only by unit tests
+catalogue/official/       Generated Komatsu catalogue entries (RDF/OWL + metadata)
+content/learn/            Komatsu Ontology School course
+docs/komatsu/             Ontology, system, standards and platform documentation
+scripts/                  Catalogue/learn compilers, Komatsu generator, Fabric deploy CLI
+infra/                    Bicep for the Azure resource group
+api/                      Azure Functions (GitHub OAuth proxy, optional AI builder)
+.github/workflows/        CI, secret scan, Azure SWA / infra / Fabric deployments
+reference/microsoft-upstream/   Upstream Microsoft samples, courses, docs and workflows — NOT used
+```
 
-Trademarks This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow Microsoft’s Trademark & Brand Guidelines. Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship. Any use of third-party trademarks or logos are subject to those third-party’s policies.
+## Configuration
+
+Copy `.env.example` to `.env.local` for local overrides.
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `VITE_CATALOGUE_REPO` | `04nipunsharma/Ontology-Playground` | Repo used by the "submit to catalogue" PR flow and contribute links |
+| `VITE_FABRIC_WORKSPACE_ID` | *(empty)* | Pre-fills the Fabric workspace in *Push to Microsoft Fabric* |
+| `VITE_GITHUB_CLIENT_ID` | *(empty)* | GitHub OAuth app for the PR flow |
+| `VITE_ENABLE_AI_BUILDER` | `false` | Azure OpenAI ontology builder (needs `/api` configured) |
+| `VITE_ENABLE_LEGACY_FORMATS` | `false` | JSON/YAML/CSV import and export |
+| `FABRIC_WORKSPACE_ID`, `FABRIC_TOKEN` | *(empty)* | Used by `npm run fabric:deploy` (the token falls back to `az login`) |
+
+## Origin and licence
+
+The workbench is built on the open-source
+[Microsoft Ontology Playground](https://github.com/microsoft/Ontology-Playground)
+(MIT). The upstream copyright notice is kept in [`LICENSE`](LICENSE). All
+upstream sample content, courses, docs and Microsoft-specific automation are
+parked, unused, in [`reference/microsoft-upstream/`](reference/microsoft-upstream/README.md).
+Microsoft, Fabric, Dynamics 365 and Azure are trademarks of Microsoft. Komatsu,
+KOMTRAX and related names are trademarks of Komatsu Ltd.

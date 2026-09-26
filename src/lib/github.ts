@@ -12,6 +12,8 @@
  * Function at /api/github-oauth/….
  */
 
+import { CATALOGUE_REPO_NAME, CATALOGUE_REPO_OWNER } from './repoConfig';
+
 const GITHUB_API = 'https://api.github.com';
 
 // In dev, Vite proxies /__github/* → github.com/*
@@ -21,10 +23,9 @@ const GITHUB_OAUTH_BASE = import.meta.env.DEV
   ? '/__github'
   : (import.meta.env.VITE_GITHUB_OAUTH_BASE || '/api/github-oauth');
 
-// The upstream repo that the catalogue lives in.
-// Change these if the repo moves.
-const UPSTREAM_OWNER = 'microsoft';
-const UPSTREAM_REPO = 'Ontology-Playground';
+// The repo that the catalogue lives in (see repoConfig.ts).
+const UPSTREAM_OWNER = CATALOGUE_REPO_OWNER;
+const UPSTREAM_REPO = CATALOGUE_REPO_NAME;
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 

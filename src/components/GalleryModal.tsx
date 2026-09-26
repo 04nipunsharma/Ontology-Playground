@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, Fragment } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Layers, ArrowRight, Search, Code, User, Pencil, Share2 } from 'lucide-react';
 import { useDesignerStore } from '../store/designerStore';
@@ -9,14 +9,7 @@ import { navigate, parseHash } from '../lib/router';
 import { buildOntologyEmbedSnippet } from '../lib/contentSafety';
 import type { CatalogueEntry, Catalogue } from '../types/catalogue';
 import { CATEGORY_COLORS, CATEGORY_LABELS } from '../types/catalogue';
-import {
-  DEFAULT_CATALOGUE_ID,
-  FEATURED_CATEGORY,
-  hasFeaturedEntries,
-  isSampleEntry,
-  orderCategories,
-  sortFeaturedFirst,
-} from '../lib/featuredCatalogue';
+import { CATALOGUE_REPO_URL } from '../lib/repoConfig';
 
 interface GalleryModalProps {
   onClose: () => void;
@@ -72,16 +65,13 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
   // Derive available categories from loaded data
   const categories = useMemo(() => {
     const cats = new Set(catalogue.map((e) => e.category));
-    return orderCategories(Array.from(cats), FEATURED_CATEGORY);
+    return Array.from(cats).sort();
   }, [catalogue]);
-
-  // Featured (fork-specific) content first; upstream samples are kept but moved aside
-  const featuredPresent = useMemo(() => hasFeaturedEntries(catalogue, FEATURED_CATEGORY), [catalogue]);
 
   // Filter + search
   const filtered = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
-    const matches = catalogue.filter((entry) => {
+    return catalogue.filter((entry) => {
       if (sourceFilter !== 'all' && entry.source !== sourceFilter) return false;
       if (categoryFilter !== 'all' && entry.category !== categoryFilter) return false;
       // Hide school step-by-step entries unless that category is explicitly selected
@@ -99,7 +89,6 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
       }
       return true;
     });
-    return sortFeaturedFirst(matches, FEATURED_CATEGORY, DEFAULT_CATALOGUE_ID);
   }, [catalogue, searchQuery, sourceFilter, categoryFilter]);
 
   // Reset visible count when filters change
@@ -269,34 +258,14 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
         {!loading && !error && (
           <>
           <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))', gap: 16 }}>
-            {visibleEntries.map((entry, index) => {
+            {visibleEntries.map((entry) => {
               const isActive = currentOntology.name === entry.ontology.name;
               const categoryColor = CATEGORY_COLORS[entry.category] ?? '#6B7280';
               const showRdf = rdfViewId === entry.id;
-              const isSample = isSampleEntry(entry, FEATURED_CATEGORY, featuredPresent);
-              const startsSamples = isSample && (index === 0 || !isSampleEntry(visibleEntries[index - 1], FEATURED_CATEGORY, featuredPresent));
 
               return (
-                <Fragment key={entry.id}>
-                {startsSamples && (
-                  <div
-                    data-testid="sample-divider"
-                    style={{
-                      gridColumn: '1 / -1',
-                      marginTop: index === 0 ? 0 : 12,
-                      paddingTop: index === 0 ? 0 : 12,
-                      borderTop: index === 0 ? 'none' : '1px solid var(--border-primary)',
-                      fontSize: 12,
-                      fontWeight: 600,
-                      color: 'var(--text-tertiary)',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                    }}
-                  >
-                    Sample ontologies (upstream Ontology Playground examples)
-                  </div>
-                )}
                 <motion.div
+                  key={entry.id}
                   layout
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -343,20 +312,6 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
                           >
                             {CATEGORY_LABELS[entry.category] ?? entry.category}
                           </span>
-                          {isSample && (
-                            <span
-                              style={{
-                                fontSize: 10,
-                                padding: '1px 6px',
-                                background: 'var(--bg-secondary)',
-                                borderRadius: 'var(--radius-sm)',
-                                color: 'var(--text-tertiary)',
-                                fontWeight: 500,
-                              }}
-                            >
-                              Sample
-                            </span>
-                          )}
                           {entry.source === 'community' && (
                             <span
                               style={{
@@ -531,7 +486,6 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
                     )}
                   </AnimatePresence>
                 </motion.div>
-                </Fragment>
               );
             })}
           </div>
@@ -563,7 +517,7 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
           <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
             Want to contribute? See{' '}
             <a
-              href="https://github.com/microsoft/Ontology-Playground/blob/main/CONTRIBUTING.md"
+              href={`${CATALOGUE_REPO_URL}/blob/main/docs/komatsu/README.md#changing-the-model`}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -572,11 +526,11 @@ export function GalleryModal({ onClose }: GalleryModalProps) {
                 cursor: 'pointer',
               }}
             >
-              <strong>CONTRIBUTING.md</strong>
+              <strong>Changing the model</strong>
             </a>
-            {' '}— add your ontology as an RDF file and{' '}
+            {' '}— edit the model, regenerate and{' '}
             <a
-              href="https://github.com/microsoft/Ontology-Playground/fork"
+              href={`${CATALOGUE_REPO_URL}/pulls`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

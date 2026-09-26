@@ -35,6 +35,7 @@ machine.
 | D365 / Annata / Fabric mapping | [system-mapping.md](system-mapping.md) |
 | Komatsu terms and acronyms | [glossary.md](glossary.md) |
 | What we still need from the business | [open-questions.md](open-questions.md) |
+| Connect to Komatsu Azure and Fabric | [azure-fabric-setup.md](azure-fabric-setup.md) |
 | Evidence behind the Komatsu facts | [sources.md](sources.md) |
 
 ## Design: three layers in one model
@@ -190,7 +191,8 @@ consistency. Hand-editing the generated RDF is not supported.
    ⚠️ binding.
 3. **Build the Fabric gold layer** (see [system-mapping.md](system-mapping.md)):
    one managed Delta table per entity type plus one link table per
-   relationship. Then push the ontology with **Fabric Export** and bind.
+   relationship. Then publish with `npm run fabric:deploy` (see
+   [azure-fabric-setup.md](azure-fabric-setup.md)) and bind.
 4. **Add controlled vocabularies as SKOS schemes.** Candidates are ISO 6165
    machine types, ISO 14224 failure codes, the Komatsu error-code list,
    order types, and the contract and warranty products.

@@ -2,9 +2,21 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { InspectorPanel } from './InspectorPanel';
 import { useAppStore } from '../store/appStore';
+import { cosmicCoffeeOntology, sampleBindings, quests as fourthCoffeeQuests } from '../test/fixtures/fourthCoffee';
+
+// These tests exercise hand-written quest steps, so they use the small
+// upstream Fourth Coffee fixture rather than the generated Komatsu quests.
+function loadFourthCoffeeFixture() {
+  useAppStore.getState().resetToDefault();
+  useAppStore.setState({
+    currentOntology: cosmicCoffeeOntology,
+    dataBindings: sampleBindings,
+    availableQuests: fourthCoffeeQuests,
+  });
+}
 
 function setupDataBindingQuestStep() {
-  useAppStore.getState().resetToDefault();
+  loadFourthCoffeeFixture();
   useAppStore.getState().startQuest('quest-5');
   useAppStore.getState().advanceQuestStep(); // Move from step 1 to step 2 (property step)
   useAppStore.getState().selectEntity('customer');
