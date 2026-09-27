@@ -26,7 +26,7 @@ flowchart LR
 | 7 | Fabric **workspace ID** (GUID in the workspace URL) | `https://app.fabric.microsoft.com/groups/<guid>/…` | Where the ontology item is created |
 | 8 | An **Entra app registration or user-assigned managed identity** for GitHub OIDC | `gh-kau-ontology-deployer` | Deploying infra and the ontology without stored passwords |
 | 9 | Who should sign in to the workbench (Entra group) | `SG-KAU-Ontology-Users` | Restricting the site to Komatsu staff |
-| 10 | Where the repo will live long-term | Komatsu GitHub org / Azure DevOps | `VITE_CATALOGUE_REPO`, branch protection |
+| 10 | GitHub organisation the repo moves to | `komatsu-au` | OIDC subject, secrets — see [github-organisation.md](github-organisation.md) |
 
 ## 1. Create the Azure resources
 

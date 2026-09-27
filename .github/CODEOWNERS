@@ -1,0 +1,9 @@
+# Code owners — reviewers requested automatically on pull requests.
+# Replace the placeholder teams below with your organisation's GitHub teams
+# (e.g. @komatsu-au/data-platform) and uncomment. Unknown owners are ignored.
+#
+# *                         @<org>/data-platform
+# /src/data/komatsu/        @<org>/data-architecture @<org>/data-platform
+# /docs/komatsu/            @<org>/data-architecture
+# /infra/                   @<org>/cloud-platform
+# /.github/workflows/       @<org>/cloud-platform

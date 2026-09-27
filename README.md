@@ -34,6 +34,7 @@ Annata 365, KOMTRAX) and deployable to **Microsoft Fabric IQ**.
 | [Data dictionary](docs/komatsu/data-dictionary.md) | Generated: every entity, property, relationship, standard and binding |
 | [System mapping](docs/komatsu/system-mapping.md) | D365 CE / F&O / Annata systems of record, work-order ownership decision, Fabric medallion pattern |
 | [Azure & Fabric setup](docs/komatsu/azure-fabric-setup.md) | Connecting to Komatsu's resource group and Fabric workspace |
+| [GitHub organisation move](docs/komatsu/github-organisation.md) | Transferring the repo into the organisation's GitHub and re-wiring secrets / OIDC |
 | [Standards alignment](docs/komatsu/standards-alignment.md) | Which standards, why, and the traps we avoided |
 | [Glossary](docs/komatsu/glossary.md) | Komatsu, system and standards terms |
 | [Open questions](docs/komatsu/open-questions.md) | What we still need from the business and IT |
@@ -89,7 +90,7 @@ Copy `.env.example` to `.env.local` for local overrides.
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `VITE_CATALOGUE_REPO` | `04nipunsharma/Ontology-Playground` | Repo used by the "submit to catalogue" PR flow and contribute links |
+| `VITE_CATALOGUE_REPO` | the repo the site was built from | Repo used by the "submit to catalogue" PR flow and contribute links (override only if the catalogue lives elsewhere) |
 | `VITE_FABRIC_WORKSPACE_ID` | *(empty)* | Pre-fills the Fabric workspace in *Push to Microsoft Fabric* |
 | `VITE_GITHUB_CLIENT_ID` | *(empty)* | GitHub OAuth app for the PR flow |
 | `VITE_ENABLE_AI_BUILDER` | `false` | Azure OpenAI ontology builder (needs `/api` configured) |
